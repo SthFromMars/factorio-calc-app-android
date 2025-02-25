@@ -6,7 +6,7 @@ public class Product extends RecipeComponent{
 
     private final float extraCountFraction; // Probability that a craft will yield one additional product. Also applies to bonus crafts caused by productivity.
 
-    public Product(ProductType type, String name, float amount, float probability, int ignoredByProductivity, float extraCountFraction) {
+    public Product(ComponentType type, String name, float amount, float probability, int ignoredByProductivity, float extraCountFraction) {
         super(type, name, amount);
         this.probability = probability;
         this.ignoredByProductivity = ignoredByProductivity;
@@ -25,3 +25,5 @@ public class Product extends RecipeComponent{
         return extraCountFraction;
     }
 }
+
+// TODO: support amount_min/max  (no use in vanilla)

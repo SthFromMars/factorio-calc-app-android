@@ -1,6 +1,6 @@
 package com.example.myapplication.recipehelpers;
 
-public enum ProductType {
+public enum ComponentType {
     ITEM,
     FLUID
 }

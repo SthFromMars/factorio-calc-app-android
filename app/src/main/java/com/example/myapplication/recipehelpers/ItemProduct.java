@@ -7,7 +7,7 @@ public class ItemProduct extends Product{
         return percentSpoiled;
     }
 
-    public ItemProduct(ProductType type, String name, float amount, float probability, int ignoredByProductivity, float extraCountFraction, float percentSpoiled) {
+    public ItemProduct(ComponentType type, String name, float amount, float probability, int ignoredByProductivity, float extraCountFraction, float percentSpoiled) {
         super(type, name, amount, probability, ignoredByProductivity, extraCountFraction);
         this.percentSpoiled = percentSpoiled;
     }
