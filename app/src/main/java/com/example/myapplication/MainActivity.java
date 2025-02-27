@@ -3,12 +3,16 @@ package com.example.myapplication;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Pair;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.recipehelpers.Recipe;
 import com.example.myapplication.recipehelpers.RecipeExtractor;
@@ -36,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
+
         Pair<HashMap<String, Recipe>, HashMap<String, ArrayList<String>>> recipePair = null;
         try (InputStream recipeStream = this.getAssets().open("recipes.json")) {
             String recipeJsonString = new BufferedReader(
@@ -46,7 +51,18 @@ public class MainActivity extends AppCompatActivity {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+        HashMap<String, ArrayList<String>> craftables = recipePair.second;
+        String[] craftableNames = craftables.keySet().toArray(new String[0]);
 
         Log.d(TAG, "recipe parse successful");
+
+        RecyclerView recyclerView = findViewById(R.id.craftablesList);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        CraftablesListAdapter craftablesListAdapter = new CraftablesListAdapter(craftableNames);
+        recyclerView.setAdapter(craftablesListAdapter);
+
+//        ListView listView = findViewById(R.id.recipeList);
+//        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, )
+
     }
 }
