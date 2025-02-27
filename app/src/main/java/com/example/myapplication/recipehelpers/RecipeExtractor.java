@@ -1,15 +1,23 @@
 package com.example.myapplication.recipehelpers;
 
+import android.util.Pair;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class RecipeExtractor {
     private static final String TAG = "RecipeExtractor";
-    public static ArrayList<Recipe> parseFromJsonString(String recipesJsonString) {
-        ArrayList<Recipe> recipes= new ArrayList<>();
+    public static Pair<
+                HashMap<String, Recipe>,
+                HashMap<String, ArrayList<String>>
+            > parseFromJsonString(String recipesJsonString) {
+
+        HashMap<String, Recipe> recipes= new HashMap<>();
+        HashMap<String, ArrayList<String>> craftables = new HashMap<>();
 
         JSONObject recipesJson;
         try {
@@ -19,9 +27,9 @@ public class RecipeExtractor {
         }
 
         final JSONObject finalRecipesJson = recipesJson;
-        recipesJson.keys().forEachRemaining(recipeName -> {
+        recipesJson.keys().forEachRemaining(recipeNameKey -> {
             try {
-                JSONObject recipeJson = finalRecipesJson.getJSONObject(recipeName);
+                JSONObject recipeJson = finalRecipesJson.getJSONObject(recipeNameKey);
 
                 Object ingredientsJson = recipeJson.get("ingredients");
                 ArrayList<RecipeComponent> ingredients = new ArrayList<>();
@@ -32,24 +40,35 @@ public class RecipeExtractor {
                     }
                 }
 
+                String recipeName = recipeJson.getString("name");
                 Object productsJson = recipeJson.get("products");
                 ArrayList<Product> products = new ArrayList<>();
                 if (productsJson instanceof JSONArray) {
                     JSONArray productsJsonArray = (JSONArray) productsJson;
                     for (int i = 0; i < productsJsonArray.length(); i++) {
-                        products.add(parseProduct(productsJsonArray.getJSONObject(i)));
+                        Product product = parseProduct(productsJsonArray.getJSONObject(i));
+                        products.add(product);
+
+                        if (craftables.containsKey(product.getName()))
+                            craftables.get(product.getName()).add(recipeName);
+                        else {
+                            craftables.put(product.getName(), new ArrayList<>());
+                            craftables.get(product.getName()).add(recipeName);
+                        }
                     }
                 }
 
-                recipes.add(new Recipe(
-                        recipeJson.getString("name"),
-                        recipeJson.getBoolean("enabled"),
-                        recipeJson.getString("category"),
-                        ingredients,
-                        products,
-                        recipeJson.getBoolean("hidden"),
-                        (float) recipeJson.getDouble("energy"),
-                        (float) recipeJson.getDouble("productivity_bonus")
+                recipes.put(
+                        recipeName,
+                        new Recipe(
+                            recipeJson.getString("name"),
+                            recipeJson.getBoolean("enabled"),
+                            recipeJson.getString("category"),
+                            ingredients,
+                            products,
+                            recipeJson.getBoolean("hidden"),
+                            (float) recipeJson.getDouble("energy"),
+                            (float) recipeJson.getDouble("productivity_bonus")
                 ));
 
             } catch (JSONException e) {
@@ -57,7 +76,7 @@ public class RecipeExtractor {
             }
         });
 
-        return recipes;
+        return new Pair<>(recipes, craftables);
     }
 
     private static RecipeComponent parseIngredient(JSONObject ingredientJson) throws JSONException {

@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Pair;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +18,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.stream.Collectors;
 
 public class MainActivity extends AppCompatActivity {
@@ -34,13 +36,13 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        ArrayList<Recipe> recipes = null;
+        Pair<HashMap<String, Recipe>, HashMap<String, ArrayList<String>>> recipePair = null;
         try (InputStream recipeStream = this.getAssets().open("recipes.json")) {
             String recipeJsonString = new BufferedReader(
                     new InputStreamReader(recipeStream, StandardCharsets.UTF_8))
                     .lines()
                     .collect(Collectors.joining("\n"));
-            recipes = RecipeExtractor.parseFromJsonString(recipeJsonString);
+            recipePair = RecipeExtractor.parseFromJsonString(recipeJsonString);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
