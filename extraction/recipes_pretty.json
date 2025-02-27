@@ -35,7 +35,7 @@
     },
     "steel-chest": {
         "name": "steel-chest",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [{ "type": "item", "name": "steel-plate", "amount": 8 }],
         "products": [
@@ -52,7 +52,7 @@
     },
     "storage-tank": {
         "name": "storage-tank",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "iron-plate", "amount": 20 },
@@ -92,7 +92,7 @@
     },
     "fast-transport-belt": {
         "name": "fast-transport-belt",
-        "enabled": false,
+        "enabled": true,
         "category": "pressing",
         "ingredients": [
             { "type": "item", "name": "iron-gear-wheel", "amount": 5 },
@@ -112,7 +112,7 @@
     },
     "express-transport-belt": {
         "name": "express-transport-belt",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting-with-fluid-or-metallurgy",
         "ingredients": [
             { "type": "item", "name": "iron-gear-wheel", "amount": 10 },
@@ -133,7 +133,7 @@
     },
     "turbo-transport-belt": {
         "name": "turbo-transport-belt",
-        "enabled": false,
+        "enabled": true,
         "category": "metallurgy",
         "ingredients": [
             { "type": "item", "name": "tungsten-plate", "amount": 5 },
@@ -154,7 +154,7 @@
     },
     "underground-belt": {
         "name": "underground-belt",
-        "enabled": false, 
+        "enabled": true,
         "category": "pressing",
         "ingredients": [
             { "type": "item", "name": "iron-plate", "amount": 10 },
@@ -174,7 +174,7 @@
     },
     "fast-underground-belt": {
         "name": "fast-underground-belt",
-        "enabled": false,
+        "enabled": true,
         "category": "pressing",
         "ingredients": [
             { "type": "item", "name": "iron-gear-wheel", "amount": 40 },
@@ -194,7 +194,7 @@
     },
     "express-underground-belt": {
         "name": "express-underground-belt",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting-with-fluid-or-metallurgy",
         "ingredients": [
             { "type": "item", "name": "iron-gear-wheel", "amount": 80 },
@@ -215,7 +215,7 @@
     },
     "turbo-underground-belt": {
         "name": "turbo-underground-belt",
-        "enabled": false,
+        "enabled": true,
         "category": "metallurgy",
         "ingredients": [
             { "type": "item", "name": "tungsten-plate", "amount": 40 },
@@ -236,7 +236,7 @@
     },
     "splitter": {
         "name": "splitter",
-        "enabled": false,
+        "enabled": true,
         "category": "pressing",
         "ingredients": [
             { "type": "item", "name": "iron-plate", "amount": 5 },
@@ -257,7 +257,7 @@
     },
     "fast-splitter": {
         "name": "fast-splitter",
-        "enabled": false,
+        "enabled": true,
         "category": "pressing",
         "ingredients": [
             { "type": "item", "name": "iron-gear-wheel", "amount": 10 },
@@ -278,7 +278,7 @@
     },
     "express-splitter": {
         "name": "express-splitter",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting-with-fluid-or-metallurgy",
         "ingredients": [
             { "type": "item", "name": "iron-gear-wheel", "amount": 10 },
@@ -300,7 +300,7 @@
     },
     "turbo-splitter": {
         "name": "turbo-splitter",
-        "enabled": false,
+        "enabled": true,
         "category": "metallurgy",
         "ingredients": [
             { "type": "item", "name": "processing-unit", "amount": 2 },
@@ -318,6 +318,84 @@
         ],
         "hidden": false,
         "energy": 2,
+        "productivity_bonus": 0
+    },
+    "loader": {
+        "name": "loader",
+        "enabled": false,
+        "category": "crafting",
+        "ingredients": [
+            { "type": "item", "name": "iron-plate", "amount": 5 },
+            { "type": "item", "name": "iron-gear-wheel", "amount": 5 },
+            { "type": "item", "name": "electronic-circuit", "amount": 5 },
+            { "type": "item", "name": "transport-belt", "amount": 5 },
+            { "type": "item", "name": "inserter", "amount": 5 }
+        ],
+        "products": [
+            { "type": "item", "name": "loader", "probability": 1, "amount": 1 }
+        ],
+        "hidden": true,
+        "energy": 1,
+        "productivity_bonus": 0
+    },
+    "fast-loader": {
+        "name": "fast-loader",
+        "enabled": false,
+        "category": "crafting",
+        "ingredients": [
+            { "type": "item", "name": "fast-transport-belt", "amount": 5 },
+            { "type": "item", "name": "loader", "amount": 1 }
+        ],
+        "products": [
+            {
+                "type": "item",
+                "name": "fast-loader",
+                "probability": 1,
+                "amount": 1
+            }
+        ],
+        "hidden": true,
+        "energy": 3,
+        "productivity_bonus": 0
+    },
+    "express-loader": {
+        "name": "express-loader",
+        "enabled": false,
+        "category": "crafting",
+        "ingredients": [
+            { "type": "item", "name": "express-transport-belt", "amount": 5 },
+            { "type": "item", "name": "fast-loader", "amount": 1 }
+        ],
+        "products": [
+            {
+                "type": "item",
+                "name": "express-loader",
+                "probability": 1,
+                "amount": 1
+            }
+        ],
+        "hidden": true,
+        "energy": 10,
+        "productivity_bonus": 0
+    },
+    "turbo-loader": {
+        "name": "turbo-loader",
+        "enabled": false,
+        "category": "crafting",
+        "ingredients": [
+            { "type": "item", "name": "turbo-transport-belt", "amount": 5 },
+            { "type": "item", "name": "express-loader", "amount": 1 }
+        ],
+        "products": [
+            {
+                "type": "item",
+                "name": "turbo-loader",
+                "probability": 1,
+                "amount": 1
+            }
+        ],
+        "hidden": true,
+        "energy": 20,
         "productivity_bonus": 0
     },
     "burner-inserter": {
@@ -342,7 +420,7 @@
     },
     "inserter": {
         "name": "inserter",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "iron-plate", "amount": 1 },
@@ -363,7 +441,7 @@
     },
     "long-handed-inserter": {
         "name": "long-handed-inserter",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "iron-plate", "amount": 1 },
@@ -384,7 +462,7 @@
     },
     "fast-inserter": {
         "name": "fast-inserter",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "iron-plate", "amount": 2 },
@@ -405,7 +483,7 @@
     },
     "bulk-inserter": {
         "name": "bulk-inserter",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "iron-gear-wheel", "amount": 15 },
@@ -427,7 +505,7 @@
     },
     "stack-inserter": {
         "name": "stack-inserter",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "processing-unit", "amount": 1 },
@@ -449,7 +527,7 @@
     },
     "small-electric-pole": {
         "name": "small-electric-pole",
-        "enabled": false,
+        "enabled": true,
         "category": "electronics",
         "ingredients": [
             { "type": "item", "name": "wood", "amount": 1 },
@@ -469,7 +547,7 @@
     },
     "medium-electric-pole": {
         "name": "medium-electric-pole",
-        "enabled": false,
+        "enabled": true,
         "category": "electronics",
         "ingredients": [
             { "type": "item", "name": "steel-plate", "amount": 2 },
@@ -490,7 +568,7 @@
     },
     "big-electric-pole": {
         "name": "big-electric-pole",
-        "enabled": false,
+        "enabled": true,
         "category": "electronics",
         "ingredients": [
             { "type": "item", "name": "steel-plate", "amount": 5 },
@@ -511,7 +589,7 @@
     },
     "substation": {
         "name": "substation",
-        "enabled": false,
+        "enabled": true,
         "category": "electronics",
         "ingredients": [
             { "type": "item", "name": "steel-plate", "amount": 10 },
@@ -532,7 +610,7 @@
     },
     "pipe": {
         "name": "pipe",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [{ "type": "item", "name": "iron-plate", "amount": 1 }],
         "products": [
@@ -544,7 +622,7 @@
     },
     "pipe-to-ground": {
         "name": "pipe-to-ground",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "iron-plate", "amount": 5 },
@@ -564,7 +642,7 @@
     },
     "casting-pipe": {
         "name": "casting-pipe",
-        "enabled": false,
+        "enabled": true,
         "category": "metallurgy",
         "ingredients": [
             {
@@ -583,7 +661,7 @@
     },
     "casting-pipe-to-ground": {
         "name": "casting-pipe-to-ground",
-        "enabled": false,
+        "enabled": true,
         "category": "metallurgy",
         "ingredients": [
             { "type": "item", "name": "pipe", "amount": 10 },
@@ -608,7 +686,7 @@
     },
     "pump": {
         "name": "pump",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "steel-plate", "amount": 1 },
@@ -624,7 +702,7 @@
     },
     "rail": {
         "name": "rail",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "stone", "amount": 1 },
@@ -640,7 +718,7 @@
     },
     "rail-ramp": {
         "name": "rail-ramp",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "steel-plate", "amount": 10 },
@@ -661,7 +739,7 @@
     },
     "rail-support": {
         "name": "rail-support",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "steel-plate", "amount": 10 },
@@ -681,7 +759,7 @@
     },
     "train-stop": {
         "name": "train-stop",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "iron-plate", "amount": 6 },
@@ -703,7 +781,7 @@
     },
     "rail-signal": {
         "name": "rail-signal",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "iron-plate", "amount": 5 },
@@ -723,7 +801,7 @@
     },
     "rail-chain-signal": {
         "name": "rail-chain-signal",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "iron-plate", "amount": 5 },
@@ -743,7 +821,7 @@
     },
     "locomotive": {
         "name": "locomotive",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "steel-plate", "amount": 30 },
@@ -764,7 +842,7 @@
     },
     "cargo-wagon": {
         "name": "cargo-wagon",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "iron-plate", "amount": 20 },
@@ -785,7 +863,7 @@
     },
     "fluid-wagon": {
         "name": "fluid-wagon",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "steel-plate", "amount": 16 },
@@ -807,7 +885,7 @@
     },
     "artillery-wagon": {
         "name": "artillery-wagon",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "iron-gear-wheel", "amount": 40 },
@@ -830,7 +908,7 @@
     },
     "car": {
         "name": "car",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "iron-plate", "amount": 20 },
@@ -846,7 +924,7 @@
     },
     "tank": {
         "name": "tank",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "steel-plate", "amount": 50 },
@@ -863,7 +941,7 @@
     },
     "spidertron": {
         "name": "spidertron",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "raw-fish", "amount": 1 },
@@ -890,7 +968,7 @@
     },
     "logistic-robot": {
         "name": "logistic-robot",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "advanced-circuit", "amount": 2 },
@@ -910,7 +988,7 @@
     },
     "construction-robot": {
         "name": "construction-robot",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "electronic-circuit", "amount": 2 },
@@ -930,7 +1008,7 @@
     },
     "active-provider-chest": {
         "name": "active-provider-chest",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "electronic-circuit", "amount": 3 },
@@ -951,7 +1029,7 @@
     },
     "passive-provider-chest": {
         "name": "passive-provider-chest",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "electronic-circuit", "amount": 3 },
@@ -972,7 +1050,7 @@
     },
     "storage-chest": {
         "name": "storage-chest",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "electronic-circuit", "amount": 3 },
@@ -993,7 +1071,7 @@
     },
     "buffer-chest": {
         "name": "buffer-chest",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "electronic-circuit", "amount": 3 },
@@ -1014,7 +1092,7 @@
     },
     "requester-chest": {
         "name": "requester-chest",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "electronic-circuit", "amount": 3 },
@@ -1035,7 +1113,7 @@
     },
     "roboport": {
         "name": "roboport",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "steel-plate", "amount": 45 },
@@ -1056,7 +1134,7 @@
     },
     "small-lamp": {
         "name": "small-lamp",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "iron-plate", "amount": 1 },
@@ -1075,29 +1153,9 @@
         "energy": 0.5,
         "productivity_bonus": 0
     },
-    "clock-combinator": {
-        "name": "clock-combinator",
-        "enabled": false,
-        "category": "crafting",
-        "ingredients": [
-            { "type": "item", "name": "copper-cable", "amount": 5 },
-            { "type": "item", "name": "electronic-circuit", "amount": 2 }
-        ],
-        "products": [
-            {
-                "type": "item",
-                "name": "clock-combinator",
-                "probability": 1,
-                "amount": 1
-            }
-        ],
-        "hidden": false,
-        "energy": 0.5,
-        "productivity_bonus": 0
-    },
     "arithmetic-combinator": {
         "name": "arithmetic-combinator",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "copper-cable", "amount": 5 },
@@ -1117,7 +1175,7 @@
     },
     "decider-combinator": {
         "name": "decider-combinator",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "copper-cable", "amount": 5 },
@@ -1137,7 +1195,7 @@
     },
     "selector-combinator": {
         "name": "selector-combinator",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "advanced-circuit", "amount": 2 },
@@ -1157,7 +1215,7 @@
     },
     "constant-combinator": {
         "name": "constant-combinator",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "copper-cable", "amount": 5 },
@@ -1177,7 +1235,7 @@
     },
     "power-switch": {
         "name": "power-switch",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "iron-plate", "amount": 5 },
@@ -1198,7 +1256,7 @@
     },
     "programmable-speaker": {
         "name": "programmable-speaker",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "iron-plate", "amount": 3 },
@@ -1220,7 +1278,7 @@
     },
     "display-panel": {
         "name": "display-panel",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "iron-plate", "amount": 1 },
@@ -1301,7 +1359,7 @@
     },
     "concrete": {
         "name": "concrete",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting-with-fluid",
         "ingredients": [
             { "type": "item", "name": "iron-ore", "amount": 1 },
@@ -1342,7 +1400,7 @@
     },
     "hazard-concrete": {
         "name": "hazard-concrete",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [{ "type": "item", "name": "concrete", "amount": 10 }],
         "products": [
@@ -1359,7 +1417,7 @@
     },
     "refined-concrete": {
         "name": "refined-concrete",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting-with-fluid",
         "ingredients": [
             { "type": "item", "name": "steel-plate", "amount": 1 },
@@ -1401,7 +1459,7 @@
     },
     "refined-hazard-concrete": {
         "name": "refined-hazard-concrete",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "refined-concrete", "amount": 10 }
@@ -1420,7 +1478,7 @@
     },
     "landfill": {
         "name": "landfill",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [{ "type": "item", "name": "stone", "amount": 50 }],
         "products": [
@@ -1463,7 +1521,7 @@
     },
     "artificial-yumako-soil": {
         "name": "artificial-yumako-soil",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "yumako-seed", "amount": 2 },
@@ -1484,7 +1542,7 @@
     },
     "overgrowth-yumako-soil": {
         "name": "overgrowth-yumako-soil",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting-with-fluid",
         "ingredients": [
             { "type": "item", "name": "yumako-seed", "amount": 5 },
@@ -1507,7 +1565,7 @@
     },
     "artificial-jellynut-soil": {
         "name": "artificial-jellynut-soil",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "jellynut-seed", "amount": 2 },
@@ -1528,7 +1586,7 @@
     },
     "overgrowth-jellynut-soil": {
         "name": "overgrowth-jellynut-soil",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting-with-fluid",
         "ingredients": [
             { "type": "item", "name": "jellynut-seed", "amount": 5 },
@@ -1551,7 +1609,7 @@
     },
     "ice-platform": {
         "name": "ice-platform",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting-with-fluid",
         "ingredients": [
             { "type": "item", "name": "ice", "amount": 50 },
@@ -1571,7 +1629,7 @@
     },
     "foundation": {
         "name": "foundation",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting-with-fluid",
         "ingredients": [
             { "type": "item", "name": "stone", "amount": 20 },
@@ -1594,7 +1652,7 @@
     },
     "cliff-explosives": {
         "name": "cliff-explosives",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "explosives", "amount": 10 },
@@ -1616,7 +1674,7 @@
     },
     "repair-pack": {
         "name": "repair-pack",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "iron-gear-wheel", "amount": 2 },
@@ -1792,7 +1850,7 @@
     },
     "boiler": {
         "name": "boiler",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "pipe", "amount": 4 },
@@ -1807,7 +1865,7 @@
     },
     "steam-engine": {
         "name": "steam-engine",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "iron-plate", "amount": 10 },
@@ -1828,7 +1886,7 @@
     },
     "solar-panel": {
         "name": "solar-panel",
-        "enabled": false,
+        "enabled": true,
         "category": "electronics",
         "ingredients": [
             { "type": "item", "name": "copper-plate", "amount": 5 },
@@ -1849,7 +1907,7 @@
     },
     "accumulator": {
         "name": "accumulator",
-        "enabled": false,
+        "enabled": true,
         "category": "electronics",
         "ingredients": [
             { "type": "item", "name": "iron-plate", "amount": 2 },
@@ -1869,7 +1927,7 @@
     },
     "nuclear-reactor": {
         "name": "nuclear-reactor",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "copper-plate", "amount": 500 },
@@ -1891,7 +1949,7 @@
     },
     "heat-pipe": {
         "name": "heat-pipe",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "copper-plate", "amount": 20 },
@@ -1911,7 +1969,7 @@
     },
     "heat-exchanger": {
         "name": "heat-exchanger",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "copper-plate", "amount": 100 },
@@ -1932,7 +1990,7 @@
     },
     "steam-turbine": {
         "name": "steam-turbine",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "copper-plate", "amount": 50 },
@@ -1953,7 +2011,7 @@
     },
     "fusion-reactor": {
         "name": "fusion-reactor",
-        "enabled": false,
+        "enabled": true,
         "category": "cryogenics",
         "ingredients": [
             { "type": "item", "name": "tungsten-plate", "amount": 200 },
@@ -1974,7 +2032,7 @@
     },
     "fusion-generator": {
         "name": "fusion-generator",
-        "enabled": false,
+        "enabled": true,
         "category": "cryogenics",
         "ingredients": [
             { "type": "item", "name": "tungsten-plate", "amount": 100 },
@@ -2016,7 +2074,7 @@
     },
     "electric-mining-drill": {
         "name": "electric-mining-drill",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "iron-plate", "amount": 10 },
@@ -2037,7 +2095,7 @@
     },
     "big-mining-drill": {
         "name": "big-mining-drill",
-        "enabled": false,
+        "enabled": true,
         "category": "metallurgy",
         "ingredients": [
             { "type": "item", "name": "advanced-circuit", "amount": 10 },
@@ -2060,7 +2118,7 @@
     },
     "offshore-pump": {
         "name": "offshore-pump",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "iron-gear-wheel", "amount": 2 },
@@ -2080,7 +2138,7 @@
     },
     "pumpjack": {
         "name": "pumpjack",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "steel-plate", "amount": 5 },
@@ -2119,7 +2177,7 @@
     },
     "steel-furnace": {
         "name": "steel-furnace",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "steel-plate", "amount": 6 },
@@ -2139,7 +2197,7 @@
     },
     "electric-furnace": {
         "name": "electric-furnace",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "steel-plate", "amount": 10 },
@@ -2160,7 +2218,7 @@
     },
     "foundry": {
         "name": "foundry",
-        "enabled": false,
+        "enabled": true,
         "category": "metallurgy-or-assembling",
         "ingredients": [
             { "type": "item", "name": "steel-plate", "amount": 50 },
@@ -2178,7 +2236,7 @@
     },
     "recycler": {
         "name": "recycler",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "steel-plate", "amount": 20 },
@@ -2200,7 +2258,7 @@
     },
     "agricultural-tower": {
         "name": "agricultural-tower",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "steel-plate", "amount": 10 },
@@ -2222,7 +2280,7 @@
     },
     "biochamber": {
         "name": "biochamber",
-        "enabled": false,
+        "enabled": true,
         "category": "organic-or-assembling",
         "ingredients": [
             { "type": "item", "name": "iron-plate", "amount": 20 },
@@ -2245,7 +2303,7 @@
     },
     "captive-biter-spawner": {
         "name": "captive-biter-spawner",
-        "enabled": false,
+        "enabled": true,
         "category": "cryogenics",
         "ingredients": [
             { "type": "item", "name": "uranium-235", "amount": 15 },
@@ -2293,7 +2351,7 @@
     },
     "assembling-machine-1": {
         "name": "assembling-machine-1",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "iron-plate", "amount": 9 },
@@ -2314,7 +2372,7 @@
     },
     "assembling-machine-2": {
         "name": "assembling-machine-2",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "steel-plate", "amount": 2 },
@@ -2336,7 +2394,7 @@
     },
     "assembling-machine-3": {
         "name": "assembling-machine-3",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "assembling-machine-2", "amount": 2 },
@@ -2356,7 +2414,7 @@
     },
     "oil-refinery": {
         "name": "oil-refinery",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "steel-plate", "amount": 15 },
@@ -2379,7 +2437,7 @@
     },
     "chemical-plant": {
         "name": "chemical-plant",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "steel-plate", "amount": 5 },
@@ -2401,7 +2459,7 @@
     },
     "centrifuge": {
         "name": "centrifuge",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "steel-plate", "amount": 50 },
@@ -2423,7 +2481,7 @@
     },
     "electromagnetic-plant": {
         "name": "electromagnetic-plant",
-        "enabled": false,
+        "enabled": true,
         "category": "electronics-or-assembling",
         "ingredients": [
             { "type": "item", "name": "steel-plate", "amount": 50 },
@@ -2445,7 +2503,7 @@
     },
     "cryogenic-plant": {
         "name": "cryogenic-plant",
-        "enabled": false,
+        "enabled": true,
         "category": "cryogenics-or-assembling",
         "ingredients": [
             { "type": "item", "name": "processing-unit", "amount": 20 },
@@ -2467,7 +2525,7 @@
     },
     "lab": {
         "name": "lab",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "iron-gear-wheel", "amount": 10 },
@@ -2483,7 +2541,7 @@
     },
     "biolab": {
         "name": "biolab",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "uranium-235", "amount": 3 },
@@ -2527,7 +2585,7 @@
     },
     "lightning-rod": {
         "name": "lightning-rod",
-        "enabled": false,
+        "enabled": true,
         "category": "electronics",
         "ingredients": [
             { "type": "item", "name": "steel-plate", "amount": 8 },
@@ -2548,7 +2606,7 @@
     },
     "lightning-collector": {
         "name": "lightning-collector",
-        "enabled": false,
+        "enabled": true,
         "category": "electromagnetics",
         "ingredients": [
             { "type": "item", "name": "supercapacitor", "amount": 8 },
@@ -2570,7 +2628,7 @@
     },
     "heating-tower": {
         "name": "heating-tower",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "concrete", "amount": 20 },
@@ -2591,7 +2649,7 @@
     },
     "beacon": {
         "name": "beacon",
-        "enabled": false,
+        "enabled": true,
         "category": "electronics",
         "ingredients": [
             { "type": "item", "name": "steel-plate", "amount": 10 },
@@ -2608,7 +2666,7 @@
     },
     "speed-module": {
         "name": "speed-module",
-        "enabled": false,
+        "enabled": true,
         "category": "electronics",
         "ingredients": [
             { "type": "item", "name": "electronic-circuit", "amount": 5 },
@@ -2628,7 +2686,7 @@
     },
     "speed-module-2": {
         "name": "speed-module-2",
-        "enabled": false,
+        "enabled": true,
         "category": "electronics",
         "ingredients": [
             { "type": "item", "name": "advanced-circuit", "amount": 5 },
@@ -2649,7 +2707,7 @@
     },
     "speed-module-3": {
         "name": "speed-module-3",
-        "enabled": false,
+        "enabled": true,
         "category": "electronics",
         "ingredients": [
             { "type": "item", "name": "advanced-circuit", "amount": 5 },
@@ -2671,7 +2729,7 @@
     },
     "efficiency-module": {
         "name": "efficiency-module",
-        "enabled": false,
+        "enabled": true,
         "category": "electronics",
         "ingredients": [
             { "type": "item", "name": "electronic-circuit", "amount": 5 },
@@ -2691,7 +2749,7 @@
     },
     "efficiency-module-2": {
         "name": "efficiency-module-2",
-        "enabled": false,
+        "enabled": true,
         "category": "electronics",
         "ingredients": [
             { "type": "item", "name": "advanced-circuit", "amount": 5 },
@@ -2712,7 +2770,7 @@
     },
     "efficiency-module-3": {
         "name": "efficiency-module-3",
-        "enabled": false,
+        "enabled": true,
         "category": "electronics",
         "ingredients": [
             { "type": "item", "name": "advanced-circuit", "amount": 5 },
@@ -2734,7 +2792,7 @@
     },
     "productivity-module": {
         "name": "productivity-module",
-        "enabled": false,
+        "enabled": true,
         "category": "electronics",
         "ingredients": [
             { "type": "item", "name": "electronic-circuit", "amount": 5 },
@@ -2754,7 +2812,7 @@
     },
     "productivity-module-2": {
         "name": "productivity-module-2",
-        "enabled": false,
+        "enabled": true,
         "category": "electronics",
         "ingredients": [
             { "type": "item", "name": "advanced-circuit", "amount": 5 },
@@ -2775,7 +2833,7 @@
     },
     "productivity-module-3": {
         "name": "productivity-module-3",
-        "enabled": false,
+        "enabled": true,
         "category": "electronics",
         "ingredients": [
             { "type": "item", "name": "advanced-circuit", "amount": 5 },
@@ -2797,7 +2855,7 @@
     },
     "quality-module": {
         "name": "quality-module",
-        "enabled": false,
+        "enabled": true,
         "category": "electronics",
         "ingredients": [
             { "type": "item", "name": "electronic-circuit", "amount": 5 },
@@ -2817,7 +2875,7 @@
     },
     "quality-module-2": {
         "name": "quality-module-2",
-        "enabled": false,
+        "enabled": true,
         "category": "electronics",
         "ingredients": [
             { "type": "item", "name": "advanced-circuit", "amount": 5 },
@@ -2838,7 +2896,7 @@
     },
     "quality-module-3": {
         "name": "quality-module-3",
-        "enabled": false,
+        "enabled": true,
         "category": "electronics",
         "ingredients": [
             { "type": "item", "name": "advanced-circuit", "amount": 5 },
@@ -2886,7 +2944,7 @@
     },
     "basic-oil-processing": {
         "name": "basic-oil-processing",
-        "enabled": false,
+        "enabled": true,
         "category": "oil-processing",
         "ingredients": [
             {
@@ -2911,7 +2969,7 @@
     },
     "advanced-oil-processing": {
         "name": "advanced-oil-processing",
-        "enabled": false,
+        "enabled": true,
         "category": "oil-processing",
         "ingredients": [
             { "type": "fluid", "name": "water", "amount": 50 },
@@ -2943,7 +3001,7 @@
     },
     "simple-coal-liquefaction": {
         "name": "simple-coal-liquefaction",
-        "enabled": false,
+        "enabled": true,
         "category": "oil-processing",
         "ingredients": [
             { "type": "item", "name": "coal", "amount": 10 },
@@ -2964,7 +3022,7 @@
     },
     "coal-liquefaction": {
         "name": "coal-liquefaction",
-        "enabled": false,
+        "enabled": true,
         "category": "oil-processing",
         "ingredients": [
             { "type": "item", "name": "coal", "amount": 10 },
@@ -3004,7 +3062,7 @@
     },
     "heavy-oil-cracking": {
         "name": "heavy-oil-cracking",
-        "enabled": false,
+        "enabled": true,
         "category": "organic-or-chemistry",
         "ingredients": [
             { "type": "fluid", "name": "water", "amount": 30 },
@@ -3024,7 +3082,7 @@
     },
     "light-oil-cracking": {
         "name": "light-oil-cracking",
-        "enabled": false,
+        "enabled": true,
         "category": "organic-or-chemistry",
         "ingredients": [
             { "type": "fluid", "name": "water", "amount": 30 },
@@ -3044,7 +3102,7 @@
     },
     "solid-fuel-from-petroleum-gas": {
         "name": "solid-fuel-from-petroleum-gas",
-        "enabled": false,
+        "enabled": true,
         "category": "chemistry",
         "ingredients": [
             { "type": "fluid", "name": "petroleum-gas", "amount": 20 }
@@ -3063,7 +3121,7 @@
     },
     "solid-fuel-from-light-oil": {
         "name": "solid-fuel-from-light-oil",
-        "enabled": false,
+        "enabled": true,
         "category": "chemistry",
         "ingredients": [{ "type": "fluid", "name": "light-oil", "amount": 10 }],
         "products": [
@@ -3080,7 +3138,7 @@
     },
     "solid-fuel-from-heavy-oil": {
         "name": "solid-fuel-from-heavy-oil",
-        "enabled": false,
+        "enabled": true,
         "category": "chemistry",
         "ingredients": [{ "type": "fluid", "name": "heavy-oil", "amount": 20 }],
         "products": [
@@ -3097,7 +3155,7 @@
     },
     "lubricant": {
         "name": "lubricant",
-        "enabled": false,
+        "enabled": true,
         "category": "chemistry",
         "ingredients": [{ "type": "fluid", "name": "heavy-oil", "amount": 10 }],
         "products": [
@@ -3114,7 +3172,7 @@
     },
     "sulfuric-acid": {
         "name": "sulfuric-acid",
-        "enabled": false,
+        "enabled": true,
         "category": "chemistry-or-cryogenics",
         "ingredients": [
             { "type": "item", "name": "iron-plate", "amount": 1 },
@@ -3135,7 +3193,7 @@
     },
     "acid-neutralisation": {
         "name": "acid-neutralisation",
-        "enabled": false,
+        "enabled": true,
         "category": "chemistry-or-cryogenics",
         "ingredients": [
             { "type": "item", "name": "calcite", "amount": 1 },
@@ -3156,7 +3214,7 @@
     },
     "steam-condensation": {
         "name": "steam-condensation",
-        "enabled": false,
+        "enabled": true,
         "category": "chemistry-or-cryogenics",
         "ingredients": [{ "type": "fluid", "name": "steam", "amount": 1000 }],
         "products": [
@@ -3168,7 +3226,7 @@
     },
     "ice-melting": {
         "name": "ice-melting",
-        "enabled": false,
+        "enabled": true,
         "category": "chemistry",
         "ingredients": [{ "type": "item", "name": "ice", "amount": 1 }],
         "products": [
@@ -3680,7 +3738,7 @@
     },
     "steel-plate": {
         "name": "steel-plate",
-        "enabled": false,
+        "enabled": true,
         "category": "smelting",
         "ingredients": [{ "type": "item", "name": "iron-plate", "amount": 5 }],
         "products": [
@@ -3693,7 +3751,7 @@
         ],
         "hidden": false,
         "energy": 16,
-        "productivity_bonus": 0
+        "productivity_bonus": 0.100000001490116119384765625
     },
     "steel-plate-recycling": {
         "name": "steel-plate-recycling",
@@ -3767,7 +3825,7 @@
     },
     "plastic-bar": {
         "name": "plastic-bar",
-        "enabled": false,
+        "enabled": true,
         "category": "chemistry-or-cryogenics",
         "ingredients": [
             { "type": "item", "name": "coal", "amount": 1 },
@@ -3783,7 +3841,7 @@
         ],
         "hidden": false,
         "energy": 1,
-        "productivity_bonus": 0
+        "productivity_bonus": 0.100000001490116119384765625
     },
     "plastic-bar-recycling": {
         "name": "plastic-bar-recycling",
@@ -3813,7 +3871,7 @@
     },
     "sulfur": {
         "name": "sulfur",
-        "enabled": false,
+        "enabled": true,
         "category": "chemistry-or-cryogenics",
         "ingredients": [
             { "type": "fluid", "name": "water", "amount": 30 },
@@ -3854,7 +3912,7 @@
     },
     "battery": {
         "name": "battery",
-        "enabled": false,
+        "enabled": true,
         "category": "chemistry-or-cryogenics",
         "ingredients": [
             { "type": "item", "name": "iron-plate", "amount": 1 },
@@ -3870,7 +3928,7 @@
     },
     "explosives": {
         "name": "explosives",
-        "enabled": false,
+        "enabled": true,
         "category": "chemistry-or-cryogenics",
         "ingredients": [
             { "type": "item", "name": "coal", "amount": 1 },
@@ -3917,7 +3975,7 @@
     },
     "carbon": {
         "name": "carbon",
-        "enabled": false,
+        "enabled": true,
         "category": "chemistry-or-cryogenics",
         "ingredients": [
             { "type": "item", "name": "coal", "amount": 2 },
@@ -3958,7 +4016,7 @@
     },
     "coal-synthesis": {
         "name": "coal-synthesis",
-        "enabled": false,
+        "enabled": true,
         "category": "chemistry",
         "ingredients": [
             { "type": "item", "name": "sulfur", "amount": 1 },
@@ -4154,7 +4212,7 @@
     },
     "water-barrel": {
         "name": "water-barrel",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting-with-fluid",
         "ingredients": [
             {
@@ -4186,7 +4244,7 @@
     },
     "crude-oil-barrel": {
         "name": "crude-oil-barrel",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting-with-fluid",
         "ingredients": [
             {
@@ -4218,7 +4276,7 @@
     },
     "petroleum-gas-barrel": {
         "name": "petroleum-gas-barrel",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting-with-fluid",
         "ingredients": [
             {
@@ -4250,7 +4308,7 @@
     },
     "light-oil-barrel": {
         "name": "light-oil-barrel",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting-with-fluid",
         "ingredients": [
             {
@@ -4282,7 +4340,7 @@
     },
     "heavy-oil-barrel": {
         "name": "heavy-oil-barrel",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting-with-fluid",
         "ingredients": [
             {
@@ -4314,7 +4372,7 @@
     },
     "lubricant-barrel": {
         "name": "lubricant-barrel",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting-with-fluid",
         "ingredients": [
             {
@@ -4346,7 +4404,7 @@
     },
     "sulfuric-acid-barrel": {
         "name": "sulfuric-acid-barrel",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting-with-fluid",
         "ingredients": [
             {
@@ -4378,7 +4436,7 @@
     },
     "fluoroketone-hot-barrel": {
         "name": "fluoroketone-hot-barrel",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting-with-fluid",
         "ingredients": [
             {
@@ -4410,7 +4468,7 @@
     },
     "fluoroketone-cold-barrel": {
         "name": "fluoroketone-cold-barrel",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting-with-fluid",
         "ingredients": [
             {
@@ -4442,7 +4500,7 @@
     },
     "empty-water-barrel": {
         "name": "empty-water-barrel",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting-with-fluid",
         "ingredients": [
             {
@@ -4476,7 +4534,7 @@
     },
     "empty-crude-oil-barrel": {
         "name": "empty-crude-oil-barrel",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting-with-fluid",
         "ingredients": [
             {
@@ -4510,7 +4568,7 @@
     },
     "empty-petroleum-gas-barrel": {
         "name": "empty-petroleum-gas-barrel",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting-with-fluid",
         "ingredients": [
             {
@@ -4544,7 +4602,7 @@
     },
     "empty-light-oil-barrel": {
         "name": "empty-light-oil-barrel",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting-with-fluid",
         "ingredients": [
             {
@@ -4578,7 +4636,7 @@
     },
     "empty-heavy-oil-barrel": {
         "name": "empty-heavy-oil-barrel",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting-with-fluid",
         "ingredients": [
             {
@@ -4612,7 +4670,7 @@
     },
     "empty-lubricant-barrel": {
         "name": "empty-lubricant-barrel",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting-with-fluid",
         "ingredients": [
             {
@@ -4646,7 +4704,7 @@
     },
     "empty-sulfuric-acid-barrel": {
         "name": "empty-sulfuric-acid-barrel",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting-with-fluid",
         "ingredients": [
             {
@@ -4680,7 +4738,7 @@
     },
     "empty-fluoroketone-hot-barrel": {
         "name": "empty-fluoroketone-hot-barrel",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting-with-fluid",
         "ingredients": [
             {
@@ -4714,7 +4772,7 @@
     },
     "empty-fluoroketone-cold-barrel": {
         "name": "empty-fluoroketone-cold-barrel",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting-with-fluid",
         "ingredients": [
             {
@@ -4765,7 +4823,7 @@
     },
     "iron-stick": {
         "name": "iron-stick",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [{ "type": "item", "name": "iron-plate", "amount": 1 }],
         "products": [
@@ -4782,7 +4840,7 @@
     },
     "copper-cable": {
         "name": "copper-cable",
-        "enabled": false,
+        "enabled": true,
         "category": "electronics",
         "ingredients": [
             { "type": "item", "name": "copper-plate", "amount": 1 }
@@ -4801,7 +4859,7 @@
     },
     "barrel": {
         "name": "barrel",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [{ "type": "item", "name": "steel-plate", "amount": 1 }],
         "products": [
@@ -4831,7 +4889,7 @@
     },
     "electronic-circuit": {
         "name": "electronic-circuit",
-        "enabled": false,
+        "enabled": true,
         "category": "electronics",
         "ingredients": [
             { "type": "item", "name": "iron-plate", "amount": 1 },
@@ -4851,7 +4909,7 @@
     },
     "advanced-circuit": {
         "name": "advanced-circuit",
-        "enabled": false,
+        "enabled": true,
         "category": "electronics",
         "ingredients": [
             { "type": "item", "name": "plastic-bar", "amount": 2 },
@@ -4872,7 +4930,7 @@
     },
     "processing-unit": {
         "name": "processing-unit",
-        "enabled": false,
+        "enabled": true,
         "category": "electronics-with-fluid",
         "ingredients": [
             { "type": "item", "name": "electronic-circuit", "amount": 20 },
@@ -4889,11 +4947,11 @@
         ],
         "hidden": false,
         "energy": 10,
-        "productivity_bonus": 0
+        "productivity_bonus": 0.100000001490116119384765625
     },
     "engine-unit": {
         "name": "engine-unit",
-        "enabled": false,
+        "enabled": true,
         "category": "advanced-crafting",
         "ingredients": [
             { "type": "item", "name": "steel-plate", "amount": 1 },
@@ -4914,7 +4972,7 @@
     },
     "electric-engine-unit": {
         "name": "electric-engine-unit",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting-with-fluid",
         "ingredients": [
             { "type": "item", "name": "electronic-circuit", "amount": 2 },
@@ -4935,7 +4993,7 @@
     },
     "flying-robot-frame": {
         "name": "flying-robot-frame",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "steel-plate", "amount": 1 },
@@ -4957,7 +5015,7 @@
     },
     "low-density-structure": {
         "name": "low-density-structure",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "copper-plate", "amount": 20 },
@@ -4974,11 +5032,11 @@
         ],
         "hidden": false,
         "energy": 15,
-        "productivity_bonus": 0
+        "productivity_bonus": 0.100000001490116119384765625
     },
     "rocket-fuel": {
         "name": "rocket-fuel",
-        "enabled": false,
+        "enabled": true,
         "category": "organic-or-assembling",
         "ingredients": [
             { "type": "item", "name": "solid-fuel", "amount": 10 },
@@ -4994,11 +5052,11 @@
         ],
         "hidden": false,
         "energy": 15,
-        "productivity_bonus": 0
+        "productivity_bonus": 0.100000001490116119384765625
     },
     "rocket-part": {
         "name": "rocket-part",
-        "enabled": false,
+        "enabled": true,
         "category": "rocket-building",
         "ingredients": [
             { "type": "item", "name": "processing-unit", "amount": 1 },
@@ -5015,7 +5073,7 @@
         ],
         "hidden": false,
         "energy": 3,
-        "productivity_bonus": 0
+        "productivity_bonus": 0.100000001490116119384765625
     },
     "nuclear-fuel-recycling": {
         "name": "nuclear-fuel-recycling",
@@ -5046,7 +5104,7 @@
     },
     "uranium-processing": {
         "name": "uranium-processing",
-        "enabled": false,
+        "enabled": true,
         "category": "centrifuging",
         "ingredients": [
             { "type": "item", "name": "uranium-ore", "amount": 10 }
@@ -5123,7 +5181,7 @@
     },
     "uranium-fuel-cell": {
         "name": "uranium-fuel-cell",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "iron-plate", "amount": 10 },
@@ -5196,7 +5254,7 @@
     },
     "nuclear-fuel-reprocessing": {
         "name": "nuclear-fuel-reprocessing",
-        "enabled": false,
+        "enabled": true,
         "category": "centrifuging",
         "ingredients": [
             {
@@ -5219,7 +5277,7 @@
     },
     "kovarex-enrichment-process": {
         "name": "kovarex-enrichment-process",
-        "enabled": false,
+        "enabled": true,
         "category": "centrifuging",
         "ingredients": [
             {
@@ -5259,7 +5317,7 @@
     },
     "nuclear-fuel": {
         "name": "nuclear-fuel",
-        "enabled": false,
+        "enabled": true,
         "category": "centrifuging",
         "ingredients": [
             { "type": "item", "name": "rocket-fuel", "amount": 1 },
@@ -5305,7 +5363,7 @@
     },
     "molten-iron-from-lava": {
         "name": "molten-iron-from-lava",
-        "enabled": false,
+        "enabled": true,
         "category": "metallurgy",
         "ingredients": [
             { "type": "item", "name": "calcite", "amount": 1 },
@@ -5326,7 +5384,7 @@
     },
     "molten-copper-from-lava": {
         "name": "molten-copper-from-lava",
-        "enabled": false,
+        "enabled": true,
         "category": "metallurgy",
         "ingredients": [
             { "type": "item", "name": "calcite", "amount": 1 },
@@ -5347,7 +5405,7 @@
     },
     "molten-iron": {
         "name": "molten-iron",
-        "enabled": false,
+        "enabled": true,
         "category": "metallurgy",
         "ingredients": [
             { "type": "item", "name": "iron-ore", "amount": 50 },
@@ -5367,7 +5425,7 @@
     },
     "molten-copper": {
         "name": "molten-copper",
-        "enabled": false,
+        "enabled": true,
         "category": "metallurgy",
         "ingredients": [
             { "type": "item", "name": "copper-ore", "amount": 50 },
@@ -5387,7 +5445,7 @@
     },
     "casting-iron": {
         "name": "casting-iron",
-        "enabled": false,
+        "enabled": true,
         "category": "metallurgy",
         "ingredients": [
             {
@@ -5411,7 +5469,7 @@
     },
     "casting-copper": {
         "name": "casting-copper",
-        "enabled": false,
+        "enabled": true,
         "category": "metallurgy",
         "ingredients": [
             {
@@ -5435,7 +5493,7 @@
     },
     "casting-steel": {
         "name": "casting-steel",
-        "enabled": false,
+        "enabled": true,
         "category": "metallurgy",
         "ingredients": [
             {
@@ -5455,11 +5513,11 @@
         ],
         "hidden": false,
         "energy": 3.20000000000000017763568394002504646778106689453125,
-        "productivity_bonus": 0
+        "productivity_bonus": 0.100000001490116119384765625
     },
     "casting-iron-gear-wheel": {
         "name": "casting-iron-gear-wheel",
-        "enabled": false,
+        "enabled": true,
         "category": "metallurgy",
         "ingredients": [
             {
@@ -5483,7 +5541,7 @@
     },
     "casting-iron-stick": {
         "name": "casting-iron-stick",
-        "enabled": false,
+        "enabled": true,
         "category": "metallurgy",
         "ingredients": [
             {
@@ -5507,7 +5565,7 @@
     },
     "casting-low-density-structure": {
         "name": "casting-low-density-structure",
-        "enabled": false,
+        "enabled": true,
         "category": "metallurgy",
         "ingredients": [
             { "type": "item", "name": "plastic-bar", "amount": 5 },
@@ -5524,11 +5582,11 @@
         ],
         "hidden": false,
         "energy": 15,
-        "productivity_bonus": 0
+        "productivity_bonus": 0.100000001490116119384765625
     },
     "concrete-from-molten-iron": {
         "name": "concrete-from-molten-iron",
-        "enabled": false,
+        "enabled": true,
         "category": "metallurgy",
         "ingredients": [
             { "type": "item", "name": "stone-brick", "amount": 5 },
@@ -5549,7 +5607,7 @@
     },
     "casting-copper-cable": {
         "name": "casting-copper-cable",
-        "enabled": false,
+        "enabled": true,
         "category": "metallurgy",
         "ingredients": [
             {
@@ -5599,7 +5657,7 @@
     },
     "tungsten-carbide": {
         "name": "tungsten-carbide",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting-with-fluid",
         "ingredients": [
             { "type": "item", "name": "carbon", "amount": 1 },
@@ -5646,7 +5704,7 @@
     },
     "tungsten-plate": {
         "name": "tungsten-plate",
-        "enabled": false,
+        "enabled": true,
         "category": "metallurgy",
         "ingredients": [
             { "type": "item", "name": "tungsten-ore", "amount": 4 },
@@ -5732,26 +5790,14 @@
     },
     "scrap-recycling": {
         "name": "scrap-recycling",
-        "enabled": false,
+        "enabled": true,
         "category": "recycling-or-hand-crafting",
         "ingredients": [{ "type": "item", "name": "scrap", "amount": 1 }],
         "products": [
             {
                 "type": "item",
-                "name": "processing-unit",
-                "probability": 0.02,
-                "amount": 1
-            },
-            {
-                "type": "item",
-                "name": "advanced-circuit",
-                "probability": 0.03,
-                "amount": 1
-            },
-            {
-                "type": "item",
-                "name": "low-density-structure",
-                "probability": 0.01,
+                "name": "iron-gear-wheel",
+                "probability": 0.2,
                 "amount": 1
             },
             {
@@ -5762,14 +5808,15 @@
             },
             {
                 "type": "item",
-                "name": "steel-plate",
-                "probability": 0.04,
-                "amount": 1
-            },
-            {
-                "type": "item",
                 "name": "concrete",
                 "probability": 0.06,
+                "amount": 1
+            },
+            { "type": "item", "name": "ice", "probability": 0.05, "amount": 1 },
+            {
+                "type": "item",
+                "name": "steel-plate",
+                "probability": 0.04,
                 "amount": 1
             },
             {
@@ -5778,7 +5825,6 @@
                 "probability": 0.04,
                 "amount": 1
             },
-            { "type": "item", "name": "ice", "probability": 0.05, "amount": 1 },
             {
                 "type": "item",
                 "name": "stone",
@@ -5787,14 +5833,8 @@
             },
             {
                 "type": "item",
-                "name": "holmium-ore",
-                "probability": 0.01,
-                "amount": 1
-            },
-            {
-                "type": "item",
-                "name": "iron-gear-wheel",
-                "probability": 0.2,
+                "name": "advanced-circuit",
+                "probability": 0.03,
                 "amount": 1
             },
             {
@@ -5802,11 +5842,29 @@
                 "name": "copper-cable",
                 "probability": 0.03,
                 "amount": 1
+            },
+            {
+                "type": "item",
+                "name": "processing-unit",
+                "probability": 0.02,
+                "amount": 1
+            },
+            {
+                "type": "item",
+                "name": "low-density-structure",
+                "probability": 0.01,
+                "amount": 1
+            },
+            {
+                "type": "item",
+                "name": "holmium-ore",
+                "probability": 0.01,
+                "amount": 1
             }
         ],
         "hidden": false,
         "energy": 0.2,
-        "productivity_bonus": 0
+        "productivity_bonus": 0.100000001490116119384765625
     },
     "holmium-ore-recycling": {
         "name": "holmium-ore-recycling",
@@ -5836,7 +5894,7 @@
     },
     "holmium-solution": {
         "name": "holmium-solution",
-        "enabled": false,
+        "enabled": true,
         "category": "chemistry",
         "ingredients": [
             { "type": "item", "name": "stone", "amount": 1 },
@@ -5857,7 +5915,7 @@
     },
     "holmium-plate": {
         "name": "holmium-plate",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting-with-fluid-or-metallurgy",
         "ingredients": [
             {
@@ -5907,7 +5965,7 @@
     },
     "superconductor": {
         "name": "superconductor",
-        "enabled": false,
+        "enabled": true,
         "category": "electromagnetics",
         "ingredients": [
             { "type": "item", "name": "copper-plate", "amount": 1 },
@@ -5955,7 +6013,7 @@
     },
     "electrolyte": {
         "name": "electrolyte",
-        "enabled": false,
+        "enabled": true,
         "category": "electromagnetics",
         "ingredients": [
             { "type": "item", "name": "stone", "amount": 1 },
@@ -5976,7 +6034,7 @@
     },
     "supercapacitor": {
         "name": "supercapacitor",
-        "enabled": false,
+        "enabled": true,
         "category": "electromagnetics",
         "ingredients": [
             { "type": "item", "name": "battery", "amount": 1 },
@@ -5999,7 +6057,7 @@
     },
     "yumako-processing": {
         "name": "yumako-processing",
-        "enabled": false,
+        "enabled": true,
         "category": "organic-or-hand-crafting",
         "ingredients": [{ "type": "item", "name": "yumako", "amount": 1 }],
         "products": [
@@ -6048,7 +6106,7 @@
     },
     "jellynut-processing": {
         "name": "jellynut-processing",
-        "enabled": false,
+        "enabled": true,
         "category": "organic-or-hand-crafting",
         "ingredients": [{ "type": "item", "name": "jellynut", "amount": 1 }],
         "products": [
@@ -6222,7 +6280,7 @@
     },
     "nutrients-from-spoilage": {
         "name": "nutrients-from-spoilage",
-        "enabled": false,
+        "enabled": true,
         "category": "organic-or-assembling",
         "ingredients": [{ "type": "item", "name": "spoilage", "amount": 10 }],
         "products": [
@@ -6284,7 +6342,7 @@
     },
     "nutrients-from-yumako-mash": {
         "name": "nutrients-from-yumako-mash",
-        "enabled": false,
+        "enabled": true,
         "category": "organic",
         "ingredients": [{ "type": "item", "name": "yumako-mash", "amount": 4 }],
         "products": [
@@ -6301,7 +6359,7 @@
     },
     "nutrients-from-bioflux": {
         "name": "nutrients-from-bioflux",
-        "enabled": false,
+        "enabled": true,
         "category": "organic",
         "ingredients": [{ "type": "item", "name": "bioflux", "amount": 5 }],
         "products": [
@@ -6318,7 +6376,7 @@
     },
     "pentapod-egg": {
         "name": "pentapod-egg",
-        "enabled": false,
+        "enabled": true,
         "category": "organic",
         "ingredients": [
             { "type": "item", "name": "nutrients", "amount": 30 },
@@ -6346,7 +6404,7 @@
     },
     "iron-bacteria": {
         "name": "iron-bacteria",
-        "enabled": false,
+        "enabled": true,
         "category": "organic-or-hand-crafting",
         "ingredients": [{ "type": "item", "name": "jelly", "amount": 6 }],
         "products": [
@@ -6369,7 +6427,7 @@
     },
     "copper-bacteria": {
         "name": "copper-bacteria",
-        "enabled": false,
+        "enabled": true,
         "category": "organic-or-hand-crafting",
         "ingredients": [{ "type": "item", "name": "yumako-mash", "amount": 3 }],
         "products": [
@@ -6392,7 +6450,7 @@
     },
     "iron-bacteria-cultivation": {
         "name": "iron-bacteria-cultivation",
-        "enabled": false,
+        "enabled": true,
         "category": "organic",
         "ingredients": [
             { "type": "item", "name": "iron-bacteria", "amount": 1 },
@@ -6412,7 +6470,7 @@
     },
     "copper-bacteria-cultivation": {
         "name": "copper-bacteria-cultivation",
-        "enabled": false,
+        "enabled": true,
         "category": "organic",
         "ingredients": [
             { "type": "item", "name": "copper-bacteria", "amount": 1 },
@@ -6510,7 +6568,7 @@
     },
     "rocket-fuel-from-jelly": {
         "name": "rocket-fuel-from-jelly",
-        "enabled": false,
+        "enabled": true,
         "category": "organic",
         "ingredients": [
             { "type": "item", "name": "bioflux", "amount": 2 },
@@ -6527,11 +6585,11 @@
         ],
         "hidden": false,
         "energy": 10,
-        "productivity_bonus": 0
+        "productivity_bonus": 0.100000001490116119384765625
     },
     "biolubricant": {
         "name": "biolubricant",
-        "enabled": false,
+        "enabled": true,
         "category": "organic",
         "ingredients": [{ "type": "item", "name": "jelly", "amount": 60 }],
         "products": [
@@ -6548,7 +6606,7 @@
     },
     "bioplastic": {
         "name": "bioplastic",
-        "enabled": false,
+        "enabled": true,
         "category": "organic",
         "ingredients": [
             { "type": "item", "name": "bioflux", "amount": 1 },
@@ -6564,11 +6622,11 @@
         ],
         "hidden": false,
         "energy": 2,
-        "productivity_bonus": 0
+        "productivity_bonus": 0.100000001490116119384765625
     },
     "biosulfur": {
         "name": "biosulfur",
-        "enabled": false,
+        "enabled": true,
         "category": "organic",
         "ingredients": [
             { "type": "item", "name": "spoilage", "amount": 5 },
@@ -6609,7 +6667,7 @@
     },
     "bioflux": {
         "name": "bioflux",
-        "enabled": false,
+        "enabled": true,
         "category": "organic",
         "ingredients": [
             { "type": "item", "name": "yumako-mash", "amount": 15 },
@@ -6624,7 +6682,7 @@
     },
     "burnt-spoilage": {
         "name": "burnt-spoilage",
-        "enabled": false,
+        "enabled": true,
         "category": "organic",
         "ingredients": [{ "type": "item", "name": "spoilage", "amount": 6 }],
         "products": [
@@ -6636,7 +6694,7 @@
     },
     "carbon-fiber": {
         "name": "carbon-fiber",
-        "enabled": false,
+        "enabled": true,
         "category": "organic",
         "ingredients": [
             { "type": "item", "name": "carbon", "amount": 1 },
@@ -6656,7 +6714,7 @@
     },
     "biter-egg": {
         "name": "biter-egg",
-        "enabled": false,
+        "enabled": true,
         "category": "captive-spawner-process",
         "ingredients": {},
         "products": [
@@ -6725,7 +6783,7 @@
     },
     "wood-processing": {
         "name": "wood-processing",
-        "enabled": false,
+        "enabled": true,
         "category": "organic-or-assembling",
         "ingredients": [{ "type": "item", "name": "wood", "amount": 2 }],
         "products": [
@@ -6742,7 +6800,7 @@
     },
     "fish-breeding": {
         "name": "fish-breeding",
-        "enabled": false,
+        "enabled": true,
         "category": "organic-or-chemistry",
         "ingredients": [
             {
@@ -6770,7 +6828,7 @@
     },
     "nutrients-from-fish": {
         "name": "nutrients-from-fish",
-        "enabled": false,
+        "enabled": true,
         "category": "organic-or-assembling",
         "ingredients": [{ "type": "item", "name": "raw-fish", "amount": 1 }],
         "products": [
@@ -6787,7 +6845,7 @@
     },
     "nutrients-from-biter-egg": {
         "name": "nutrients-from-biter-egg",
-        "enabled": false,
+        "enabled": true,
         "category": "organic-or-assembling",
         "ingredients": [{ "type": "item", "name": "biter-egg", "amount": 1 }],
         "products": [
@@ -6852,7 +6910,7 @@
     },
     "ammoniacal-solution-separation": {
         "name": "ammoniacal-solution-separation",
-        "enabled": false,
+        "enabled": true,
         "category": "chemistry-or-cryogenics",
         "ingredients": [
             { "type": "fluid", "name": "ammoniacal-solution", "amount": 50 }
@@ -6872,7 +6930,7 @@
     },
     "solid-fuel-from-ammonia": {
         "name": "solid-fuel-from-ammonia",
-        "enabled": false,
+        "enabled": true,
         "category": "chemistry-or-cryogenics",
         "ingredients": [
             { "type": "fluid", "name": "ammonia", "amount": 15 },
@@ -6892,7 +6950,7 @@
     },
     "ammonia-rocket-fuel": {
         "name": "ammonia-rocket-fuel",
-        "enabled": false,
+        "enabled": true,
         "category": "chemistry-or-cryogenics",
         "ingredients": [
             { "type": "item", "name": "solid-fuel", "amount": 10 },
@@ -6909,11 +6967,11 @@
         ],
         "hidden": false,
         "energy": 10,
-        "productivity_bonus": 0
+        "productivity_bonus": 0.100000001490116119384765625
     },
     "fluoroketone": {
         "name": "fluoroketone",
-        "enabled": false,
+        "enabled": true,
         "category": "cryogenics",
         "ingredients": [
             { "type": "item", "name": "solid-fuel", "amount": 1 },
@@ -6936,7 +6994,7 @@
     },
     "fluoroketone-cooling": {
         "name": "fluoroketone-cooling",
-        "enabled": false,
+        "enabled": true,
         "category": "cryogenics",
         "ingredients": [
             {
@@ -6963,7 +7021,7 @@
     },
     "lithium": {
         "name": "lithium",
-        "enabled": false,
+        "enabled": true,
         "category": "chemistry-or-cryogenics",
         "ingredients": [
             { "type": "item", "name": "holmium-plate", "amount": 1 },
@@ -7005,7 +7063,7 @@
     },
     "lithium-plate": {
         "name": "lithium-plate",
-        "enabled": false,
+        "enabled": true,
         "category": "smelting",
         "ingredients": [{ "type": "item", "name": "lithium", "amount": 1 }],
         "products": [
@@ -7048,7 +7106,7 @@
     },
     "quantum-processor": {
         "name": "quantum-processor",
-        "enabled": false,
+        "enabled": true,
         "category": "electromagnetics",
         "ingredients": [
             { "type": "item", "name": "processing-unit", "amount": 1 },
@@ -7086,7 +7144,7 @@
     },
     "fusion-power-cell": {
         "name": "fusion-power-cell",
-        "enabled": false,
+        "enabled": true,
         "category": "cryogenics",
         "ingredients": [
             { "type": "item", "name": "holmium-plate", "amount": 1 },
@@ -7133,7 +7191,7 @@
     },
     "automation-science-pack": {
         "name": "automation-science-pack",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "copper-plate", "amount": 1 },
@@ -7179,7 +7237,7 @@
     },
     "logistic-science-pack": {
         "name": "logistic-science-pack",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "transport-belt", "amount": 1 },
@@ -7225,7 +7283,7 @@
     },
     "military-science-pack": {
         "name": "military-science-pack",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "piercing-rounds-magazine", "amount": 1 },
@@ -7272,7 +7330,7 @@
     },
     "chemical-science-pack": {
         "name": "chemical-science-pack",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "sulfur", "amount": 1 },
@@ -7319,7 +7377,7 @@
     },
     "production-science-pack": {
         "name": "production-science-pack",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "rail", "amount": 30 },
@@ -7366,7 +7424,7 @@
     },
     "utility-science-pack": {
         "name": "utility-science-pack",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "processing-unit", "amount": 2 },
@@ -7413,7 +7471,7 @@
     },
     "space-science-pack": {
         "name": "space-science-pack",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "ice", "amount": 1 },
@@ -7460,7 +7518,7 @@
     },
     "metallurgic-science-pack": {
         "name": "metallurgic-science-pack",
-        "enabled": false,
+        "enabled": true,
         "category": "metallurgy",
         "ingredients": [
             { "type": "item", "name": "tungsten-carbide", "amount": 3 },
@@ -7507,7 +7565,7 @@
     },
     "agricultural-science-pack": {
         "name": "agricultural-science-pack",
-        "enabled": false,
+        "enabled": true,
         "category": "organic",
         "ingredients": [
             { "type": "item", "name": "bioflux", "amount": 1 },
@@ -7553,7 +7611,7 @@
     },
     "electromagnetic-science-pack": {
         "name": "electromagnetic-science-pack",
-        "enabled": false,
+        "enabled": true,
         "category": "electromagnetics",
         "ingredients": [
             { "type": "item", "name": "supercapacitor", "amount": 1 },
@@ -7601,7 +7659,7 @@
     },
     "cryogenic-science-pack": {
         "name": "cryogenic-science-pack",
-        "enabled": false,
+        "enabled": true,
         "category": "cryogenics",
         "ingredients": [
             { "type": "item", "name": "ice", "amount": 3 },
@@ -7661,7 +7719,7 @@
     },
     "promethium-science-pack": {
         "name": "promethium-science-pack",
-        "enabled": false,
+        "enabled": true,
         "category": "cryogenics",
         "ingredients": [
             { "type": "item", "name": "biter-egg", "amount": 10 },
@@ -7764,7 +7822,7 @@
     },
     "rocket-silo": {
         "name": "rocket-silo",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "steel-plate", "amount": 1000 },
@@ -7787,7 +7845,7 @@
     },
     "cargo-landing-pad": {
         "name": "cargo-landing-pad",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "steel-plate", "amount": 25 },
@@ -7808,7 +7866,7 @@
     },
     "space-platform-foundation": {
         "name": "space-platform-foundation",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "steel-plate", "amount": 20 },
@@ -7828,7 +7886,7 @@
     },
     "cargo-bay": {
         "name": "cargo-bay",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "steel-plate", "amount": 20 },
@@ -7849,7 +7907,7 @@
     },
     "asteroid-collector": {
         "name": "asteroid-collector",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "processing-unit", "amount": 5 },
@@ -7870,7 +7928,7 @@
     },
     "crusher": {
         "name": "crusher",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "steel-plate", "amount": 10 },
@@ -7886,7 +7944,7 @@
     },
     "thruster": {
         "name": "thruster",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "steel-plate", "amount": 10 },
@@ -7907,7 +7965,7 @@
     },
     "space-platform-starter-pack": {
         "name": "space-platform-starter-pack",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "steel-plate", "amount": 20 },
@@ -8062,7 +8120,7 @@
     },
     "metallic-asteroid-crushing": {
         "name": "metallic-asteroid-crushing",
-        "enabled": false,
+        "enabled": true,
         "category": "crushing",
         "ingredients": [
             { "type": "item", "name": "metallic-asteroid-chunk", "amount": 1 }
@@ -8083,11 +8141,11 @@
         ],
         "hidden": false,
         "energy": 2,
-        "productivity_bonus": 0
+        "productivity_bonus": 0.100000001490116119384765625
     },
     "carbonic-asteroid-crushing": {
         "name": "carbonic-asteroid-crushing",
-        "enabled": false,
+        "enabled": true,
         "category": "crushing",
         "ingredients": [
             { "type": "item", "name": "carbonic-asteroid-chunk", "amount": 1 }
@@ -8108,11 +8166,11 @@
         ],
         "hidden": false,
         "energy": 2,
-        "productivity_bonus": 0
+        "productivity_bonus": 0.100000001490116119384765625
     },
     "oxide-asteroid-crushing": {
         "name": "oxide-asteroid-crushing",
-        "enabled": false,
+        "enabled": true,
         "category": "crushing",
         "ingredients": [
             { "type": "item", "name": "oxide-asteroid-chunk", "amount": 1 }
@@ -8128,11 +8186,11 @@
         ],
         "hidden": false,
         "energy": 2,
-        "productivity_bonus": 0
+        "productivity_bonus": 0.100000001490116119384765625
     },
     "metallic-asteroid-reprocessing": {
         "name": "metallic-asteroid-reprocessing",
-        "enabled": false,
+        "enabled": true,
         "category": "crushing",
         "ingredients": [
             { "type": "item", "name": "metallic-asteroid-chunk", "amount": 1 }
@@ -8163,7 +8221,7 @@
     },
     "carbonic-asteroid-reprocessing": {
         "name": "carbonic-asteroid-reprocessing",
-        "enabled": false,
+        "enabled": true,
         "category": "crushing",
         "ingredients": [
             { "type": "item", "name": "carbonic-asteroid-chunk", "amount": 1 }
@@ -8194,7 +8252,7 @@
     },
     "oxide-asteroid-reprocessing": {
         "name": "oxide-asteroid-reprocessing",
-        "enabled": false,
+        "enabled": true,
         "category": "crushing",
         "ingredients": [
             { "type": "item", "name": "oxide-asteroid-chunk", "amount": 1 }
@@ -8225,7 +8283,7 @@
     },
     "advanced-metallic-asteroid-crushing": {
         "name": "advanced-metallic-asteroid-crushing",
-        "enabled": false,
+        "enabled": true,
         "category": "crushing",
         "ingredients": [
             { "type": "item", "name": "metallic-asteroid-chunk", "amount": 1 }
@@ -8252,11 +8310,11 @@
         ],
         "hidden": false,
         "energy": 5,
-        "productivity_bonus": 0
+        "productivity_bonus": 0.100000001490116119384765625
     },
     "advanced-carbonic-asteroid-crushing": {
         "name": "advanced-carbonic-asteroid-crushing",
-        "enabled": false,
+        "enabled": true,
         "category": "crushing",
         "ingredients": [
             { "type": "item", "name": "carbonic-asteroid-chunk", "amount": 1 }
@@ -8273,11 +8331,11 @@
         ],
         "hidden": false,
         "energy": 5,
-        "productivity_bonus": 0
+        "productivity_bonus": 0.100000001490116119384765625
     },
     "advanced-oxide-asteroid-crushing": {
         "name": "advanced-oxide-asteroid-crushing",
-        "enabled": false,
+        "enabled": true,
         "category": "crushing",
         "ingredients": [
             { "type": "item", "name": "oxide-asteroid-chunk", "amount": 1 }
@@ -8299,11 +8357,11 @@
         ],
         "hidden": false,
         "energy": 5,
-        "productivity_bonus": 0
+        "productivity_bonus": 0.100000001490116119384765625
     },
     "thruster-fuel": {
         "name": "thruster-fuel",
-        "enabled": false,
+        "enabled": true,
         "category": "chemistry",
         "ingredients": [
             { "type": "item", "name": "carbon", "amount": 2 },
@@ -8323,7 +8381,7 @@
     },
     "advanced-thruster-fuel": {
         "name": "advanced-thruster-fuel",
-        "enabled": false,
+        "enabled": true,
         "category": "chemistry",
         "ingredients": [
             { "type": "item", "name": "carbon", "amount": 2 },
@@ -8344,7 +8402,7 @@
     },
     "thruster-oxidizer": {
         "name": "thruster-oxidizer",
-        "enabled": false,
+        "enabled": true,
         "category": "chemistry",
         "ingredients": [
             { "type": "item", "name": "iron-ore", "amount": 2 },
@@ -8364,7 +8422,7 @@
     },
     "advanced-thruster-oxidizer": {
         "name": "advanced-thruster-oxidizer",
-        "enabled": false,
+        "enabled": true,
         "category": "chemistry",
         "ingredients": [
             { "type": "item", "name": "iron-ore", "amount": 2 },
@@ -8400,7 +8458,7 @@
     },
     "submachine-gun": {
         "name": "submachine-gun",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "iron-plate", "amount": 10 },
@@ -8419,61 +8477,9 @@
         "energy": 10,
         "productivity_bonus": 0
     },
-    "tank-machine-gun-recycling": {
-        "name": "tank-machine-gun-recycling",
-        "enabled": true,
-        "category": "recycling",
-        "ingredients": [
-            {
-                "type": "item",
-                "name": "tank-machine-gun",
-                "amount": 1,
-                "ignored_by_stats": 1
-            }
-        ],
-        "products": [
-            {
-                "type": "item",
-                "name": "tank-machine-gun",
-                "probability": 0.25,
-                "amount": 1,
-                "ignored_by_stats": 1,
-                "ignored_by_productivity": 1
-            }
-        ],
-        "hidden": true,
-        "energy": 0.03125,
-        "productivity_bonus": 0
-    },
-    "vehicle-machine-gun-recycling": {
-        "name": "vehicle-machine-gun-recycling",
-        "enabled": true,
-        "category": "recycling",
-        "ingredients": [
-            {
-                "type": "item",
-                "name": "vehicle-machine-gun",
-                "amount": 1,
-                "ignored_by_stats": 1
-            }
-        ],
-        "products": [
-            {
-                "type": "item",
-                "name": "vehicle-machine-gun",
-                "probability": 0.25,
-                "amount": 1,
-                "ignored_by_stats": 1,
-                "ignored_by_productivity": 1
-            }
-        ],
-        "hidden": true,
-        "energy": 0.03125,
-        "productivity_bonus": 0
-    },
     "railgun": {
         "name": "railgun",
-        "enabled": false,
+        "enabled": true,
         "category": "cryogenics",
         "ingredients": [
             { "type": "item", "name": "tungsten-plate", "amount": 10 },
@@ -8490,7 +8496,7 @@
     },
     "teslagun": {
         "name": "teslagun",
-        "enabled": false,
+        "enabled": true,
         "category": "electromagnetics",
         "ingredients": [
             { "type": "item", "name": "plastic-bar", "amount": 30 },
@@ -8510,35 +8516,9 @@
         "energy": 30,
         "productivity_bonus": 0
     },
-    "tank-flamethrower-recycling": {
-        "name": "tank-flamethrower-recycling",
-        "enabled": true,
-        "category": "recycling",
-        "ingredients": [
-            {
-                "type": "item",
-                "name": "tank-flamethrower",
-                "amount": 1,
-                "ignored_by_stats": 1
-            }
-        ],
-        "products": [
-            {
-                "type": "item",
-                "name": "tank-flamethrower",
-                "probability": 0.25,
-                "amount": 1,
-                "ignored_by_stats": 1,
-                "ignored_by_productivity": 1
-            }
-        ],
-        "hidden": true,
-        "energy": 0.03125,
-        "productivity_bonus": 0
-    },
     "shotgun": {
         "name": "shotgun",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "wood", "amount": 5 },
@@ -8555,7 +8535,7 @@
     },
     "combat-shotgun": {
         "name": "combat-shotgun",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "wood", "amount": 10 },
@@ -8577,7 +8557,7 @@
     },
     "rocket-launcher": {
         "name": "rocket-launcher",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "iron-plate", "amount": 5 },
@@ -8598,7 +8578,7 @@
     },
     "flamethrower": {
         "name": "flamethrower",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "steel-plate", "amount": 5 },
@@ -8614,162 +8594,6 @@
         ],
         "hidden": false,
         "energy": 10,
-        "productivity_bonus": 0
-    },
-    "artillery-wagon-cannon-recycling": {
-        "name": "artillery-wagon-cannon-recycling",
-        "enabled": true,
-        "category": "recycling",
-        "ingredients": [
-            {
-                "type": "item",
-                "name": "artillery-wagon-cannon",
-                "amount": 1,
-                "ignored_by_stats": 1
-            }
-        ],
-        "products": [
-            {
-                "type": "item",
-                "name": "artillery-wagon-cannon",
-                "probability": 0.25,
-                "amount": 1,
-                "ignored_by_stats": 1,
-                "ignored_by_productivity": 1
-            }
-        ],
-        "hidden": true,
-        "energy": 0.03125,
-        "productivity_bonus": 0
-    },
-    "spidertron-rocket-launcher-1-recycling": {
-        "name": "spidertron-rocket-launcher-1-recycling",
-        "enabled": true,
-        "category": "recycling",
-        "ingredients": [
-            {
-                "type": "item",
-                "name": "spidertron-rocket-launcher-1",
-                "amount": 1,
-                "ignored_by_stats": 1
-            }
-        ],
-        "products": [
-            {
-                "type": "item",
-                "name": "spidertron-rocket-launcher-1",
-                "probability": 0.25,
-                "amount": 1,
-                "ignored_by_stats": 1,
-                "ignored_by_productivity": 1
-            }
-        ],
-        "hidden": true,
-        "energy": 0.03125,
-        "productivity_bonus": 0
-    },
-    "spidertron-rocket-launcher-2-recycling": {
-        "name": "spidertron-rocket-launcher-2-recycling",
-        "enabled": true,
-        "category": "recycling",
-        "ingredients": [
-            {
-                "type": "item",
-                "name": "spidertron-rocket-launcher-2",
-                "amount": 1,
-                "ignored_by_stats": 1
-            }
-        ],
-        "products": [
-            {
-                "type": "item",
-                "name": "spidertron-rocket-launcher-2",
-                "probability": 0.25,
-                "amount": 1,
-                "ignored_by_stats": 1,
-                "ignored_by_productivity": 1
-            }
-        ],
-        "hidden": true,
-        "energy": 0.03125,
-        "productivity_bonus": 0
-    },
-    "spidertron-rocket-launcher-3-recycling": {
-        "name": "spidertron-rocket-launcher-3-recycling",
-        "enabled": true,
-        "category": "recycling",
-        "ingredients": [
-            {
-                "type": "item",
-                "name": "spidertron-rocket-launcher-3",
-                "amount": 1,
-                "ignored_by_stats": 1
-            }
-        ],
-        "products": [
-            {
-                "type": "item",
-                "name": "spidertron-rocket-launcher-3",
-                "probability": 0.25,
-                "amount": 1,
-                "ignored_by_stats": 1,
-                "ignored_by_productivity": 1
-            }
-        ],
-        "hidden": true,
-        "energy": 0.03125,
-        "productivity_bonus": 0
-    },
-    "spidertron-rocket-launcher-4-recycling": {
-        "name": "spidertron-rocket-launcher-4-recycling",
-        "enabled": true,
-        "category": "recycling",
-        "ingredients": [
-            {
-                "type": "item",
-                "name": "spidertron-rocket-launcher-4",
-                "amount": 1,
-                "ignored_by_stats": 1
-            }
-        ],
-        "products": [
-            {
-                "type": "item",
-                "name": "spidertron-rocket-launcher-4",
-                "probability": 0.25,
-                "amount": 1,
-                "ignored_by_stats": 1,
-                "ignored_by_productivity": 1
-            }
-        ],
-        "hidden": true,
-        "energy": 0.03125,
-        "productivity_bonus": 0
-    },
-    "tank-cannon-recycling": {
-        "name": "tank-cannon-recycling",
-        "enabled": true,
-        "category": "recycling",
-        "ingredients": [
-            {
-                "type": "item",
-                "name": "tank-cannon",
-                "amount": 1,
-                "ignored_by_stats": 1
-            }
-        ],
-        "products": [
-            {
-                "type": "item",
-                "name": "tank-cannon",
-                "probability": 0.25,
-                "amount": 1,
-                "ignored_by_stats": 1,
-                "ignored_by_productivity": 1
-            }
-        ],
-        "hidden": true,
-        "energy": 0.03125,
         "productivity_bonus": 0
     },
     "firearm-magazine": {
@@ -8791,7 +8615,7 @@
     },
     "piercing-rounds-magazine": {
         "name": "piercing-rounds-magazine",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "copper-plate", "amount": 5 },
@@ -8812,7 +8636,7 @@
     },
     "uranium-rounds-magazine": {
         "name": "uranium-rounds-magazine",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "uranium-238", "amount": 1 },
@@ -8832,7 +8656,7 @@
     },
     "shotgun-shell": {
         "name": "shotgun-shell",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "iron-plate", "amount": 2 },
@@ -8852,7 +8676,7 @@
     },
     "piercing-shotgun-shell": {
         "name": "piercing-shotgun-shell",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "copper-plate", "amount": 5 },
@@ -8873,7 +8697,7 @@
     },
     "cannon-shell": {
         "name": "cannon-shell",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "steel-plate", "amount": 2 },
@@ -8894,7 +8718,7 @@
     },
     "explosive-cannon-shell": {
         "name": "explosive-cannon-shell",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "steel-plate", "amount": 2 },
@@ -8915,7 +8739,7 @@
     },
     "uranium-cannon-shell": {
         "name": "uranium-cannon-shell",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "uranium-238", "amount": 1 },
@@ -8935,7 +8759,7 @@
     },
     "explosive-uranium-cannon-shell": {
         "name": "explosive-uranium-cannon-shell",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "uranium-238", "amount": 1 },
@@ -8955,7 +8779,7 @@
     },
     "artillery-shell": {
         "name": "artillery-shell",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "explosives", "amount": 8 },
@@ -8977,7 +8801,7 @@
     },
     "rocket": {
         "name": "rocket",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "iron-plate", "amount": 2 },
@@ -8992,7 +8816,7 @@
     },
     "explosive-rocket": {
         "name": "explosive-rocket",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "explosives", "amount": 2 },
@@ -9012,7 +8836,7 @@
     },
     "atomic-bomb": {
         "name": "atomic-bomb",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "explosives", "amount": 10 },
@@ -9033,7 +8857,7 @@
     },
     "capture-robot-rocket": {
         "name": "capture-robot-rocket",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "steel-plate", "amount": 2 },
@@ -9055,7 +8879,7 @@
     },
     "flamethrower-ammo": {
         "name": "flamethrower-ammo",
-        "enabled": false,
+        "enabled": true,
         "category": "chemistry",
         "ingredients": [
             { "type": "item", "name": "steel-plate", "amount": 5 },
@@ -9101,7 +8925,7 @@
     },
     "railgun-ammo": {
         "name": "railgun-ammo",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "steel-plate", "amount": 5 },
@@ -9122,7 +8946,7 @@
     },
     "tesla-ammo": {
         "name": "tesla-ammo",
-        "enabled": false,
+        "enabled": true,
         "category": "electromagnetics",
         "ingredients": [
             { "type": "item", "name": "plastic-bar", "amount": 1 },
@@ -9143,7 +8967,7 @@
     },
     "grenade": {
         "name": "grenade",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "coal", "amount": 10 },
@@ -9158,7 +8982,7 @@
     },
     "cluster-grenade": {
         "name": "cluster-grenade",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "steel-plate", "amount": 5 },
@@ -9179,7 +9003,7 @@
     },
     "poison-capsule": {
         "name": "poison-capsule",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "coal", "amount": 10 },
@@ -9200,7 +9024,7 @@
     },
     "slowdown-capsule": {
         "name": "slowdown-capsule",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "coal", "amount": 5 },
@@ -9221,7 +9045,7 @@
     },
     "defender-capsule": {
         "name": "defender-capsule",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "iron-gear-wheel", "amount": 3 },
@@ -9242,7 +9066,7 @@
     },
     "distractor-capsule": {
         "name": "distractor-capsule",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "advanced-circuit", "amount": 3 },
@@ -9262,7 +9086,7 @@
     },
     "destroyer-capsule": {
         "name": "destroyer-capsule",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "steel-plate", "amount": 4 },
@@ -9300,7 +9124,7 @@
     },
     "heavy-armor": {
         "name": "heavy-armor",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "copper-plate", "amount": 100 },
@@ -9320,7 +9144,7 @@
     },
     "modular-armor": {
         "name": "modular-armor",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "steel-plate", "amount": 50 },
@@ -9340,7 +9164,7 @@
     },
     "power-armor": {
         "name": "power-armor",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "steel-plate", "amount": 40 },
@@ -9361,7 +9185,7 @@
     },
     "power-armor-mk2": {
         "name": "power-armor-mk2",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "processing-unit", "amount": 60 },
@@ -9384,7 +9208,7 @@
     },
     "mech-armor": {
         "name": "mech-armor",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "processing-unit", "amount": 100 },
@@ -9407,7 +9231,7 @@
     },
     "solar-panel-equipment": {
         "name": "solar-panel-equipment",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "steel-plate", "amount": 5 },
@@ -9428,7 +9252,7 @@
     },
     "fission-reactor-equipment": {
         "name": "fission-reactor-equipment",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "processing-unit", "amount": 200 },
@@ -9449,7 +9273,7 @@
     },
     "fusion-reactor-equipment": {
         "name": "fusion-reactor-equipment",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "tungsten-plate", "amount": 250 },
@@ -9473,7 +9297,7 @@
     },
     "battery-equipment": {
         "name": "battery-equipment",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "steel-plate", "amount": 10 },
@@ -9493,7 +9317,7 @@
     },
     "battery-mk2-equipment": {
         "name": "battery-mk2-equipment",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "processing-unit", "amount": 15 },
@@ -9514,7 +9338,7 @@
     },
     "battery-mk3-equipment": {
         "name": "battery-mk3-equipment",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "supercapacitor", "amount": 10 },
@@ -9534,7 +9358,7 @@
     },
     "belt-immunity-equipment": {
         "name": "belt-immunity-equipment",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "steel-plate", "amount": 10 },
@@ -9554,7 +9378,7 @@
     },
     "exoskeleton-equipment": {
         "name": "exoskeleton-equipment",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "steel-plate", "amount": 20 },
@@ -9575,7 +9399,7 @@
     },
     "personal-roboport-equipment": {
         "name": "personal-roboport-equipment",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "steel-plate", "amount": 20 },
@@ -9597,7 +9421,7 @@
     },
     "personal-roboport-mk2-equipment": {
         "name": "personal-roboport-mk2-equipment",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "processing-unit", "amount": 50 },
@@ -9622,7 +9446,7 @@
     },
     "night-vision-equipment": {
         "name": "night-vision-equipment",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "steel-plate", "amount": 10 },
@@ -9642,7 +9466,7 @@
     },
     "toolbelt-equipment": {
         "name": "toolbelt-equipment",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "advanced-circuit", "amount": 3 },
@@ -9662,7 +9486,7 @@
     },
     "energy-shield-equipment": {
         "name": "energy-shield-equipment",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "steel-plate", "amount": 10 },
@@ -9682,7 +9506,7 @@
     },
     "energy-shield-mk2-equipment": {
         "name": "energy-shield-mk2-equipment",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "processing-unit", "amount": 5 },
@@ -9703,7 +9527,7 @@
     },
     "personal-laser-defense-equipment": {
         "name": "personal-laser-defense-equipment",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "processing-unit", "amount": 20 },
@@ -9724,7 +9548,7 @@
     },
     "discharge-defense-equipment": {
         "name": "discharge-defense-equipment",
-        "enabled": false,
+        "enabled": true,
         "category": "electronics",
         "ingredients": [
             { "type": "item", "name": "steel-plate", "amount": 20 },
@@ -9745,7 +9569,7 @@
     },
     "stone-wall": {
         "name": "stone-wall",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [{ "type": "item", "name": "stone-brick", "amount": 5 }],
         "products": [
@@ -9762,7 +9586,7 @@
     },
     "gate": {
         "name": "gate",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "steel-plate", "amount": 2 },
@@ -9778,7 +9602,7 @@
     },
     "radar": {
         "name": "radar",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "iron-plate", "amount": 10 },
@@ -9794,7 +9618,7 @@
     },
     "land-mine": {
         "name": "land-mine",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "steel-plate", "amount": 1 },
@@ -9814,7 +9638,7 @@
     },
     "gun-turret": {
         "name": "gun-turret",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "iron-plate", "amount": 20 },
@@ -9835,7 +9659,7 @@
     },
     "laser-turret": {
         "name": "laser-turret",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "steel-plate", "amount": 20 },
@@ -9856,7 +9680,7 @@
     },
     "flamethrower-turret": {
         "name": "flamethrower-turret",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "steel-plate", "amount": 30 },
@@ -9878,7 +9702,7 @@
     },
     "artillery-turret": {
         "name": "artillery-turret",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "iron-gear-wheel", "amount": 40 },
@@ -9900,7 +9724,7 @@
     },
     "rocket-turret": {
         "name": "rocket-turret",
-        "enabled": false,
+        "enabled": true,
         "category": "crafting",
         "ingredients": [
             { "type": "item", "name": "steel-plate", "amount": 20 },
@@ -9923,7 +9747,7 @@
     },
     "tesla-turret": {
         "name": "tesla-turret",
-        "enabled": false,
+        "enabled": true,
         "category": "electromagnetics",
         "ingredients": [
             { "type": "item", "name": "processing-unit", "amount": 10 },
@@ -9946,7 +9770,7 @@
     },
     "railgun-turret": {
         "name": "railgun-turret",
-        "enabled": false,
+        "enabled": true,
         "category": "cryogenics",
         "ingredients": [
             { "type": "item", "name": "tungsten-plate", "amount": 30 },
@@ -9965,275 +9789,6 @@
         ],
         "hidden": false,
         "energy": 10,
-        "productivity_bonus": 0
-    },
-    "bpsb-loader": {
-        "name": "bpsb-loader",
-        "enabled": false,
-        "category": "crafting",
-        "ingredients": {},
-        "products": [
-            { "type": "item", "name": "loader", "probability": 1, "amount": 1 }
-        ],
-        "hidden": false,
-        "energy": 1,
-        "productivity_bonus": 0
-    },
-    "loader": {
-        "name": "loader",
-        "enabled": false,
-        "category": "crafting",
-        "ingredients": [
-            { "type": "item", "name": "iron-plate", "amount": 5 },
-            { "type": "item", "name": "iron-gear-wheel", "amount": 5 },
-            { "type": "item", "name": "electronic-circuit", "amount": 5 },
-            { "type": "item", "name": "transport-belt", "amount": 5 },
-            { "type": "item", "name": "inserter", "amount": 5 }
-        ],
-        "products": [
-            { "type": "item", "name": "loader", "probability": 1, "amount": 1 }
-        ],
-        "hidden": true,
-        "energy": 1,
-        "productivity_bonus": 0
-    },
-    "bpsb-fast-loader": {
-        "name": "bpsb-fast-loader",
-        "enabled": false,
-        "category": "crafting",
-        "ingredients": {},
-        "products": [
-            {
-                "type": "item",
-                "name": "fast-loader",
-                "probability": 1,
-                "amount": 1
-            }
-        ],
-        "hidden": false,
-        "energy": 1,
-        "productivity_bonus": 0
-    },
-    "fast-loader": {
-        "name": "fast-loader",
-        "enabled": false,
-        "category": "crafting",
-        "ingredients": [
-            { "type": "item", "name": "fast-transport-belt", "amount": 5 },
-            { "type": "item", "name": "loader", "amount": 1 }
-        ],
-        "products": [
-            {
-                "type": "item",
-                "name": "fast-loader",
-                "probability": 1,
-                "amount": 1
-            }
-        ],
-        "hidden": true,
-        "energy": 3,
-        "productivity_bonus": 0
-    },
-    "bpsb-express-loader": {
-        "name": "bpsb-express-loader",
-        "enabled": false,
-        "category": "crafting",
-        "ingredients": {},
-        "products": [
-            {
-                "type": "item",
-                "name": "express-loader",
-                "probability": 1,
-                "amount": 1
-            }
-        ],
-        "hidden": false,
-        "energy": 1,
-        "productivity_bonus": 0
-    },
-    "express-loader": {
-        "name": "express-loader",
-        "enabled": false,
-        "category": "crafting",
-        "ingredients": [
-            { "type": "item", "name": "express-transport-belt", "amount": 5 },
-            { "type": "item", "name": "fast-loader", "amount": 1 }
-        ],
-        "products": [
-            {
-                "type": "item",
-                "name": "express-loader",
-                "probability": 1,
-                "amount": 1
-            }
-        ],
-        "hidden": true,
-        "energy": 10,
-        "productivity_bonus": 0
-    },
-    "bpsb-turbo-loader": {
-        "name": "bpsb-turbo-loader",
-        "enabled": false,
-        "category": "crafting",
-        "ingredients": {},
-        "products": [
-            {
-                "type": "item",
-                "name": "turbo-loader",
-                "probability": 1,
-                "amount": 1
-            }
-        ],
-        "hidden": false,
-        "energy": 1,
-        "productivity_bonus": 0
-    },
-    "turbo-loader": {
-        "name": "turbo-loader",
-        "enabled": false,
-        "category": "crafting",
-        "ingredients": [
-            { "type": "item", "name": "turbo-transport-belt", "amount": 5 },
-            { "type": "item", "name": "express-loader", "amount": 1 }
-        ],
-        "products": [
-            {
-                "type": "item",
-                "name": "turbo-loader",
-                "probability": 1,
-                "amount": 1
-            }
-        ],
-        "hidden": true,
-        "energy": 20,
-        "productivity_bonus": 0
-    },
-    "bpsb-electric-energy-interface": {
-        "name": "bpsb-electric-energy-interface",
-        "enabled": false,
-        "category": "crafting",
-        "ingredients": {},
-        "products": [
-            {
-                "type": "item",
-                "name": "electric-energy-interface",
-                "probability": 1,
-                "amount": 1
-            }
-        ],
-        "hidden": false,
-        "energy": 1,
-        "productivity_bonus": 0
-    },
-    "bpsb-heat-interface": {
-        "name": "bpsb-heat-interface",
-        "enabled": false,
-        "category": "crafting",
-        "ingredients": {},
-        "products": [
-            {
-                "type": "item",
-                "name": "heat-interface",
-                "probability": 1,
-                "amount": 1
-            }
-        ],
-        "hidden": false,
-        "energy": 1,
-        "productivity_bonus": 0
-    },
-    "heat-interface": {
-        "name": "heat-interface",
-        "enabled": false,
-        "category": "crafting",
-        "ingredients": [
-            { "type": "item", "name": "electronic-circuit", "amount": 5 },
-            { "type": "item", "name": "heat-pipe", "amount": 1 }
-        ],
-        "products": [
-            {
-                "type": "item",
-                "name": "heat-interface",
-                "probability": 1,
-                "amount": 1
-            }
-        ],
-        "hidden": true,
-        "energy": 0.5,
-        "productivity_bonus": 0
-    },
-    "bpsb-infinity-chest": {
-        "name": "bpsb-infinity-chest",
-        "enabled": false,
-        "category": "crafting",
-        "ingredients": {},
-        "products": [
-            {
-                "type": "item",
-                "name": "infinity-chest",
-                "probability": 1,
-                "amount": 1
-            }
-        ],
-        "hidden": false,
-        "energy": 1,
-        "productivity_bonus": 0
-    },
-    "infinity-chest": {
-        "name": "infinity-chest",
-        "enabled": false,
-        "category": "crafting",
-        "ingredients": [
-            { "type": "item", "name": "electronic-circuit", "amount": 5 },
-            { "type": "item", "name": "steel-chest", "amount": 1 }
-        ],
-        "products": [
-            {
-                "type": "item",
-                "name": "infinity-chest",
-                "probability": 1,
-                "amount": 1
-            }
-        ],
-        "hidden": true,
-        "energy": 0.5,
-        "productivity_bonus": 0
-    },
-    "bpsb-infinity-pipe": {
-        "name": "bpsb-infinity-pipe",
-        "enabled": false,
-        "category": "crafting",
-        "ingredients": {},
-        "products": [
-            {
-                "type": "item",
-                "name": "infinity-pipe",
-                "probability": 1,
-                "amount": 1
-            }
-        ],
-        "hidden": false,
-        "energy": 1,
-        "productivity_bonus": 0
-    },
-    "infinity-pipe": {
-        "name": "infinity-pipe",
-        "enabled": false,
-        "category": "crafting",
-        "ingredients": [
-            { "type": "item", "name": "electronic-circuit", "amount": 5 },
-            { "type": "item", "name": "pipe", "amount": 1 }
-        ],
-        "products": [
-            {
-                "type": "item",
-                "name": "infinity-pipe",
-                "probability": 1,
-                "amount": 1
-            }
-        ],
-        "hidden": true,
-        "energy": 0.5,
         "productivity_bonus": 0
     },
     "parameter-0": {
@@ -10586,162 +10141,6 @@
             {
                 "type": "item",
                 "name": "parameter-9",
-                "probability": 0.25,
-                "amount": 1,
-                "ignored_by_stats": 1,
-                "ignored_by_productivity": 1
-            }
-        ],
-        "hidden": true,
-        "energy": 0.03125,
-        "productivity_bonus": 0
-    },
-    "copper-wire-recycling": {
-        "name": "copper-wire-recycling",
-        "enabled": true,
-        "category": "recycling",
-        "ingredients": [
-            {
-                "type": "item",
-                "name": "copper-wire",
-                "amount": 1,
-                "ignored_by_stats": 1
-            }
-        ],
-        "products": [
-            {
-                "type": "item",
-                "name": "copper-wire",
-                "probability": 0.25,
-                "amount": 1,
-                "ignored_by_stats": 1,
-                "ignored_by_productivity": 1
-            }
-        ],
-        "hidden": true,
-        "energy": 0.03125,
-        "productivity_bonus": 0
-    },
-    "green-wire-recycling": {
-        "name": "green-wire-recycling",
-        "enabled": true,
-        "category": "recycling",
-        "ingredients": [
-            {
-                "type": "item",
-                "name": "green-wire",
-                "amount": 1,
-                "ignored_by_stats": 1
-            }
-        ],
-        "products": [
-            {
-                "type": "item",
-                "name": "green-wire",
-                "probability": 0.25,
-                "amount": 1,
-                "ignored_by_stats": 1,
-                "ignored_by_productivity": 1
-            }
-        ],
-        "hidden": true,
-        "energy": 0.03125,
-        "productivity_bonus": 0
-    },
-    "red-wire-recycling": {
-        "name": "red-wire-recycling",
-        "enabled": true,
-        "category": "recycling",
-        "ingredients": [
-            {
-                "type": "item",
-                "name": "red-wire",
-                "amount": 1,
-                "ignored_by_stats": 1
-            }
-        ],
-        "products": [
-            {
-                "type": "item",
-                "name": "red-wire",
-                "probability": 0.25,
-                "amount": 1,
-                "ignored_by_stats": 1,
-                "ignored_by_productivity": 1
-            }
-        ],
-        "hidden": true,
-        "energy": 0.03125,
-        "productivity_bonus": 0
-    },
-    "spidertron-remote-recycling": {
-        "name": "spidertron-remote-recycling",
-        "enabled": true,
-        "category": "recycling",
-        "ingredients": [
-            {
-                "type": "item",
-                "name": "spidertron-remote",
-                "amount": 1,
-                "ignored_by_stats": 1
-            }
-        ],
-        "products": [
-            {
-                "type": "item",
-                "name": "spidertron-remote",
-                "probability": 0.25,
-                "amount": 1,
-                "ignored_by_stats": 1,
-                "ignored_by_productivity": 1
-            }
-        ],
-        "hidden": true,
-        "energy": 0.03125,
-        "productivity_bonus": 0
-    },
-    "discharge-defense-remote-recycling": {
-        "name": "discharge-defense-remote-recycling",
-        "enabled": true,
-        "category": "recycling",
-        "ingredients": [
-            {
-                "type": "item",
-                "name": "discharge-defense-remote",
-                "amount": 1,
-                "ignored_by_stats": 1
-            }
-        ],
-        "products": [
-            {
-                "type": "item",
-                "name": "discharge-defense-remote",
-                "probability": 0.25,
-                "amount": 1,
-                "ignored_by_stats": 1,
-                "ignored_by_productivity": 1
-            }
-        ],
-        "hidden": true,
-        "energy": 0.03125,
-        "productivity_bonus": 0
-    },
-    "artillery-targeting-remote-recycling": {
-        "name": "artillery-targeting-remote-recycling",
-        "enabled": true,
-        "category": "recycling",
-        "ingredients": [
-            {
-                "type": "item",
-                "name": "artillery-targeting-remote",
-                "amount": 1,
-                "ignored_by_stats": 1
-            }
-        ],
-        "products": [
-            {
-                "type": "item",
-                "name": "artillery-targeting-remote",
                 "probability": 0.25,
                 "amount": 1,
                 "ignored_by_stats": 1,
@@ -11577,58 +10976,6 @@
         "energy": 0.03125,
         "productivity_bonus": 0
     },
-    "bpsb-sp-entity-recycling": {
-        "name": "bpsb-sp-entity-recycling",
-        "enabled": true,
-        "category": "recycling",
-        "ingredients": [
-            {
-                "type": "item",
-                "name": "bpsb-sp-entity",
-                "amount": 1,
-                "ignored_by_stats": 1
-            }
-        ],
-        "products": [
-            {
-                "type": "item",
-                "name": "bpsb-sp-entity",
-                "probability": 0.25,
-                "amount": 1,
-                "ignored_by_stats": 1,
-                "ignored_by_productivity": 1
-            }
-        ],
-        "hidden": true,
-        "energy": 0.03125,
-        "productivity_bonus": 0
-    },
-    "bpsb-sp-tile-recycling": {
-        "name": "bpsb-sp-tile-recycling",
-        "enabled": true,
-        "category": "recycling",
-        "ingredients": [
-            {
-                "type": "item",
-                "name": "bpsb-sp-tile",
-                "amount": 1,
-                "ignored_by_stats": 1
-            }
-        ],
-        "products": [
-            {
-                "type": "item",
-                "name": "bpsb-sp-tile",
-                "probability": 0.25,
-                "amount": 1,
-                "ignored_by_stats": 1,
-                "ignored_by_productivity": 1
-            }
-        ],
-        "hidden": true,
-        "energy": 0.03125,
-        "productivity_bonus": 0
-    },
     "buffer-chest-recycling": {
         "name": "buffer-chest-recycling",
         "enabled": true,
@@ -12078,33 +11425,6 @@
         ],
         "hidden": true,
         "energy": 0.5,
-        "productivity_bonus": 0
-    },
-    "clock-combinator-recycling": {
-        "name": "clock-combinator-recycling",
-        "enabled": true,
-        "category": "recycling",
-        "ingredients": [
-            { "type": "item", "name": "clock-combinator", "amount": 1 }
-        ],
-        "products": [
-            {
-                "type": "item",
-                "name": "copper-cable",
-                "probability": 1,
-                "amount": 1,
-                "extra_count_fraction": 0.25
-            },
-            {
-                "type": "item",
-                "name": "electronic-circuit",
-                "probability": 1,
-                "amount": 0,
-                "extra_count_fraction": 0.5
-            }
-        ],
-        "hidden": true,
-        "energy": 0.03125,
         "productivity_bonus": 0
     },
     "cluster-grenade-recycling": {
@@ -15824,38 +15144,6 @@
         "energy": 0.625,
         "productivity_bonus": 0
     },
-    "rocket-part-recycling": {
-        "name": "rocket-part-recycling",
-        "enabled": true,
-        "category": "recycling",
-        "ingredients": [{ "type": "item", "name": "rocket-part", "amount": 1 }],
-        "products": [
-            {
-                "type": "item",
-                "name": "processing-unit",
-                "probability": 1,
-                "amount": 0,
-                "extra_count_fraction": 0.25
-            },
-            {
-                "type": "item",
-                "name": "low-density-structure",
-                "probability": 1,
-                "amount": 0,
-                "extra_count_fraction": 0.25
-            },
-            {
-                "type": "item",
-                "name": "rocket-fuel",
-                "probability": 1,
-                "amount": 0,
-                "extra_count_fraction": 0.25
-            }
-        ],
-        "hidden": true,
-        "energy": 0.1875,
-        "productivity_bonus": 0
-    },
     "rocket-recycling": {
         "name": "rocket-recycling",
         "enabled": true,
@@ -17211,6 +16499,26 @@
         "energy": 0.03125,
         "productivity_bonus": 0
     },
+    "heat-interface": {
+        "name": "heat-interface",
+        "enabled": false,
+        "category": "crafting",
+        "ingredients": [
+            { "type": "item", "name": "electronic-circuit", "amount": 5 },
+            { "type": "item", "name": "heat-pipe", "amount": 1 }
+        ],
+        "products": [
+            {
+                "type": "item",
+                "name": "heat-interface",
+                "probability": 1,
+                "amount": 1
+            }
+        ],
+        "hidden": true,
+        "energy": 0.5,
+        "productivity_bonus": 0
+    },
     "lane-splitter-recycling": {
         "name": "lane-splitter-recycling",
         "enabled": true,
@@ -17261,6 +16569,46 @@
         ],
         "hidden": true,
         "energy": 0.03125,
+        "productivity_bonus": 0
+    },
+    "infinity-chest": {
+        "name": "infinity-chest",
+        "enabled": false,
+        "category": "crafting",
+        "ingredients": [
+            { "type": "item", "name": "electronic-circuit", "amount": 5 },
+            { "type": "item", "name": "steel-chest", "amount": 1 }
+        ],
+        "products": [
+            {
+                "type": "item",
+                "name": "infinity-chest",
+                "probability": 1,
+                "amount": 1
+            }
+        ],
+        "hidden": true,
+        "energy": 0.5,
+        "productivity_bonus": 0
+    },
+    "infinity-pipe": {
+        "name": "infinity-pipe",
+        "enabled": false,
+        "category": "crafting",
+        "ingredients": [
+            { "type": "item", "name": "electronic-circuit", "amount": 5 },
+            { "type": "item", "name": "pipe", "amount": 1 }
+        ],
+        "products": [
+            {
+                "type": "item",
+                "name": "infinity-pipe",
+                "probability": 1,
+                "amount": 1
+            }
+        ],
+        "hidden": true,
+        "energy": 0.5,
         "productivity_bonus": 0
     },
     "selection-tool-recycling": {
@@ -17357,32 +16705,6 @@
             {
                 "type": "item",
                 "name": "burner-generator",
-                "probability": 0.25,
-                "amount": 1,
-                "ignored_by_stats": 1,
-                "ignored_by_productivity": 1
-            }
-        ],
-        "hidden": true,
-        "energy": 0.03125,
-        "productivity_bonus": 0
-    },
-    "fp_beacon_selector-recycling": {
-        "name": "fp_beacon_selector-recycling",
-        "enabled": true,
-        "category": "recycling",
-        "ingredients": [
-            {
-                "type": "item",
-                "name": "fp_beacon_selector",
-                "amount": 1,
-                "ignored_by_stats": 1
-            }
-        ],
-        "products": [
-            {
-                "type": "item",
-                "name": "fp_beacon_selector",
                 "probability": 0.25,
                 "amount": 1,
                 "ignored_by_stats": 1,

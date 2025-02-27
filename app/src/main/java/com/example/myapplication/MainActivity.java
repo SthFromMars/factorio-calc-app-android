@@ -1,10 +1,7 @@
 package com.example.myapplication;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.util.Pair;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.SearchView;
 
 import androidx.activity.EdgeToEdge;
@@ -44,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        Pair<HashMap<String, Recipe>, HashMap<String, ArrayList<String>>> recipePair = null;
+        Pair<HashMap<String, Recipe>, HashMap<String, ArrayList<String>>> recipePair;
         try (InputStream recipeStream = this.getAssets().open("recipes.json")) {
             String recipeJsonString = new BufferedReader(
                     new InputStreamReader(recipeStream, StandardCharsets.UTF_8))
@@ -57,11 +54,9 @@ public class MainActivity extends AppCompatActivity {
         HashMap<String, ArrayList<String>> craftables = recipePair.second;
         List<String> craftableNames = Arrays.asList(craftables.keySet().toArray(new String[0]));
 
-        Log.d(TAG, "recipe parse successful");
-
         RecyclerView recyclerView = findViewById(R.id.craftablesList);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        CraftablesListAdapter craftablesListAdapter = new CraftablesListAdapter(craftableNames);
+        CraftablesListAdapter craftablesListAdapter = new CraftablesListAdapter(this, craftableNames);
         recyclerView.setAdapter(craftablesListAdapter);
 
         SearchView searchView = findViewById(R.id.searchView);

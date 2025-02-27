@@ -1,6 +1,9 @@
 package com.example.myapplication;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,8 +17,10 @@ import java.util.List;
 
 public class CraftablesListAdapter extends RecyclerView.Adapter<CraftablesListAdapter.ViewHolder> {
 
+    private static final String TAG = "CraftablesListAdapter";
     private final List<String> craftablesAll;
-    private List<String> craftablesFiltered;
+    private final List<String> craftablesFiltered;
+    private final Context context;
 
 
     /**
@@ -25,11 +30,18 @@ public class CraftablesListAdapter extends RecyclerView.Adapter<CraftablesListAd
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView textView;
 
-        public ViewHolder(View view) {
+        public ViewHolder(Context context, View view) {
             super(view);
             // Define click listener for the ViewHolder's View
-
-            textView = view.findViewById(R.id.craftableCard);
+            textView = view.findViewById(R.id.craftableCardText);
+            view.setOnClickListener(v -> {
+                // Action on button click
+                Log.d(TAG, (String) textView.getText());
+                Intent intent = new Intent(context, FactoryActivity.class);
+                // TODO: use variable for name of extra
+                intent.putExtra("item_to_craft", (String) textView.getText());
+                context.startActivity(intent);
+            });
         }
 
         public TextView getTextView() {
@@ -43,7 +55,8 @@ public class CraftablesListAdapter extends RecyclerView.Adapter<CraftablesListAd
      * @param dataSet String[] containing the data to populate views to be used
      * by RecyclerView
      */
-    public CraftablesListAdapter(List<String> dataSet) {
+    public CraftablesListAdapter(Context context, List<String> dataSet) {
+        this.context = context;
         craftablesAll = dataSet;
         craftablesFiltered = new ArrayList<>();
         filter("");
@@ -57,7 +70,7 @@ public class CraftablesListAdapter extends RecyclerView.Adapter<CraftablesListAd
         View view = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.craftable_card, viewGroup, false);
 
-        return new ViewHolder(view);
+        return new ViewHolder(context, view);
     }
 
     // Replace the contents of a view (invoked by the layout manager)
