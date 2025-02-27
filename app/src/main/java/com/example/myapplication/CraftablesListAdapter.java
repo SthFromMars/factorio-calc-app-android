@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,9 +9,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CraftablesListAdapter extends RecyclerView.Adapter<CraftablesListAdapter.ViewHolder> {
 
-    private String[] localDataSet;
+    private final List<String> craftablesAll;
+    private List<String> craftablesFiltered;
+
 
     /**
      * Provide a reference to the type of views that you are using
@@ -37,8 +43,10 @@ public class CraftablesListAdapter extends RecyclerView.Adapter<CraftablesListAd
      * @param dataSet String[] containing the data to populate views to be used
      * by RecyclerView
      */
-    public CraftablesListAdapter(String[] dataSet) {
-        localDataSet = dataSet;
+    public CraftablesListAdapter(List<String> dataSet) {
+        craftablesAll = dataSet;
+        craftablesFiltered = new ArrayList<>();
+        filter("");
     }
 
     // Create new views (invoked by the layout manager)
@@ -58,12 +66,28 @@ public class CraftablesListAdapter extends RecyclerView.Adapter<CraftablesListAd
 
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
-        viewHolder.getTextView().setText(localDataSet[position]);
+        viewHolder.getTextView().setText(craftablesFiltered.get(position));
     }
 
     // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
-        return localDataSet.length;
+        return craftablesFiltered.size();
     }
+
+    @SuppressLint("NotifyDataSetChanged")
+    public void filter(String query) {
+        craftablesFiltered.clear();
+        if (query.isEmpty()) {
+            craftablesFiltered.addAll(craftablesAll);
+        } else {
+            for (String craftable : craftablesAll) {
+                if (craftable.toLowerCase().contains(query.toLowerCase())) {
+                    craftablesFiltered.add(craftable);
+                }
+            }
+        }
+        notifyDataSetChanged();
+    }
+
 }

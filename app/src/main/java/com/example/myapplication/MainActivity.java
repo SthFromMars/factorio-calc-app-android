@@ -5,6 +5,7 @@ import android.util.Log;
 import android.util.Pair;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.SearchView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,7 +23,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class MainActivity extends AppCompatActivity {
@@ -52,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
             throw new RuntimeException(e);
         }
         HashMap<String, ArrayList<String>> craftables = recipePair.second;
-        String[] craftableNames = craftables.keySet().toArray(new String[0]);
+        List<String> craftableNames = Arrays.asList(craftables.keySet().toArray(new String[0]));
 
         Log.d(TAG, "recipe parse successful");
 
@@ -61,8 +64,19 @@ public class MainActivity extends AppCompatActivity {
         CraftablesListAdapter craftablesListAdapter = new CraftablesListAdapter(craftableNames);
         recyclerView.setAdapter(craftablesListAdapter);
 
-//        ListView listView = findViewById(R.id.recipeList);
-//        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, )
+        SearchView searchView = findViewById(R.id.searchView);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                craftablesListAdapter.filter(newText);
+                return false;
+            }
+        });
 
     }
 }
