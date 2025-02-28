@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.recipehelpers.Recipe;
-import com.example.myapplication.recipehelpers.RecipeExtractor;
+import com.example.myapplication.recipehelpers.RecipeUtils;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
+        HashMap<String, ArrayList<String>> craftables;
 
         Pair<HashMap<String, Recipe>, HashMap<String, ArrayList<String>>> recipePair;
         try (InputStream recipeStream = this.getAssets().open("recipes.json")) {
@@ -47,11 +48,11 @@ public class MainActivity extends AppCompatActivity {
                     new InputStreamReader(recipeStream, StandardCharsets.UTF_8))
                     .lines()
                     .collect(Collectors.joining("\n"));
-            recipePair = RecipeExtractor.parseFromJsonString(recipeJsonString);
+            RecipeUtils.parseFromJsonString(recipeJsonString);
+            craftables = RecipeUtils.getCraftables();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        HashMap<String, ArrayList<String>> craftables = recipePair.second;
         List<String> craftableNames = Arrays.asList(craftables.keySet().toArray(new String[0]));
 
         RecyclerView recyclerView = findViewById(R.id.craftablesList);

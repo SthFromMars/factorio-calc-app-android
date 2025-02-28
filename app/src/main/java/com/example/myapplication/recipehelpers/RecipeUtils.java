@@ -9,15 +9,23 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class RecipeExtractor {
+public class RecipeUtils {
     private static final String TAG = "RecipeExtractor";
-    public static Pair<
-                HashMap<String, Recipe>,
-                HashMap<String, ArrayList<String>>
-            > parseFromJsonString(String recipesJsonString) {
+    // TODO: don't use static variables for recipes
+    private static final HashMap<String, Recipe> recipes = new HashMap<>();
+    private static final HashMap<String, ArrayList<String>> craftables = new HashMap<>();
 
-        HashMap<String, Recipe> recipes= new HashMap<>();
-        HashMap<String, ArrayList<String>> craftables = new HashMap<>();
+    public static HashMap<String, Recipe> getRecipes() {
+        return recipes;
+    }
+
+    public static HashMap<String, ArrayList<String>> getCraftables() {
+        return craftables;
+    }
+
+    public static void parseFromJsonString(String recipesJsonString) {
+        recipes.clear();
+        craftables.clear();
 
         JSONObject recipesJson;
         try {
@@ -75,8 +83,6 @@ public class RecipeExtractor {
                 throw new RuntimeException(e);
             }
         });
-
-        return new Pair<>(recipes, craftables);
     }
 
     private static RecipeComponent parseIngredient(JSONObject ingredientJson) throws JSONException {

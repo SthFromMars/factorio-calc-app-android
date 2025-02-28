@@ -3,7 +3,6 @@ package com.example.myapplication;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,7 +35,6 @@ public class CraftablesListAdapter extends RecyclerView.Adapter<CraftablesListAd
             textView = view.findViewById(R.id.craftableCardText);
             view.setOnClickListener(v -> {
                 // Action on button click
-                Log.d(TAG, (String) textView.getText());
                 Intent intent = new Intent(context, FactoryActivity.class);
                 // TODO: use variable for name of extra
                 intent.putExtra("item_to_craft", (String) textView.getText());

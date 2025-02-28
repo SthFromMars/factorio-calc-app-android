@@ -8,6 +8,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.myapplication.recipehelpers.Recipe;
+import com.example.myapplication.recipehelpers.RecipeUtils;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class FactoryActivity extends AppCompatActivity {
 
@@ -22,6 +30,18 @@ public class FactoryActivity extends AppCompatActivity {
             return insets;
         });
 
-        ((TextView) findViewById(R.id.factoryText)).setText(getIntent().getStringExtra("item_to_craft"));
+        String itemToCraft = getIntent().getStringExtra("item_to_craft");
+        HashMap<String, Recipe> recipes = RecipeUtils.getRecipes();
+        ArrayList<Recipe> factoryList = new ArrayList<>();
+        factoryList.add(
+                recipes.get(RecipeUtils.getCraftables().get(itemToCraft).get(0))
+        );
+
+        RecyclerView recyclerView = findViewById(R.id.factoryList);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        FactoryListAdapter factoryListAdapter = new FactoryListAdapter(this, factoryList);
+        recyclerView.setAdapter(factoryListAdapter);
+
+
     }
 }
