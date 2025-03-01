@@ -1,8 +1,18 @@
 package com.example.myapplication;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Pair;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.PopupWindow;
 import android.widget.SearchView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -73,6 +83,54 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+    }
 
+    public static class OnProductClick implements View.OnClickListener {
+        private final Activity activity;
+        private final TextView textView;
+        public OnProductClick(Activity activity, TextView textView){
+            super();
+            this.activity = activity;
+            this.textView = textView;
+        }
+        @Override
+        public void onClick(View v) {
+            String itemToCraft = (String) textView.getText();
+            ArrayList<String> recipeNamesToCraft = RecipeUtils.getCraftables().get(itemToCraft);
+            String recipeName;
+
+//            Log.d(TAG, String.valueOf(recipeNamesToCraft.size()));
+//            for(String recipeNameToCraft: recipeNamesToCraft)
+//                Log.d(TAG, recipeNameToCraft);
+            if(recipeNamesToCraft.isEmpty()) {
+                Toast.makeText(activity, "No recipes associated with this item.", Toast.LENGTH_SHORT).show();
+            }
+            else if(recipeNamesToCraft.size() == 1) {
+                recipeName = recipeNamesToCraft.get(0);
+                Intent intent = new Intent(activity, FactoryActivity.class);
+                // TODO: use variable for name of extra
+                intent.putExtra("recipe_name", recipeName);
+                intent.putExtra("item_to_craft", itemToCraft);
+                activity.startActivity(intent);
+            }
+            else {
+                Log.d(TAG, "popup");
+
+                View popupView = LayoutInflater.from(activity).inflate(R.layout.recipe_choice_popup, null);
+
+                // create the popup window
+                int width = ViewGroup.LayoutParams.WRAP_CONTENT;
+                int height = ViewGroup.LayoutParams.WRAP_CONTENT;
+                boolean focusable = true; // lets taps outside the popup also dismiss it
+                final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
+
+                RecyclerView recyclerView = popupView.findViewById(R.id.recipePopupList);
+                recyclerView.setLayoutManager(new LinearLayoutManager(activity.getApplicationContext()));
+                PopupListAdapter popupListAdapter = new PopupListAdapter(activity, recipeNamesToCraft);
+                recyclerView.setAdapter(popupListAdapter);
+
+                popupWindow.showAtLocation(activity.findViewById(R.id.main), Gravity.CENTER, 0, 0);
+            }
+        }
     }
 }

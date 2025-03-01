@@ -22,5 +22,9 @@ public class RecipeComponent {
     public float getAmount() {
         return amount;
     }
+
+    public String getFactoryString(){
+        return name + ": " + amount;
+    }
 }
 

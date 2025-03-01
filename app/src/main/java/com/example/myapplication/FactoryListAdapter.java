@@ -44,14 +44,13 @@ public class FactoryListAdapter  extends RecyclerView.Adapter<FactoryListAdapter
 
         public void addProduct(Product product) {
             View view = layoutInflater.inflate(R.layout.product_card, linearLayout, false);
-//            productViews.add(view);
-            ((TextView) view.findViewById(R.id.productName)).setText(product.getName());
+            ((TextView) view.findViewById(R.id.productName)).setText(product.getFactoryString());
             linearLayout.addView(view);
         }
 
         public void addIngredient(RecipeComponent ingredient) {
             View view = layoutInflater.inflate(R.layout.ingredient_card, linearLayout, false);
-            ((TextView) view.findViewById(R.id.ingredientText)).setText(ingredient.getName());
+            ((TextView) view.findViewById(R.id.ingredientText)).setText(ingredient.getFactoryString());
             linearLayout.addView(view);
         }
     }

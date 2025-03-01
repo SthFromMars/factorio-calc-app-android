@@ -1,7 +1,9 @@
 package com.example.myapplication;
 
 import android.os.Bundle;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +13,7 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myapplication.recipehelpers.Product;
 import com.example.myapplication.recipehelpers.Recipe;
 import com.example.myapplication.recipehelpers.RecipeUtils;
 
@@ -32,16 +35,24 @@ public class FactoryActivity extends AppCompatActivity {
 
         String itemToCraft = getIntent().getStringExtra("item_to_craft");
         HashMap<String, Recipe> recipes = RecipeUtils.getRecipes();
+
+        Recipe recipe = recipes.get(RecipeUtils.getCraftables().get(itemToCraft).get(0));
+        float amount = 0;
+        for(Product product: recipe.getProducts()){
+            if(product.getName().equals(itemToCraft)){
+                amount = product.getAmount();
+                break;
+            }
+        }
+        ((TextView) findViewById(R.id.factoryProductName)).setText(itemToCraft);
+        ((EditText) findViewById(R.id.factoryProductAmount)).setText(String.valueOf(amount));
+
         ArrayList<Recipe> factoryList = new ArrayList<>();
-        factoryList.add(
-                recipes.get(RecipeUtils.getCraftables().get(itemToCraft).get(0))
-        );
+        factoryList.add(recipe);
 
         RecyclerView recyclerView = findViewById(R.id.factoryList);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         FactoryListAdapter factoryListAdapter = new FactoryListAdapter(this, factoryList);
         recyclerView.setAdapter(factoryListAdapter);
-
-
     }
 }
