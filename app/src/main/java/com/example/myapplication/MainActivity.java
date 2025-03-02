@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -98,10 +99,6 @@ public class MainActivity extends AppCompatActivity {
             String itemToCraft = (String) textView.getText();
             ArrayList<String> recipeNamesToCraft = RecipeUtils.getCraftables().get(itemToCraft);
             String recipeName;
-
-//            Log.d(TAG, String.valueOf(recipeNamesToCraft.size()));
-//            for(String recipeNameToCraft: recipeNamesToCraft)
-//                Log.d(TAG, recipeNameToCraft);
             if(recipeNamesToCraft.isEmpty()) {
                 Toast.makeText(activity, "No recipes associated with this item.", Toast.LENGTH_SHORT).show();
             }
@@ -126,11 +123,31 @@ public class MainActivity extends AppCompatActivity {
 
                 RecyclerView recyclerView = popupView.findViewById(R.id.recipePopupList);
                 recyclerView.setLayoutManager(new LinearLayoutManager(activity.getApplicationContext()));
-                PopupListAdapter popupListAdapter = new PopupListAdapter(activity, recipeNamesToCraft);
+                PopupListAdapter popupListAdapter = new PopupListAdapter(activity, recipeNamesToCraft, itemToCraft);
                 recyclerView.setAdapter(popupListAdapter);
 
                 popupWindow.showAtLocation(activity.findViewById(R.id.main), Gravity.CENTER, 0, 0);
             }
+        }
+    }
+
+    public static class OnRecipeClick implements View.OnClickListener {
+        private final Context context;
+        private final TextView textView;
+        private final String itemToCraft;
+
+        public OnRecipeClick(Context context, TextView textView, String itemToCraft) {
+            this.context = context;
+            this.textView = textView;
+            this.itemToCraft = itemToCraft;
+        }
+
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(context, FactoryActivity.class);
+            intent.putExtra("recipe_name", textView.getText());
+            intent.putExtra("item_to_craft", itemToCraft);
+            context.startActivity(intent);
         }
     }
 }

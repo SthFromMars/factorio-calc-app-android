@@ -1,7 +1,5 @@
 package com.example.myapplication;
 
-import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +16,7 @@ public class PopupListAdapter extends RecyclerView.Adapter<PopupListAdapter.View
     private static final String TAG = "PopupListAdapter";
     private final List<String> recipeNames;
     private final Context context;
+    private final String itemToCraft;
 
 
     /**
@@ -26,11 +25,13 @@ public class PopupListAdapter extends RecyclerView.Adapter<PopupListAdapter.View
      */
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView textView;
+        private final String itemToCraft;
 
-        public ViewHolder(Context context, View view) {
+        public ViewHolder(Context context, View view, String itemToCraft) {
             super(view);
             textView = view.findViewById(R.id.popupRecipeName);
-//            view.setOnClickListener(new MainActivity.OnProductClick(activity, textView));
+            this.itemToCraft = itemToCraft;
+            view.setOnClickListener(new MainActivity.OnRecipeClick(context, textView, itemToCraft));
         }
 
         public TextView getTextView() {
@@ -44,9 +45,10 @@ public class PopupListAdapter extends RecyclerView.Adapter<PopupListAdapter.View
      * @param dataSet String[] containing the data to populate views to be used
      * by RecyclerView
      */
-    public PopupListAdapter(Context context, List<String> dataSet) {
+    public PopupListAdapter(Context context, List<String> dataSet, String itemToCraft) {
         this.context = context;
         recipeNames = dataSet;
+        this.itemToCraft = itemToCraft;
     }
 
     // Create new views (invoked by the layout manager)
@@ -57,7 +59,7 @@ public class PopupListAdapter extends RecyclerView.Adapter<PopupListAdapter.View
         View view = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.recipe_popup_card, viewGroup, false);
 
-        return new PopupListAdapter.ViewHolder(context, view);
+        return new PopupListAdapter.ViewHolder(context, view, itemToCraft);
     }
 
     // Replace the contents of a view (invoked by the layout manager)
