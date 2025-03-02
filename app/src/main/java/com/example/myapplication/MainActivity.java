@@ -32,6 +32,7 @@ import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -65,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
             throw new RuntimeException(e);
         }
         List<String> craftableNames = Arrays.asList(craftables.keySet().toArray(new String[0]));
+        Collections.sort(craftableNames);
 
         RecyclerView recyclerView = findViewById(R.id.craftablesList);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -148,6 +150,8 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra("recipe_name", textView.getText());
             intent.putExtra("item_to_craft", itemToCraft);
             context.startActivity(intent);
+
+            //TODO: close popup
         }
     }
 }

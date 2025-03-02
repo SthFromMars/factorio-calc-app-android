@@ -7,6 +7,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 
 public class RecipeUtils {
@@ -66,6 +67,12 @@ public class RecipeUtils {
                     }
                 }
 
+                ingredients.sort((a, b) ->
+                    a.getName().compareToIgnoreCase(b.getName())
+                );
+                products.sort((a, b) ->
+                        a.getName().compareToIgnoreCase(b.getName())
+                );
                 recipes.put(
                         recipeName,
                         new Recipe(
@@ -83,6 +90,10 @@ public class RecipeUtils {
                 throw new RuntimeException(e);
             }
         });
+
+        for(String craftable: craftables.keySet()){
+            Collections.sort(craftables.get(craftable));
+        }
     }
 
     private static RecipeComponent parseIngredient(JSONObject ingredientJson) throws JSONException {

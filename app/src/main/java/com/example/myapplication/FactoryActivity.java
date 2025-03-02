@@ -34,9 +34,10 @@ public class FactoryActivity extends AppCompatActivity {
         });
 
         String itemToCraft = getIntent().getStringExtra("item_to_craft");
+        String recipeName = getIntent().getStringExtra("recipe_name");
         HashMap<String, Recipe> recipes = RecipeUtils.getRecipes();
 
-        Recipe recipe = recipes.get(RecipeUtils.getCraftables().get(itemToCraft).get(0));
+        Recipe recipe = recipes.get(recipeName);
         float amount = 0;
         for(Product product: recipe.getProducts()){
             if(product.getName().equals(itemToCraft)){
