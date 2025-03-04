@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myapplication.recipepopuputils.RecipeClickCraftablesList;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,15 +29,19 @@ public class CraftablesListAdapter extends RecyclerView.Adapter<CraftablesListAd
      */
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView textView;
-
+        private final OnProductClick onProductClick;
         public ViewHolder(Activity activity, View view) {
             super(view);
+            onProductClick = new OnProductClick(
+                    activity,
+                    new RecipeClickCraftablesList()
+            );
             textView = view.findViewById(R.id.craftableCardText);
-            view.setOnClickListener(new MainActivity.OnProductClick(activity, textView));
+            view.setOnClickListener(onProductClick);
         }
-
-        public TextView getTextView() {
-            return textView;
+        public void setText(String text){
+            textView.setText(text);
+            onProductClick.setItemToCraft(text);
         }
     }
 
@@ -69,7 +75,7 @@ public class CraftablesListAdapter extends RecyclerView.Adapter<CraftablesListAd
 
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
-        viewHolder.getTextView().setText(craftablesFiltered.get(position));
+        viewHolder.setText(craftablesFiltered.get(position));
     }
 
     // Return the size of your dataset (invoked by the layout manager)

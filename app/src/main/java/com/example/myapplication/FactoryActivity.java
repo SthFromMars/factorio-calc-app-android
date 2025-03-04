@@ -3,7 +3,6 @@ package com.example.myapplication;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,6 +20,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class FactoryActivity extends AppCompatActivity {
+
+    private FactoryListAdapter factoryListAdapter;
+
+    public FactoryListAdapter getFactoryListAdapter() {
+        return factoryListAdapter;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,12 +53,13 @@ public class FactoryActivity extends AppCompatActivity {
         ((TextView) findViewById(R.id.factoryProductName)).setText(itemToCraft);
         ((EditText) findViewById(R.id.factoryProductAmount)).setText(String.valueOf(amount));
 
+        //TODO: check that changes to factoryList don't impact RecipeUtils.recipes
         ArrayList<Recipe> factoryList = new ArrayList<>();
         factoryList.add(recipe);
 
         RecyclerView recyclerView = findViewById(R.id.factoryList);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        FactoryListAdapter factoryListAdapter = new FactoryListAdapter(this, factoryList);
+        factoryListAdapter = new FactoryListAdapter(this, factoryList);
         recyclerView.setAdapter(factoryListAdapter);
     }
 }
