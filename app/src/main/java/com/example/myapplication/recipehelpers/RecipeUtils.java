@@ -1,6 +1,7 @@
 package com.example.myapplication.recipehelpers;
 
-import android.util.Pair;
+
+import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -11,7 +12,7 @@ import java.util.Collections;
 import java.util.HashMap;
 
 public class RecipeUtils {
-    private static final String TAG = "RecipeExtractor";
+    private static final String TAG = "RecipeUtils";
     // TODO: don't use static variables for recipes
     private static final HashMap<String, Recipe> recipes = new HashMap<>();
     private static final HashMap<String, ArrayList<String>> craftables = new HashMap<>();
@@ -133,5 +134,12 @@ public class RecipeUtils {
                             (float) productJson.getDouble("temperature") : 0
 
             );
+    }
+    public static void calculateRecipes(ArrayList<Recipe> recipes, String mainProduct, float mainAmount){
+        HashMap<String, Float> productionAmounts = new HashMap<>();
+        productionAmounts.put(mainProduct, mainAmount*(-1));
+        for(Recipe recipe: recipes){
+            recipe.calculateAmounts(productionAmounts);
+        }
     }
 }

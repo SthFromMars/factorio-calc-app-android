@@ -3,7 +3,7 @@ package com.example.myapplication.recipehelpers;
 public class RecipeComponent {
     private final ComponentType type;
     private final String name;
-    private final float amount;
+    private float amount;
 
     public RecipeComponent(ComponentType type, String name, float amount) {
         this.type = type;
@@ -25,6 +25,10 @@ public class RecipeComponent {
 
     public String getFactoryString(){
         return name + ": " + amount;
+    }
+
+    public void adjustAmount(float ratio) {
+        amount = amount * ratio;
     }
 }
 

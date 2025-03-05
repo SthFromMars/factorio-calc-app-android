@@ -1,13 +1,12 @@
 package com.example.myapplication;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,15 +14,18 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.myapplication.recipehelpers.Product;
 import com.example.myapplication.recipehelpers.Recipe;
 import com.example.myapplication.recipehelpers.RecipeComponent;
+import com.example.myapplication.recipehelpers.RecipeUtils;
 import com.example.myapplication.recipepopuputils.RecipeClickFactoryList;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class FactoryListAdapter  extends RecyclerView.Adapter<FactoryListAdapter.ViewHolder> {
 
     private static final String TAG = "FactoryListAdapter";
-    private final List<Recipe> recipes;
+    private final ArrayList<Recipe> recipes;
     private final Activity activity;
+    private final String mainProductName;
+    private final EditText amountView;
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final LayoutInflater layoutInflater;
         private final LinearLayout linearLayout;
@@ -58,9 +60,11 @@ public class FactoryListAdapter  extends RecyclerView.Adapter<FactoryListAdapter
         }
     }
 
-    public FactoryListAdapter(Activity activity, List<Recipe> recipes) {
+    public FactoryListAdapter(Activity activity, ArrayList<Recipe> recipes, String mainProductName, EditText amountView) {
         this.activity = activity;
         this.recipes = recipes;
+        this.mainProductName = mainProductName;
+        this.amountView = amountView;
     }
 
     // Create new views (invoked by the layout manager)
@@ -97,7 +101,10 @@ public class FactoryListAdapter  extends RecyclerView.Adapter<FactoryListAdapter
 
     public void addRecipe(Recipe recipe) {
         recipes.add(recipe);
+        //TODO: don't recalculate all recipes
+        RecipeUtils.calculateRecipes(recipes, mainProductName, Float.parseFloat(amountView.getText().toString()));
         notifyItemInserted(getItemCount()-1);
+//        notifyDataSetChanged();
     }
 
 }

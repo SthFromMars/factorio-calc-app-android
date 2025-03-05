@@ -51,7 +51,8 @@ public class FactoryActivity extends AppCompatActivity {
             }
         }
         ((TextView) findViewById(R.id.factoryProductName)).setText(itemToCraft);
-        ((EditText) findViewById(R.id.factoryProductAmount)).setText(String.valueOf(amount));
+        EditText amountView = findViewById(R.id.factoryProductAmount);
+        amountView.setText(String.valueOf(amount));
 
         //TODO: check that changes to factoryList don't impact RecipeUtils.recipes
         ArrayList<Recipe> factoryList = new ArrayList<>();
@@ -59,7 +60,7 @@ public class FactoryActivity extends AppCompatActivity {
 
         RecyclerView recyclerView = findViewById(R.id.factoryList);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        factoryListAdapter = new FactoryListAdapter(this, factoryList);
+        factoryListAdapter = new FactoryListAdapter(this, factoryList, itemToCraft, amountView);
         recyclerView.setAdapter(factoryListAdapter);
     }
 }
