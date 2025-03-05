@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -20,6 +21,7 @@ public class PopupListAdapter extends RecyclerView.Adapter<PopupListAdapter.View
     private final Context context;
     private final String itemToCraft;
     private final RecipeClickFunctions recipeClickFunctions;
+    private final PopupWindow popupWindow;
 
 
     /**
@@ -29,11 +31,18 @@ public class PopupListAdapter extends RecyclerView.Adapter<PopupListAdapter.View
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView textView;
 
-        public ViewHolder(Context context, View view, String itemToCraft, RecipeClickFunctions recipeClickFunctions) {
+        public ViewHolder(
+                Context context,
+                View view,
+                String itemToCraft,
+                RecipeClickFunctions recipeClickFunctions,
+                PopupWindow popupWindow) {
             super(view);
             textView = view.findViewById(R.id.popupRecipeName);
-            view.setOnClickListener(v ->
-                    recipeClickFunctions.onRecipeSelection(context, (String) textView.getText(), itemToCraft)
+            view.setOnClickListener(v -> {
+                        recipeClickFunctions.onRecipeSelection(context, (String) textView.getText(), itemToCraft);
+                        popupWindow.dismiss();
+                    }
             );
         }
 
@@ -52,12 +61,14 @@ public class PopupListAdapter extends RecyclerView.Adapter<PopupListAdapter.View
             Context context,
             List<String> dataSet,
             String itemToCraft,
-            RecipeClickFunctions recipeClickFunctions
+            RecipeClickFunctions recipeClickFunctions,
+            PopupWindow popupWindow
     ) {
         this.context = context;
         recipeNames = dataSet;
         this.itemToCraft = itemToCraft;
         this.recipeClickFunctions = recipeClickFunctions;
+        this.popupWindow = popupWindow;
     }
 
     // Create new views (invoked by the layout manager)
@@ -68,7 +79,7 @@ public class PopupListAdapter extends RecyclerView.Adapter<PopupListAdapter.View
         View view = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.recipe_popup_card, viewGroup, false);
 
-        return new PopupListAdapter.ViewHolder(context, view, itemToCraft, recipeClickFunctions);
+        return new PopupListAdapter.ViewHolder(context, view, itemToCraft, recipeClickFunctions, popupWindow);
     }
 
     // Replace the contents of a view (invoked by the layout manager)

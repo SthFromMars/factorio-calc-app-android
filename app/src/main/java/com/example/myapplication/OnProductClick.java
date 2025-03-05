@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.PopupWindow;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -41,7 +40,7 @@ public class OnProductClick implements View.OnClickListener {
     public void onClick(View v) {
         ArrayList<String> recipeNamesToCraft = RecipeUtils.getCraftables().get(itemToCraft);
         String recipeName;
-        if (recipeNamesToCraft.isEmpty()) {
+        if (recipeNamesToCraft == null || recipeNamesToCraft.isEmpty()) {
             Toast.makeText(activity, "No recipes associated with this item.", Toast.LENGTH_SHORT).show();
         } else if (recipeNamesToCraft.size() == 1) {
             recipeName = recipeNamesToCraft.get(0);
@@ -61,7 +60,8 @@ public class OnProductClick implements View.OnClickListener {
                     activity,
                     recipeNamesToCraft,
                     itemToCraft,
-                    recipeClickFunctions
+                    recipeClickFunctions,
+                    popupWindow
             );
             recyclerView.setAdapter(popupListAdapter);
 

@@ -95,11 +95,9 @@ public class FactoryListAdapter  extends RecyclerView.Adapter<FactoryListAdapter
         return recipes.size();
     }
 
-    @SuppressLint("NotifyDataSetChanged")
     public void addRecipe(Recipe recipe) {
         recipes.add(recipe);
-        Toast.makeText(activity, String.valueOf(recipes.size()), Toast.LENGTH_LONG).show();
-        notifyDataSetChanged();
+        notifyItemInserted(getItemCount()-1);
     }
 
 }
