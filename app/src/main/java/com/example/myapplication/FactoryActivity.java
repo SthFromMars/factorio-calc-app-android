@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.myapplication.recipehelpers.Product;
 import com.example.myapplication.recipehelpers.Recipe;
 import com.example.myapplication.recipehelpers.RecipeUtils;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -40,9 +41,8 @@ public class FactoryActivity extends AppCompatActivity {
 
         String itemToCraft = getIntent().getStringExtra("item_to_craft");
         String recipeName = getIntent().getStringExtra("recipe_name");
-        HashMap<String, Recipe> recipes = RecipeUtils.getRecipes();
+        Recipe recipe = RecipeUtils.getRecipe(recipeName);
 
-        Recipe recipe = recipes.get(recipeName);
         float amount = 0;
         for(Product product: recipe.getProducts()){
             if(product.getName().equals(itemToCraft)){

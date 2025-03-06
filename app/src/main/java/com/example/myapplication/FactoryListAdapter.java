@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.app.Activity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import com.example.myapplication.recipehelpers.Recipe;
 import com.example.myapplication.recipehelpers.RecipeComponent;
 import com.example.myapplication.recipehelpers.RecipeUtils;
 import com.example.myapplication.recipepopuputils.RecipeClickFactoryList;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 

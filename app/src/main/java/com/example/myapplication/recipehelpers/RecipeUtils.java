@@ -3,6 +3,8 @@ package com.example.myapplication.recipehelpers;
 
 import android.util.Log;
 
+import com.google.gson.Gson;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -16,9 +18,14 @@ public class RecipeUtils {
     // TODO: don't use static variables for recipes
     private static final HashMap<String, Recipe> recipes = new HashMap<>();
     private static final HashMap<String, ArrayList<String>> craftables = new HashMap<>();
+    private static final Gson gson = new Gson();
 
-    public static HashMap<String, Recipe> getRecipes() {
-        return recipes;
+//    public static HashMap<String, Recipe> getRecipes() {
+//        return recipes;
+//    }
+    public static Recipe getRecipe(String recipeName){
+        //TODO do deep copy properly
+        return gson.fromJson(gson.toJson(recipes.get(recipeName)), Recipe.class);
     }
 
     public static HashMap<String, ArrayList<String>> getCraftables() {

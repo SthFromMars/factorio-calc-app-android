@@ -11,7 +11,7 @@ public class RecipeClickFactoryList implements RecipeClickFunctions{
     public void onRecipeSelection(Context context, String recipeName, String itemToCraft) {
         //TODO: this just seems plain bad
         ((FactoryActivity) context).getFactoryListAdapter().addRecipe(
-                RecipeUtils.getRecipes().get(recipeName)
+                RecipeUtils.getRecipe(recipeName)
         );
     }
 }
