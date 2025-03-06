@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -106,7 +107,13 @@ public class FactoryListAdapter  extends RecyclerView.Adapter<FactoryListAdapter
         //TODO: don't recalculate all recipes
         RecipeUtils.calculateRecipes(recipes, mainProductName, Float.parseFloat(amountView.getText().toString()));
         notifyItemInserted(getItemCount()-1);
-//        notifyDataSetChanged();
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    public void amountChanged(float amount)
+    {
+        RecipeUtils.calculateRecipes(recipes, mainProductName, amount);
+        notifyDataSetChanged();
     }
 
 }

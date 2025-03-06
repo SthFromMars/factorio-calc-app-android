@@ -145,8 +145,11 @@ public class RecipeUtils {
     public static void calculateRecipes(ArrayList<Recipe> recipes, String mainProduct, float mainAmount){
         HashMap<String, Float> productionAmounts = new HashMap<>();
         productionAmounts.put(mainProduct, mainAmount*(-1));
-        for(Recipe recipe: recipes){
-            recipe.calculateAmounts(productionAmounts);
+        for(int i=0; i<recipes.size(); i++){
+            //TODO: idk about this
+            String recipeName = recipes.get(i).getName();
+            recipes.set(i,getRecipe(recipeName));
+            recipes.get(i).calculateAmounts(productionAmounts);
         }
     }
 }

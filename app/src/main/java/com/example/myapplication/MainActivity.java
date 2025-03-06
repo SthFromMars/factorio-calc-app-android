@@ -54,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
 
         HashMap<String, ArrayList<String>> craftables;
 
-        Pair<HashMap<String, Recipe>, HashMap<String, ArrayList<String>>> recipePair;
         try (InputStream recipeStream = this.getAssets().open("recipes.json")) {
             String recipeJsonString = new BufferedReader(
                     new InputStreamReader(recipeStream, StandardCharsets.UTF_8))

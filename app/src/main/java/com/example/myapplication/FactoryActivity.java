@@ -1,6 +1,8 @@
 package com.example.myapplication;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -54,7 +56,6 @@ public class FactoryActivity extends AppCompatActivity {
         EditText amountView = findViewById(R.id.factoryProductAmount);
         amountView.setText(String.valueOf(amount));
 
-        //TODO: check that changes to factoryList don't impact RecipeUtils.recipes
         ArrayList<Recipe> factoryList = new ArrayList<>();
         factoryList.add(recipe);
 
@@ -62,5 +63,20 @@ public class FactoryActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         factoryListAdapter = new FactoryListAdapter(this, factoryList, itemToCraft, amountView);
         recyclerView.setAdapter(factoryListAdapter);
+
+        amountView.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                try {
+                    factoryListAdapter.amountChanged(Float.parseFloat(s.toString()));
+                } catch (NumberFormatException ignored){}
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {}
+        });
     }
 }
