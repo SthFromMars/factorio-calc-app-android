@@ -1,5 +1,5 @@
 /c
-game.player.force.research_all_technologies()
+game.player.force.research_all_technologies();
 local recipes_table = {};
 for name, recipe in pairs(game.player.force.recipes) do
     recipes_table[name] = {

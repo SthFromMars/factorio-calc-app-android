@@ -1,0 +1,158 @@
+{
+    "stone-furnace": {
+        "name": "stone-furnace",
+        "crafting_speed": 1,
+        "crafting_categories": { "smelting": true }
+    },
+    "steel-furnace": {
+        "name": "steel-furnace",
+        "crafting_speed": 2,
+        "crafting_categories": { "smelting": true }
+    },
+    "electric-furnace": {
+        "name": "electric-furnace",
+        "crafting_speed": 2,
+        "crafting_categories": { "smelting": true }
+    },
+    "foundry": {
+        "name": "foundry",
+        "crafting_speed": 4,
+        "crafting_categories": {
+            "metallurgy": true,
+            "pressing": true,
+            "crafting-with-fluid-or-metallurgy": true,
+            "metallurgy-or-assembling": true,
+            "parameters": true
+        }
+    },
+    "recycler": {
+        "name": "recycler",
+        "crafting_speed": 0.5,
+        "crafting_categories": {
+            "recycling": true,
+            "recycling-or-hand-crafting": true
+        }
+    },
+    "biochamber": {
+        "name": "biochamber",
+        "crafting_speed": 2,
+        "crafting_categories": {
+            "organic": true,
+            "organic-or-hand-crafting": true,
+            "organic-or-assembling": true,
+            "organic-or-chemistry": true,
+            "parameters": true
+        }
+    },
+    "captive-biter-spawner": {
+        "name": "captive-biter-spawner",
+        "crafting_speed": 1,
+        "crafting_categories": {
+            "captive-spawner-process": true,
+            "parameters": true
+        }
+    },
+    "assembling-machine-1": {
+        "name": "assembling-machine-1",
+        "crafting_speed": 0.5,
+        "crafting_categories": {
+            "crafting": true,
+            "basic-crafting": true,
+            "advanced-crafting": true,
+            "electronics": true,
+            "pressing": true,
+            "parameters": true
+        }
+    },
+    "assembling-machine-2": {
+        "name": "assembling-machine-2",
+        "crafting_speed": 0.75,
+        "crafting_categories": {
+            "basic-crafting": true,
+            "crafting": true,
+            "advanced-crafting": true,
+            "crafting-with-fluid": true,
+            "electronics": true,
+            "electronics-with-fluid": true,
+            "pressing": true,
+            "metallurgy-or-assembling": true,
+            "organic-or-hand-crafting": true,
+            "organic-or-assembling": true,
+            "electronics-or-assembling": true,
+            "cryogenics-or-assembling": true,
+            "crafting-with-fluid-or-metallurgy": true,
+            "parameters": true
+        }
+    },
+    "assembling-machine-3": {
+        "name": "assembling-machine-3",
+        "crafting_speed": 1.25,
+        "crafting_categories": {
+            "basic-crafting": true,
+            "crafting": true,
+            "advanced-crafting": true,
+            "crafting-with-fluid": true,
+            "electronics": true,
+            "electronics-with-fluid": true,
+            "pressing": true,
+            "metallurgy-or-assembling": true,
+            "organic-or-hand-crafting": true,
+            "organic-or-assembling": true,
+            "electronics-or-assembling": true,
+            "cryogenics-or-assembling": true,
+            "crafting-with-fluid-or-metallurgy": true,
+            "parameters": true
+        }
+    },
+    "oil-refinery": {
+        "name": "oil-refinery",
+        "crafting_speed": 1,
+        "crafting_categories": { "oil-processing": true, "parameters": true }
+    },
+    "chemical-plant": {
+        "name": "chemical-plant",
+        "crafting_speed": 1,
+        "crafting_categories": {
+            "chemistry": true,
+            "chemistry-or-cryogenics": true,
+            "organic-or-chemistry": true,
+            "parameters": true
+        }
+    },
+    "centrifuge": {
+        "name": "centrifuge",
+        "crafting_speed": 1,
+        "crafting_categories": { "centrifuging": true, "parameters": true }
+    },
+    "electromagnetic-plant": {
+        "name": "electromagnetic-plant",
+        "crafting_speed": 2,
+        "crafting_categories": {
+            "electromagnetics": true,
+            "electronics": true,
+            "electronics-with-fluid": true,
+            "electronics-or-assembling": true,
+            "parameters": true
+        }
+    },
+    "cryogenic-plant": {
+        "name": "cryogenic-plant",
+        "crafting_speed": 2,
+        "crafting_categories": {
+            "cryogenics": true,
+            "chemistry-or-cryogenics": true,
+            "cryogenics-or-assembling": true,
+            "parameters": true
+        }
+    },
+    "rocket-silo": {
+        "name": "rocket-silo",
+        "crafting_speed": 1,
+        "crafting_categories": { "rocket-building": true, "parameters": true }
+    },
+    "crusher": {
+        "name": "crusher",
+        "crafting_speed": 1,
+        "crafting_categories": { "crushing": true, "parameters": true }
+    }
+}
