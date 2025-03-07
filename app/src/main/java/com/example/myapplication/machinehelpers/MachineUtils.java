@@ -12,15 +12,16 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class MachineUtils {
 
     private final static HashMap<String, Machine> machines = new HashMap<>();
-    public static HashMap<String, Machine> getMachines(){
-        return machines;
-    }
+    private final static HashMap<String, ArrayList<Machine>> categories = new HashMap<>();
     public static void readMachinesFromFile(AssetManager assetManager, String filename) {
         machines.clear();
 
@@ -31,26 +32,39 @@ public class MachineUtils {
                     .lines()
                     .collect(Collectors.joining("\n"));
             machinesJson = new JSONArray(machinesJsonString);
+
             for(int machineIndex=0; machineIndex < machinesJson.length(); machineIndex++) {
                 JSONObject machineJson = machinesJson.getJSONObject(machineIndex);
 
-                ArrayList<String> categories = new ArrayList<>();
-                JSONArray categoriesJson = machineJson.getJSONArray("crafting_categories");
-                for(int categoryIndex=0; categoryIndex < categoriesJson.length(); categoryIndex++)
-                    categories.add(categoriesJson.getString(categoryIndex));
-
                 String machineName = machineJson.getString("name");
-                machines.put(
-                        machineName, new Machine(
-                                machineName,
-                                (float) machineJson.getDouble("crafting_speed"),
-                                categories,
-                                machineJson.getString("order")
-                        )
+                ArrayList<String> machineCategories = new ArrayList<>();
+                Machine machine = new Machine(
+                        machineName,
+                        (float) machineJson.getDouble("crafting_speed"),
+                        machineCategories,
+                        machineJson.getString("order")
                 );
+                machines.put(machineName, machine);
+
+                JSONArray categoriesJson = machineJson.getJSONArray("crafting_categories");
+                for(int categoryIndex=0; categoryIndex < categoriesJson.length(); categoryIndex++) {
+                    String categoryName = categoriesJson.getString(categoryIndex);
+                    machineCategories.add(categoryName);
+                    if(categories.containsKey(categoryName))
+                        categories.get(categoryName).add(machine);
+                    else
+                        categories.put(categoryName, new ArrayList<>(List.of(machine)));
+                }
             }
         } catch (IOException | JSONException e) {
             throw new RuntimeException(e);
         }
+
+        categories.keySet().forEach(key -> Collections.sort(Objects.requireNonNull(categories.get(key))));
+    }
+
+    //TODO add option to select and change default machines
+    public static Machine getMachineForCategory(String category){
+        return categories.get(category).get(0);
     }
 }

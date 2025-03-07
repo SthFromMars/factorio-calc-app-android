@@ -1,7 +1,6 @@
 package com.example.myapplication.recipepopuputils;
 
 import android.content.Context;
-import android.widget.Toast;
 
 import com.example.myapplication.FactoryActivity;
 import com.example.myapplication.recipehelpers.RecipeUtils;
@@ -11,7 +10,7 @@ public class RecipeClickFactoryList implements RecipeClickFunctions{
     public void onRecipeSelection(Context context, String recipeName, String itemToCraft) {
         //TODO: this just seems plain bad
         ((FactoryActivity) context).getFactoryListAdapter().addRecipe(
-                RecipeUtils.getRecipe(recipeName)
+                RecipeUtils.getRecipeListItem(recipeName)
         );
     }
 }

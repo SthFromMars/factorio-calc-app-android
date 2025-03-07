@@ -16,11 +16,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.recipehelpers.Product;
 import com.example.myapplication.recipehelpers.Recipe;
+import com.example.myapplication.recipehelpers.RecipeListItem;
 import com.example.myapplication.recipehelpers.RecipeUtils;
-import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 public class FactoryActivity extends AppCompatActivity {
 
@@ -43,7 +44,7 @@ public class FactoryActivity extends AppCompatActivity {
 
         String itemToCraft = getIntent().getStringExtra("item_to_craft");
         String recipeName = getIntent().getStringExtra("recipe_name");
-        Recipe recipe = RecipeUtils.getRecipe(recipeName);
+        RecipeListItem recipe = RecipeUtils.getRecipeListItem(recipeName);
 
         float amount = 0;
         for(Product product: recipe.getProducts()){
@@ -52,12 +53,15 @@ public class FactoryActivity extends AppCompatActivity {
                 break;
             }
         }
+        recipe.calculateAmounts(new HashMap<>(Map.of(itemToCraft, amount*-1)));
+
         ((TextView) findViewById(R.id.factoryProductName)).setText(itemToCraft);
         EditText amountView = findViewById(R.id.factoryProductAmount);
         amountView.setText(String.valueOf(amount));
 
-        ArrayList<Recipe> factoryList = new ArrayList<>();
+        ArrayList<RecipeListItem> factoryList = new ArrayList<>();
         factoryList.add(recipe);
+
 
         RecyclerView recyclerView = findViewById(R.id.factoryList);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

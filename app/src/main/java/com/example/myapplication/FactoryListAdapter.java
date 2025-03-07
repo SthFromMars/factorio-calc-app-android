@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,16 +17,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.myapplication.recipehelpers.Product;
 import com.example.myapplication.recipehelpers.Recipe;
 import com.example.myapplication.recipehelpers.RecipeComponent;
+import com.example.myapplication.recipehelpers.RecipeListItem;
 import com.example.myapplication.recipehelpers.RecipeUtils;
 import com.example.myapplication.recipepopuputils.RecipeClickFactoryList;
-import com.google.gson.Gson;
 
 import java.util.ArrayList;
 
 public class FactoryListAdapter  extends RecyclerView.Adapter<FactoryListAdapter.ViewHolder> {
 
     private static final String TAG = "FactoryListAdapter";
-    private final ArrayList<Recipe> recipes;
+    private final ArrayList<RecipeListItem> recipes;
     private final Activity activity;
     private final String mainProductName;
     private final EditText amountView;
@@ -33,12 +34,16 @@ public class FactoryListAdapter  extends RecyclerView.Adapter<FactoryListAdapter
         private final LayoutInflater layoutInflater;
         private final LinearLayout linearLayout;
         private final Activity activity;
+        private final TextView machineNameView;
+        private final TextView machineAmountView;
 
         public ViewHolder(View view, LayoutInflater layoutInflater, Activity activity) {
             super(view);
             this.layoutInflater = layoutInflater;
-            this.linearLayout = (LinearLayout) view;
+            this.linearLayout = view.findViewById(R.id.componentList);
             this.activity = activity;
+            machineNameView = view.findViewById(R.id.machineName);
+            machineAmountView = view.findViewById(R.id.machineAmount);
         }
 
         public void addProduct(Product product) {
@@ -61,9 +66,15 @@ public class FactoryListAdapter  extends RecyclerView.Adapter<FactoryListAdapter
         public void empty(){
             linearLayout.removeAllViews();
         }
+        public void setMachineName(String name){
+            machineNameView.setText(name);
+        }
+        public void setMachineAmount(float amount){
+            machineAmountView.setText(String.valueOf(amount));
+        }
     }
 
-    public FactoryListAdapter(Activity activity, ArrayList<Recipe> recipes, String mainProductName, EditText amountView) {
+    public FactoryListAdapter(Activity activity, ArrayList<RecipeListItem> recipes, String mainProductName, EditText amountView) {
         this.activity = activity;
         this.recipes = recipes;
         this.mainProductName = mainProductName;
@@ -73,7 +84,7 @@ public class FactoryListAdapter  extends RecyclerView.Adapter<FactoryListAdapter
     // Create new views (invoked by the layout manager)
     @NonNull
     @Override
-    public FactoryListAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(viewGroup.getContext());
         return new ViewHolder(
                 layoutInflater.inflate(R.layout.recipe_card, viewGroup, false),
@@ -84,7 +95,7 @@ public class FactoryListAdapter  extends RecyclerView.Adapter<FactoryListAdapter
 
     // Replace the contents of a view (invoked by the layout manager)
     @Override
-    public void onBindViewHolder(@NonNull FactoryListAdapter.ViewHolder viewHolder, final int position) {
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int position) {
 
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
@@ -94,6 +105,10 @@ public class FactoryListAdapter  extends RecyclerView.Adapter<FactoryListAdapter
             viewHolder.addProduct(product);
         for(RecipeComponent ingredient: recipe.getIngredients())
             viewHolder.addIngredient(ingredient);
+
+        viewHolder.setMachineName(recipes.get(position).getMachine().getName());
+        Log.d(TAG, String.valueOf(recipes.get(position).getMachineAmount()));
+        viewHolder.setMachineAmount(recipes.get(position).getMachineAmount());
     }
 
     // Return the size of your dataset (invoked by the layout manager)
@@ -102,7 +117,7 @@ public class FactoryListAdapter  extends RecyclerView.Adapter<FactoryListAdapter
         return recipes.size();
     }
 
-    public void addRecipe(Recipe recipe) {
+    public void addRecipe(RecipeListItem recipe) {
         recipes.add(recipe);
         //TODO: don't recalculate all recipes
         RecipeUtils.calculateRecipes(recipes, mainProductName, Float.parseFloat(amountView.getText().toString()));

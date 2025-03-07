@@ -4,6 +4,7 @@ package com.example.myapplication.recipehelpers;
 import android.content.res.AssetManager;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -26,9 +27,23 @@ public class RecipeUtils {
     private static final HashMap<String, ArrayList<String>> craftables = new HashMap<>();
     private static final Gson gson = new Gson();
 
-    public static Recipe getRecipe(String recipeName){
+//    public static Recipe getRecipe(String recipeName){
+//        //TODO do deep copy properly
+//        return gson.fromJson(gson.toJson(recipes.get(recipeName)), Recipe.class);
+//    }
+    public static RecipeListItem getRecipeListItem(String recipeName){
+        Recipe recipe = recipes.get(recipeName);
         //TODO do deep copy properly
-        return gson.fromJson(gson.toJson(recipes.get(recipeName)), Recipe.class);
+        return new RecipeListItem(
+                recipe.getName(),
+                recipe.isEnabled(),
+                recipe.getCategory(),
+                gson.fromJson(gson.toJson(recipe.getIngredients()), new TypeToken<ArrayList<RecipeComponent>>(){}.getType()),
+                gson.fromJson(gson.toJson(recipe.getProducts()), new TypeToken<ArrayList<Product>>(){}.getType()),
+                recipe.isHidden(),
+                recipe.getEnergy(),
+                recipe.getProductivityBonus()
+        );
     }
 
     public static HashMap<String, ArrayList<String>> getCraftables() {
@@ -151,13 +166,15 @@ public class RecipeUtils {
 
             );
     }
-    public static void calculateRecipes(ArrayList<Recipe> recipes, String mainProduct, float mainAmount){
+    public static void calculateRecipes(ArrayList<RecipeListItem> recipes, String mainProduct, float mainAmount){
         HashMap<String, Float> productionAmounts = new HashMap<>();
         productionAmounts.put(mainProduct, mainAmount*(-1));
         for(int i=0; i<recipes.size(); i++){
-            //TODO: idk about this
+            //reset to base values
+            //TODO: idk about this reset implementation
             String recipeName = recipes.get(i).getName();
-            recipes.set(i,getRecipe(recipeName));
+            recipes.set(i, getRecipeListItem(recipeName));
+
             recipes.get(i).calculateAmounts(productionAmounts);
         }
     }

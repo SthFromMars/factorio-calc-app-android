@@ -6,6 +6,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Map;
 
 public class Recipe {
     private static final String TAG = "Recipe";
@@ -15,7 +16,7 @@ public class Recipe {
     private final ArrayList<RecipeComponent> ingredients;
     private final ArrayList<Product> products;
     private final boolean hidden;
-    private final float energy;
+    private float energy;
     private final float productivityBonus;
 
     public Recipe(
@@ -94,6 +95,7 @@ public class Recipe {
             product.adjustAmount(ratio);
         for (RecipeComponent ingredient: ingredients)
             ingredient.adjustAmount(ratio);
+        energy *= ratio;
     }
 }
 

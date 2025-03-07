@@ -2,11 +2,11 @@ package com.example.myapplication.machinehelpers;
 
 import java.util.ArrayList;
 
-public class Machine {
-    public final String name;
-    public final float craftingSpeed;
-    public final ArrayList<String> categories;
-    public final String orderString;
+public class Machine implements Comparable<Machine>{
+    private final String name;
+    private final float craftingSpeed;
+    private final ArrayList<String> categories;
+    private final String orderString;
 
     public Machine(String name, float craftingSpeed, ArrayList<String> categories, String orderString) {
         this.name = name;
@@ -29,5 +29,10 @@ public class Machine {
 
     public String getOrderString() {
         return orderString;
+    }
+
+    @Override
+    public int compareTo(Machine o) {
+        return this.orderString.compareToIgnoreCase(getOrderString());
     }
 }
