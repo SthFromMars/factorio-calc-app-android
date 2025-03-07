@@ -10118,7 +10118,7 @@
     "parameter-9": {
         "name": "parameter-9",
         "enabled": true,
-        "category": "parameters",
+        "category": "c",
         "ingredients": {},
         "products": {},
         "hidden": false,

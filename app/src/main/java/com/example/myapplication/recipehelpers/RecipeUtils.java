@@ -1,7 +1,7 @@
 package com.example.myapplication.recipehelpers;
 
 
-import android.util.Log;
+import android.content.res.AssetManager;
 
 import com.google.gson.Gson;
 
@@ -9,9 +9,15 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.stream.Collectors;
 
 public class RecipeUtils {
     private static final String TAG = "RecipeUtils";
@@ -20,9 +26,6 @@ public class RecipeUtils {
     private static final HashMap<String, ArrayList<String>> craftables = new HashMap<>();
     private static final Gson gson = new Gson();
 
-//    public static HashMap<String, Recipe> getRecipes() {
-//        return recipes;
-//    }
     public static Recipe getRecipe(String recipeName){
         //TODO do deep copy properly
         return gson.fromJson(gson.toJson(recipes.get(recipeName)), Recipe.class);
@@ -32,14 +35,20 @@ public class RecipeUtils {
         return craftables;
     }
 
-    public static void parseFromJsonString(String recipesJsonString) {
+    //TODO sort according order string (from LuaRecipe class)
+    public static void readRecipesFromFile(AssetManager assetManager, String filename) {
         recipes.clear();
         craftables.clear();
 
         JSONObject recipesJson;
-        try {
+        try (InputStream recipeStream = assetManager.open(filename)) {
+            String recipesJsonString = new BufferedReader(
+                    new InputStreamReader(recipeStream, StandardCharsets.UTF_8))
+                    .lines()
+                    .collect(Collectors.joining("\n"));
             recipesJson = new JSONObject(recipesJsonString);
-        } catch (JSONException e) {
+
+        } catch (IOException | JSONException e) {
             throw new RuntimeException(e);
         }
 
