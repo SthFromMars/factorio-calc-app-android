@@ -5,7 +5,6 @@ import com.example.myapplication.machinehelpers.MachineUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 public class RecipeListItem extends Recipe{
     private Machine machine = null;
@@ -18,9 +17,10 @@ public class RecipeListItem extends Recipe{
             ArrayList<Product> products,
             boolean hidden,
             float energy,
-            float productivityBonus
+            float productivityBonus,
+            String orderString
     ) {
-        super(name, enabled, category, ingredients, products, hidden, energy, productivityBonus);
+        super(name, enabled, category, ingredients, products, hidden, energy, productivityBonus, orderString);
     }
 
     public Machine getMachine() {
@@ -29,6 +29,10 @@ public class RecipeListItem extends Recipe{
 
     public float getMachineAmount() {
         return machineAmount;
+    }
+
+    public String getMachineFactoryString(){
+        return machine.getName() + ": " + machineAmount;
     }
 
     @Override

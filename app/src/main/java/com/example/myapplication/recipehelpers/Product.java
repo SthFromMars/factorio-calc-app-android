@@ -25,5 +25,5 @@ public class Product extends RecipeComponent{
         return extraCountFraction;
     }
 }
-
+// TODO: implement method to get real amount (respecting probability and extraCountFraction)
 // TODO: support amount_min/max  (no use in vanilla)

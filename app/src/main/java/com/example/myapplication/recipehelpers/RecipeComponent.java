@@ -1,6 +1,6 @@
 package com.example.myapplication.recipehelpers;
 
-public class RecipeComponent {
+public class RecipeComponent implements Comparable<RecipeComponent>{
     private final ComponentType type;
     private final String name;
     private float amount;
@@ -29,6 +29,11 @@ public class RecipeComponent {
 
     public void adjustAmount(float ratio) {
         amount = amount * ratio;
+    }
+
+    @Override
+    public int compareTo(RecipeComponent o) {
+        return name.compareToIgnoreCase(o.getName());
     }
 }
 

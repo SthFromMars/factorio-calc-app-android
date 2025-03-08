@@ -25,13 +25,12 @@ public class MachineUtils {
     public static void readMachinesFromFile(AssetManager assetManager, String filename) {
         machines.clear();
 
-        JSONArray machinesJson;
         try (InputStream machineStream = assetManager.open(filename)) {
             String machinesJsonString = new BufferedReader(
                     new InputStreamReader(machineStream, StandardCharsets.UTF_8))
                     .lines()
                     .collect(Collectors.joining("\n"));
-            machinesJson = new JSONArray(machinesJsonString);
+            JSONArray machinesJson = new JSONArray(machinesJsonString);
 
             for(int machineIndex=0; machineIndex < machinesJson.length(); machineIndex++) {
                 JSONObject machineJson = machinesJson.getJSONObject(machineIndex);

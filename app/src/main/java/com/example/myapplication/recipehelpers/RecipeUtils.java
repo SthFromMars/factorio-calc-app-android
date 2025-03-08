@@ -27,10 +27,6 @@ public class RecipeUtils {
     private static final HashMap<String, ArrayList<String>> craftables = new HashMap<>();
     private static final Gson gson = new Gson();
 
-//    public static Recipe getRecipe(String recipeName){
-//        //TODO do deep copy properly
-//        return gson.fromJson(gson.toJson(recipes.get(recipeName)), Recipe.class);
-//    }
     public static RecipeListItem getRecipeListItem(String recipeName){
         Recipe recipe = recipes.get(recipeName);
         //TODO do deep copy properly
@@ -42,7 +38,8 @@ public class RecipeUtils {
                 gson.fromJson(gson.toJson(recipe.getProducts()), new TypeToken<ArrayList<Product>>(){}.getType()),
                 recipe.isHidden(),
                 recipe.getEnergy(),
-                recipe.getProductivityBonus()
+                recipe.getProductivityBonus(),
+                recipe.getOrderString()
         );
     }
 
@@ -50,34 +47,25 @@ public class RecipeUtils {
         return craftables;
     }
 
-    //TODO sort according order string (from LuaRecipe class)
     public static void readRecipesFromFile(AssetManager assetManager, String filename) {
         recipes.clear();
         craftables.clear();
 
-        JSONObject recipesJson;
         try (InputStream recipeStream = assetManager.open(filename)) {
             String recipesJsonString = new BufferedReader(
                     new InputStreamReader(recipeStream, StandardCharsets.UTF_8))
                     .lines()
                     .collect(Collectors.joining("\n"));
-            recipesJson = new JSONObject(recipesJsonString);
-
-        } catch (IOException | JSONException e) {
-            throw new RuntimeException(e);
-        }
-
-        final JSONObject finalRecipesJson = recipesJson;
-        recipesJson.keys().forEachRemaining(recipeNameKey -> {
-            try {
-                JSONObject recipeJson = finalRecipesJson.getJSONObject(recipeNameKey);
+            JSONArray recipesJson = new JSONArray(recipesJsonString);
+            for (int i=0; i<recipesJson.length(); i++){
+                JSONObject recipeJson = recipesJson.getJSONObject(i);
 
                 Object ingredientsJson = recipeJson.get("ingredients");
                 ArrayList<RecipeComponent> ingredients = new ArrayList<>();
                 if (ingredientsJson instanceof JSONArray) {
                     JSONArray ingredientsJsonArray = (JSONArray) ingredientsJson;
-                    for (int i=0; i<ingredientsJsonArray.length(); i++){
-                        ingredients.add(parseIngredient(ingredientsJsonArray.getJSONObject(i)));
+                    for (int j = 0; j < ingredientsJsonArray.length(); j++) {
+                        ingredients.add(parseIngredient(ingredientsJsonArray.getJSONObject(j)));
                     }
                 }
 
@@ -86,8 +74,8 @@ public class RecipeUtils {
                 ArrayList<Product> products = new ArrayList<>();
                 if (productsJson instanceof JSONArray) {
                     JSONArray productsJsonArray = (JSONArray) productsJson;
-                    for (int i = 0; i < productsJsonArray.length(); i++) {
-                        Product product = parseProduct(productsJsonArray.getJSONObject(i));
+                    for (int j = 0; j < productsJsonArray.length(); j++) {
+                        Product product = parseProduct(productsJsonArray.getJSONObject(j));
                         products.add(product);
 
                         if (craftables.containsKey(product.getName()))
@@ -99,32 +87,32 @@ public class RecipeUtils {
                     }
                 }
 
-                ingredients.sort((a, b) ->
-                    a.getName().compareToIgnoreCase(b.getName())
-                );
-                products.sort((a, b) ->
-                        a.getName().compareToIgnoreCase(b.getName())
-                );
+                Collections.sort(ingredients);
+                Collections.sort(products);
                 recipes.put(
                         recipeName,
                         new Recipe(
-                            recipeJson.getString("name"),
-                            recipeJson.getBoolean("enabled"),
-                            recipeJson.getString("category"),
-                            ingredients,
-                            products,
-                            recipeJson.getBoolean("hidden"),
-                            (float) recipeJson.getDouble("energy"),
-                            (float) recipeJson.getDouble("productivity_bonus")
-                ));
-
-            } catch (JSONException e) {
-                throw new RuntimeException(e);
+                                recipeJson.getString("name"),
+                                recipeJson.getBoolean("enabled"),
+                                recipeJson.getString("category"),
+                                ingredients,
+                                products,
+                                recipeJson.getBoolean("hidden"),
+                                (float) recipeJson.getDouble("energy"),
+                                (float) recipeJson.getDouble("productivity_bonus"),
+                                recipeJson.getString("order")
+                        ));
             }
-        });
+
+        } catch (IOException | JSONException e) {
+            throw new RuntimeException(e);
+        }
 
         for(String craftable: craftables.keySet()){
-            Collections.sort(craftables.get(craftable));
+            // TODO maybe store recipe objects instead of names
+            craftables.get(craftable).sort((a, b) ->
+                    recipes.get(a).getOrderString().compareToIgnoreCase(recipes.get(b).getOrderString())
+            );
         }
     }
 

@@ -1,12 +1,8 @@
 package com.example.myapplication.recipehelpers;
 
-import android.util.Log;
-import android.widget.Toast;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.Map;
 
 public class Recipe {
     private static final String TAG = "Recipe";
@@ -18,6 +14,7 @@ public class Recipe {
     private final boolean hidden;
     private float energy;
     private final float productivityBonus;
+    private final String orderString;
 
     public Recipe(
             String name,
@@ -27,7 +24,8 @@ public class Recipe {
             ArrayList<Product> products,
             boolean hidden,
             float energy,
-            float productivityBonus
+            float productivityBonus,
+            String orderString
     ) {
         this.name = name;
         this.enabled = enabled;
@@ -37,6 +35,7 @@ public class Recipe {
         this.hidden = hidden;
         this.energy = energy;
         this.productivityBonus = productivityBonus;
+        this.orderString = orderString;
     }
 
     public String getName() {
@@ -69,6 +68,10 @@ public class Recipe {
 
     public float getProductivityBonus() {
         return productivityBonus;
+    }
+
+    public String getOrderString() {
+        return orderString;
     }
 
     public void calculateAmounts(HashMap<String, Float> productionAmounts){

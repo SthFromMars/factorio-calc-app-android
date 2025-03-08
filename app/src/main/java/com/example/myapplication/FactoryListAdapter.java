@@ -2,14 +2,12 @@ package com.example.myapplication;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -34,16 +32,14 @@ public class FactoryListAdapter  extends RecyclerView.Adapter<FactoryListAdapter
         private final LayoutInflater layoutInflater;
         private final LinearLayout linearLayout;
         private final Activity activity;
-        private final TextView machineNameView;
-        private final TextView machineAmountView;
+        private final TextView machineStringView;
 
         public ViewHolder(View view, LayoutInflater layoutInflater, Activity activity) {
             super(view);
             this.layoutInflater = layoutInflater;
             this.linearLayout = view.findViewById(R.id.componentList);
             this.activity = activity;
-            machineNameView = view.findViewById(R.id.machineName);
-            machineAmountView = view.findViewById(R.id.machineAmount);
+            machineStringView = view.findViewById(R.id.machineString);
         }
 
         public void addProduct(Product product) {
@@ -66,11 +62,8 @@ public class FactoryListAdapter  extends RecyclerView.Adapter<FactoryListAdapter
         public void empty(){
             linearLayout.removeAllViews();
         }
-        public void setMachineName(String name){
-            machineNameView.setText(name);
-        }
-        public void setMachineAmount(float amount){
-            machineAmountView.setText(String.valueOf(amount));
+        public void setMachineString(String name){
+            machineStringView.setText(name);
         }
     }
 
@@ -99,6 +92,7 @@ public class FactoryListAdapter  extends RecyclerView.Adapter<FactoryListAdapter
 
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
+        //TODO don't recreate unnecessarily
         viewHolder.empty();
         Recipe recipe = recipes.get(position);
         for(Product product: recipe.getProducts())
@@ -106,9 +100,7 @@ public class FactoryListAdapter  extends RecyclerView.Adapter<FactoryListAdapter
         for(RecipeComponent ingredient: recipe.getIngredients())
             viewHolder.addIngredient(ingredient);
 
-        viewHolder.setMachineName(recipes.get(position).getMachine().getName());
-        Log.d(TAG, String.valueOf(recipes.get(position).getMachineAmount()));
-        viewHolder.setMachineAmount(recipes.get(position).getMachineAmount());
+        viewHolder.setMachineString(recipes.get(position).getMachineFactoryString());
     }
 
     // Return the size of your dataset (invoked by the layout manager)
