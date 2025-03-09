@@ -14,7 +14,7 @@ import com.example.myapplication.recipepopuputils.RecipeClickFunctions;
 
 import java.util.List;
 
-public class PopupListAdapter extends RecyclerView.Adapter<PopupListAdapter.ViewHolder> {
+public class RecipePopupListAdapter extends RecyclerView.Adapter<RecipePopupListAdapter.ViewHolder> {
 
     private static final String TAG = "PopupListAdapter";
     private final List<String> recipeNames;
@@ -38,7 +38,7 @@ public class PopupListAdapter extends RecyclerView.Adapter<PopupListAdapter.View
                 RecipeClickFunctions recipeClickFunctions,
                 PopupWindow popupWindow) {
             super(view);
-            textView = view.findViewById(R.id.popupRecipeName);
+            textView = view.findViewById(R.id.popupListItem);
             view.setOnClickListener(v -> {
                         recipeClickFunctions.onRecipeSelection(context, (String) textView.getText(), itemToCraft);
                         popupWindow.dismiss();
@@ -57,7 +57,7 @@ public class PopupListAdapter extends RecyclerView.Adapter<PopupListAdapter.View
      * @param dataSet String[] containing the data to populate views to be used
      * by RecyclerView
      */
-    public PopupListAdapter(
+    public RecipePopupListAdapter(
             Context context,
             List<String> dataSet,
             String itemToCraft,
@@ -74,17 +74,17 @@ public class PopupListAdapter extends RecyclerView.Adapter<PopupListAdapter.View
     // Create new views (invoked by the layout manager)
     @NonNull
     @Override
-    public PopupListAdapter.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
+    public RecipePopupListAdapter.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         // Create a new view, which defines the UI of the list item
         View view = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.recipe_popup_card, viewGroup, false);
+                .inflate(R.layout.popup_card, viewGroup, false);
 
-        return new PopupListAdapter.ViewHolder(context, view, itemToCraft, recipeClickFunctions, popupWindow);
+        return new RecipePopupListAdapter.ViewHolder(context, view, itemToCraft, recipeClickFunctions, popupWindow);
     }
 
     // Replace the contents of a view (invoked by the layout manager)
     @Override
-    public void onBindViewHolder(PopupListAdapter.ViewHolder viewHolder, final int position) {
+    public void onBindViewHolder(RecipePopupListAdapter.ViewHolder viewHolder, final int position) {
 
         // Get element from your dataset at this position and replace the
         // contents of the view with that element

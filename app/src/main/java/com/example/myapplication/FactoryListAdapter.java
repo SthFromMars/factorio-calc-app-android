@@ -2,16 +2,20 @@ package com.example.myapplication;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myapplication.machinehelpers.MachineUtils;
 import com.example.myapplication.recipehelpers.Product;
 import com.example.myapplication.recipehelpers.Recipe;
 import com.example.myapplication.recipehelpers.RecipeComponent;
@@ -33,6 +37,7 @@ public class FactoryListAdapter  extends RecyclerView.Adapter<FactoryListAdapter
         private final LinearLayout linearLayout;
         private final Activity activity;
         private final TextView machineStringView;
+        private RecipeListItem recipe;
 
         public ViewHolder(View view, LayoutInflater layoutInflater, Activity activity) {
             super(view);
@@ -40,6 +45,35 @@ public class FactoryListAdapter  extends RecyclerView.Adapter<FactoryListAdapter
             this.linearLayout = view.findViewById(R.id.componentList);
             this.activity = activity;
             machineStringView = view.findViewById(R.id.machineString);
+            machineStringView.setOnClickListener(v -> {
+                View popupView = LayoutInflater.from(activity).inflate(R.layout.popup, null);
+                int width = ViewGroup.LayoutParams.WRAP_CONTENT;
+                int height = ViewGroup.LayoutParams.WRAP_CONTENT;
+                boolean focusable = true; // lets taps outside the popup also dismiss it
+                final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
+
+                RecyclerView recyclerView = popupView.findViewById(R.id.popupList);
+                recyclerView.setLayoutManager(new LinearLayoutManager(activity.getApplicationContext()));
+                MachinePopupListAdapter machinePopupListAdapter = new MachinePopupListAdapter(
+                        activity,
+                        recipe,
+                        popupWindow,
+                        this
+                );
+                recyclerView.setAdapter(machinePopupListAdapter);
+
+                popupWindow.showAtLocation(activity.findViewById(R.id.main), Gravity.CENTER, 0, 0);
+            });
+        }
+
+        public void setRecipe(RecipeListItem recipe){
+            this.recipe = recipe;
+            for(Product product: recipe.getProducts())
+                addProduct(product);
+            for(RecipeComponent ingredient: recipe.getIngredients())
+                addIngredient(ingredient);
+
+            setMachineString(recipe.getMachineFactoryString());
         }
 
         public void addProduct(Product product) {
@@ -94,13 +128,7 @@ public class FactoryListAdapter  extends RecyclerView.Adapter<FactoryListAdapter
         // contents of the view with that element
         //TODO don't recreate unnecessarily
         viewHolder.empty();
-        Recipe recipe = recipes.get(position);
-        for(Product product: recipe.getProducts())
-            viewHolder.addProduct(product);
-        for(RecipeComponent ingredient: recipe.getIngredients())
-            viewHolder.addIngredient(ingredient);
-
-        viewHolder.setMachineString(recipes.get(position).getMachineFactoryString());
+        viewHolder.setRecipe(recipes.get(position));
     }
 
     // Return the size of your dataset (invoked by the layout manager)

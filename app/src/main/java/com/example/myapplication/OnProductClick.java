@@ -46,7 +46,7 @@ public class OnProductClick implements View.OnClickListener {
             recipeName = recipeNamesToCraft.get(0);
             recipeClickFunctions.onRecipeSelection(activity, recipeName, itemToCraft);
         } else {
-            View popupView = LayoutInflater.from(activity).inflate(R.layout.recipe_choice_popup, null);
+            View popupView = LayoutInflater.from(activity).inflate(R.layout.popup, null);
 
             // create the popup window
             int width = ViewGroup.LayoutParams.WRAP_CONTENT;
@@ -54,16 +54,16 @@ public class OnProductClick implements View.OnClickListener {
             boolean focusable = true; // lets taps outside the popup also dismiss it
             final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
 
-            RecyclerView recyclerView = popupView.findViewById(R.id.recipePopupList);
+            RecyclerView recyclerView = popupView.findViewById(R.id.popupList);
             recyclerView.setLayoutManager(new LinearLayoutManager(activity.getApplicationContext()));
-            PopupListAdapter popupListAdapter = new PopupListAdapter(
+            RecipePopupListAdapter recipePopupListAdapter = new RecipePopupListAdapter(
                     activity,
                     recipeNamesToCraft,
                     itemToCraft,
                     recipeClickFunctions,
                     popupWindow
             );
-            recyclerView.setAdapter(popupListAdapter);
+            recyclerView.setAdapter(recipePopupListAdapter);
 
             popupWindow.showAtLocation(activity.findViewById(R.id.main), Gravity.CENTER, 0, 0);
         }

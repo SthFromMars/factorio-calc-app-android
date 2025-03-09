@@ -22,6 +22,9 @@ public class MachineUtils {
 
     private final static HashMap<String, Machine> machines = new HashMap<>();
     private final static HashMap<String, ArrayList<Machine>> categories = new HashMap<>();
+    public static Machine getMachine(String name){
+        return machines.get(name);
+    }
     public static void readMachinesFromFile(AssetManager assetManager, String filename) {
         machines.clear();
 
@@ -65,5 +68,9 @@ public class MachineUtils {
     //TODO add option to select and change default machines
     public static Machine getMachineForCategory(String category){
         return categories.get(category).get(0);
+    }
+
+    public static ArrayList<Machine> getMachinesForCategory(String category){
+        return categories.get(category);
     }
 }

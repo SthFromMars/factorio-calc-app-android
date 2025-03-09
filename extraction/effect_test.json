@@ -1,0 +1,6 @@
+{
+    "base_effect": { "productivity": 0.5 },
+    "uses_module_effects": true,
+    "uses_beacon_effects": true,
+    "uses_surface_effects": true
+}
