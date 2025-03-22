@@ -4,22 +4,24 @@ import java.util.ArrayList;
 
 public class Machine implements Comparable<Machine>{
     private final String name;
-    private final float craftingSpeed;
+    private final double craftingSpeed;
     private final ArrayList<String> categories;
     private final String orderString;
+    private final double productivity;
 
-    public Machine(String name, float craftingSpeed, ArrayList<String> categories, String orderString) {
+    public Machine(String name, double craftingSpeed, ArrayList<String> categories, String orderString, double productivity) {
         this.name = name;
         this.craftingSpeed = craftingSpeed;
         this.categories = categories;
         this.orderString = orderString;
+        this.productivity = productivity;
     }
 
     public String getName() {
         return name;
     }
 
-    public float getCraftingSpeed() {
+    public double getCraftingSpeed() {
         return craftingSpeed;
     }
 
@@ -29,6 +31,10 @@ public class Machine implements Comparable<Machine>{
 
     public String getOrderString() {
         return orderString;
+    }
+
+    public double getProductivity() {
+        return productivity;
     }
 
     @Override

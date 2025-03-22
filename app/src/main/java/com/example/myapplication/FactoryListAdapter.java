@@ -15,9 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.machinehelpers.MachineUtils;
 import com.example.myapplication.recipehelpers.Product;
-import com.example.myapplication.recipehelpers.Recipe;
 import com.example.myapplication.recipehelpers.RecipeComponent;
 import com.example.myapplication.recipehelpers.RecipeListItem;
 import com.example.myapplication.recipehelpers.RecipeUtils;
@@ -32,6 +30,14 @@ public class FactoryListAdapter  extends RecyclerView.Adapter<FactoryListAdapter
     private final Activity activity;
     private final String mainProductName;
     private final EditText amountView;
+    private double amount;
+    public FactoryListAdapter(Activity activity, ArrayList<RecipeListItem> recipes, String mainProductName, EditText amountView) {
+        this.activity = activity;
+        this.recipes = recipes;
+        this.mainProductName = mainProductName;
+        this.amountView = amountView;
+        amount = Double.parseDouble(amountView.getText().toString());
+    }
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final LayoutInflater layoutInflater;
         private final LinearLayout linearLayout;
@@ -39,7 +45,7 @@ public class FactoryListAdapter  extends RecyclerView.Adapter<FactoryListAdapter
         private final TextView machineStringView;
         private RecipeListItem recipe;
 
-        public ViewHolder(View view, LayoutInflater layoutInflater, Activity activity) {
+        public ViewHolder(View view, LayoutInflater layoutInflater, Activity activity, FactoryListAdapter factoryListAdapter) {
             super(view);
             this.layoutInflater = layoutInflater;
             this.linearLayout = view.findViewById(R.id.componentList);
@@ -58,7 +64,8 @@ public class FactoryListAdapter  extends RecyclerView.Adapter<FactoryListAdapter
                         activity,
                         recipe,
                         popupWindow,
-                        this
+                        this,
+                        factoryListAdapter
                 );
                 recyclerView.setAdapter(machinePopupListAdapter);
 
@@ -100,14 +107,6 @@ public class FactoryListAdapter  extends RecyclerView.Adapter<FactoryListAdapter
             machineStringView.setText(name);
         }
     }
-
-    public FactoryListAdapter(Activity activity, ArrayList<RecipeListItem> recipes, String mainProductName, EditText amountView) {
-        this.activity = activity;
-        this.recipes = recipes;
-        this.mainProductName = mainProductName;
-        this.amountView = amountView;
-    }
-
     // Create new views (invoked by the layout manager)
     @NonNull
     @Override
@@ -116,7 +115,8 @@ public class FactoryListAdapter  extends RecyclerView.Adapter<FactoryListAdapter
         return new ViewHolder(
                 layoutInflater.inflate(R.layout.recipe_card, viewGroup, false),
                 layoutInflater,
-                activity
+                activity,
+                this
         );
     }
 
@@ -140,13 +140,19 @@ public class FactoryListAdapter  extends RecyclerView.Adapter<FactoryListAdapter
     public void addRecipe(RecipeListItem recipe) {
         recipes.add(recipe);
         //TODO: don't recalculate all recipes
-        RecipeUtils.calculateRecipes(recipes, mainProductName, Float.parseFloat(amountView.getText().toString()));
+        RecipeUtils.calculateRecipes(recipes, mainProductName, Double.parseDouble(amountView.getText().toString()));
         notifyItemInserted(getItemCount()-1);
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    public void amountChanged(float amount)
+    public void amountChanged(double amount)
     {
+        this.amount = amount;
+        RecipeUtils.calculateRecipes(recipes, mainProductName, amount);
+        notifyDataSetChanged();
+    }
+
+    public void recalculate(){
         RecipeUtils.calculateRecipes(recipes, mainProductName, amount);
         notifyDataSetChanged();
     }

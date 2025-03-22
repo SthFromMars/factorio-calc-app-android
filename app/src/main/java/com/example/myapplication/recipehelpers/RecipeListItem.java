@@ -4,11 +4,13 @@ import com.example.myapplication.machinehelpers.Machine;
 import com.example.myapplication.machinehelpers.MachineUtils;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 
 public class RecipeListItem extends Recipe{
     private Machine machine;
-    private float machineAmount;
+    private double machineAmount;
+
     public RecipeListItem(
             String name,
             boolean enabled,
@@ -16,8 +18,8 @@ public class RecipeListItem extends Recipe{
             ArrayList<RecipeComponent> ingredients,
             ArrayList<Product> products,
             boolean hidden,
-            float energy,
-            float productivityBonus,
+            double energy,
+            double productivityBonus,
             String orderString
     ) {
         super(name, enabled, category, ingredients, products, hidden, energy, productivityBonus, orderString);
@@ -33,7 +35,7 @@ public class RecipeListItem extends Recipe{
         calcMachineAmount();
     }
 
-    public float getMachineAmount() {
+    public double getMachineAmount() {
         return machineAmount;
     }
     private void calcMachineAmount() {
@@ -43,10 +45,32 @@ public class RecipeListItem extends Recipe{
     public String getMachineFactoryString(){
         return machine.getName() + ": " + machineAmount;
     }
-// TODO: implement building productivity
-    @Override
-    public void calculateAmounts(HashMap<String, Float> productionAmounts){
-        super.calculateAmounts(productionAmounts);
+    public void calculateAmounts(HashMap<String, Double> productionAmounts){
+        ArrayList<Double> ratios = new ArrayList<>();
+        for(Product product: getProducts()){
+            String productName = product.getName();
+            ratios.add(
+                    productionAmounts.containsKey(productName) ?
+                            productionAmounts.get(productName)/product.getAmount() : 0
+            );
+        }
+        // query for min, because productionAmounts of ingredients are negative
+        double finalRatio = Collections.min(ratios)*-1;
+        adjustAmounts(finalRatio);
+
+        for(RecipeComponent product: getProducts())
+            productionAmounts.merge(product.getName(), product.getAmount(), Double::sum);
+        for(RecipeComponent ingredient: getIngredients())
+            productionAmounts.merge(ingredient.getName(), (ingredient.getAmount()*-1), Double::sum);
         calcMachineAmount();
+    }
+
+    private void adjustAmounts(double ratio) {
+        double productivityRatio = ratio / (1 + machine.getProductivity());
+        for (RecipeComponent product: getProducts())
+            product.adjustAmount(ratio);
+        for (RecipeComponent ingredient: getIngredients())
+            ingredient.adjustAmount(productivityRatio);
+        setEnergy(productivityRatio);
     }
 }

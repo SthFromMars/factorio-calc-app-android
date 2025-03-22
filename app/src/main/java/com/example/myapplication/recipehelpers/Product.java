@@ -1,19 +1,19 @@
 package com.example.myapplication.recipehelpers;
 
 public class Product extends RecipeComponent{
-    private final float probability; // A value in range [0, 1]. Item is only given with this probability; otherwise no product is produced.
+    private final double probability; // A value in range [0, 1]. Item is only given with this probability; otherwise no product is produced.
     private final int ignoredByProductivity; // How much of this product is ignored by productivity.
 
-    private final float extraCountFraction; // Probability that a craft will yield one additional product. Also applies to bonus crafts caused by productivity.
+    private final double extraCountFraction; // Probability that a craft will yield one additional product. Also applies to bonus crafts caused by productivity.
 
-    public Product(ComponentType type, String name, float amount, float probability, int ignoredByProductivity, float extraCountFraction) {
+    public Product(ComponentType type, String name, double amount, double probability, int ignoredByProductivity, double extraCountFraction) {
         super(type, name, amount);
         this.probability = probability;
         this.ignoredByProductivity = ignoredByProductivity;
         this.extraCountFraction = extraCountFraction;
     }
 
-    public float getProbability() {
+    public double getProbability() {
         return probability;
     }
 
@@ -21,7 +21,7 @@ public class Product extends RecipeComponent{
         return ignoredByProductivity;
     }
 
-    public float getExtraCountFraction() {
+    public double getExtraCountFraction() {
         return extraCountFraction;
     }
 }

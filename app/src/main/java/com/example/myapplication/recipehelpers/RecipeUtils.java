@@ -3,6 +3,7 @@ package com.example.myapplication.recipehelpers;
 
 import android.content.res.AssetManager;
 
+import com.example.myapplication.machinehelpers.Machine;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -98,8 +99,8 @@ public class RecipeUtils {
                                 ingredients,
                                 products,
                                 recipeJson.getBoolean("hidden"),
-                                (float) recipeJson.getDouble("energy"),
-                                (float) recipeJson.getDouble("productivity_bonus"),
+                                recipeJson.getDouble("energy"),
+                                recipeJson.getDouble("productivity_bonus"),
                                 recipeJson.getString("order")
                         ));
             }
@@ -120,7 +121,7 @@ public class RecipeUtils {
         return new RecipeComponent(
                 ingredientJson.getString("type").equals("item") ? ComponentType.ITEM : ComponentType.FLUID,
                 ingredientJson.getString("name"),
-                (float) ingredientJson.getDouble("amount")
+                ingredientJson.getDouble("amount")
         );
     }
 
@@ -129,39 +130,41 @@ public class RecipeUtils {
             return new ItemProduct(
                     ComponentType.ITEM,
                     productJson.getString("name"),
-                    (float) productJson.getDouble("amount"),
-                    (float) productJson.getDouble("probability"),
+                    productJson.getDouble("amount"),
+                    productJson.getDouble("probability"),
                     productJson.has("ignored_by_productivity") ?
                             productJson.getInt("ignored_by_productivity") : 0,
                     productJson.has("extra_count_fraction") ?
-                            (float) productJson.getDouble("extra_count_fraction") : 0,
+                            productJson.getDouble("extra_count_fraction") : 0,
                     productJson.has("percent_spoiled") ?
-                            (float) productJson.getDouble("percent_spoiled") : 0
+                            productJson.getDouble("percent_spoiled") : 0
 
             );
         else
             return new FluidProduct(
                     ComponentType.FLUID,
                     productJson.getString("name"),
-                    (float) productJson.getDouble("amount"),
-                    (float) productJson.getDouble("probability"),
+                    productJson.getDouble("amount"),
+                    productJson.getDouble("probability"),
                     productJson.has("ignored_by_productivity") ?
                             productJson.getInt("ignored_by_productivity") : 0,
                     productJson.has("extra_count_fraction") ?
-                            (float) productJson.getDouble("extra_count_fraction") : 0,
+                            productJson.getDouble("extra_count_fraction") : 0,
                     productJson.has("temperature") ?
-                            (float) productJson.getDouble("temperature") : 0
+                            productJson.getDouble("temperature") : 0
 
             );
     }
-    public static void calculateRecipes(ArrayList<RecipeListItem> recipes, String mainProduct, float mainAmount){
-        HashMap<String, Float> productionAmounts = new HashMap<>();
+    public static void calculateRecipes(ArrayList<RecipeListItem> recipes, String mainProduct, double mainAmount){
+        HashMap<String, Double> productionAmounts = new HashMap<>();
         productionAmounts.put(mainProduct, mainAmount*(-1));
         for(int i=0; i<recipes.size(); i++){
             //reset to base values
             //TODO: idk about this reset implementation
             String recipeName = recipes.get(i).getName();
+            Machine machine = recipes.get(i).getMachine();
             recipes.set(i, getRecipeListItem(recipeName));
+            recipes.get(i).setMachine(machine);
 
             recipes.get(i).calculateAmounts(productionAmounts);
         }

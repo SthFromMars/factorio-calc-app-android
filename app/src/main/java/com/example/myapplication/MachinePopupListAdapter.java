@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.machinehelpers.Machine;
 import com.example.myapplication.machinehelpers.MachineUtils;
-import com.example.myapplication.recipehelpers.Recipe;
 import com.example.myapplication.recipehelpers.RecipeListItem;
 
 import java.util.List;
@@ -26,6 +25,7 @@ public class MachinePopupListAdapter extends RecyclerView.Adapter<MachinePopupLi
     private final RecipeListItem recipe;
     private final PopupWindow popupWindow;
     private final FactoryListAdapter.ViewHolder viewHolder;
+    private final FactoryListAdapter factoryListAdapter;
 
 
     /**
@@ -35,20 +35,22 @@ public class MachinePopupListAdapter extends RecyclerView.Adapter<MachinePopupLi
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView textView;
         private String machineName;
-        private final RecipeListItem recipe;
-        private final FactoryListAdapter.ViewHolder viewHolder;
+
         public ViewHolder(
                 Context context,
                 View view,
                 PopupWindow popupWindow,
                 RecipeListItem recipe,
-                FactoryListAdapter.ViewHolder viewHolder) {
+                FactoryListAdapter.ViewHolder viewHolder,
+                FactoryListAdapter factoryListAdapter
+        ) {
             super(view);
             textView = view.findViewById(R.id.popupListItem);
-            this.recipe = recipe;
-            this.viewHolder = viewHolder;
             view.setOnClickListener(v -> {
-                recipe.setMachine(MachineUtils.getMachine(machineName));
+                Machine machine = MachineUtils.getMachine(machineName);
+                recipe.setMachine(machine);
+                // TODO: only recalculate when productivity changes
+                factoryListAdapter.recalculate();
                 viewHolder.setMachineString(recipe.getMachineFactoryString());
                 popupWindow.dismiss();
             });
@@ -63,13 +65,14 @@ public class MachinePopupListAdapter extends RecyclerView.Adapter<MachinePopupLi
     public MachinePopupListAdapter(
             Context context,
             RecipeListItem recipe,
-            PopupWindow popupWindow, FactoryListAdapter.ViewHolder viewHolder
+            PopupWindow popupWindow, FactoryListAdapter.ViewHolder viewHolder, FactoryListAdapter factoryListAdapter
     ) {
         this.context = context;
         machines = MachineUtils.getMachinesForCategory(recipe.getCategory());
         this.recipe = recipe;
         this.popupWindow = popupWindow;
         this.viewHolder = viewHolder;
+        this.factoryListAdapter = factoryListAdapter;
     }
 
     // Create new views (invoked by the layout manager)
@@ -80,7 +83,7 @@ public class MachinePopupListAdapter extends RecyclerView.Adapter<MachinePopupLi
         View view = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.popup_card, viewGroup, false);
 
-        return new MachinePopupListAdapter.ViewHolder(context, view, popupWindow, recipe, viewHolder);
+        return new MachinePopupListAdapter.ViewHolder(context, view, popupWindow, recipe, viewHolder, factoryListAdapter);
     }
 
     // Replace the contents of a view (invoked by the layout manager)

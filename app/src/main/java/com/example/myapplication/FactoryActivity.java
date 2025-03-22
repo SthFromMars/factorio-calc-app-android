@@ -46,7 +46,7 @@ public class FactoryActivity extends AppCompatActivity {
         String recipeName = getIntent().getStringExtra("recipe_name");
         RecipeListItem recipe = RecipeUtils.getRecipeListItem(recipeName);
 
-        float amount = 0;
+        double amount = 0;
         for(Product product: recipe.getProducts()){
             if(product.getName().equals(itemToCraft)){
                 amount = product.getAmount();
@@ -75,7 +75,7 @@ public class FactoryActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 try {
-                    factoryListAdapter.amountChanged(Float.parseFloat(s.toString()));
+                    factoryListAdapter.amountChanged(Double.parseDouble(s.toString()));
                 } catch (NumberFormatException ignored){}
             }
 

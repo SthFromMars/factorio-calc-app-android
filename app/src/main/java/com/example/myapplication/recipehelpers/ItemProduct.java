@@ -1,13 +1,13 @@
 package com.example.myapplication.recipehelpers;
 
 public class ItemProduct extends Product{
-    private final float percentSpoiled;
+    private final double percentSpoiled;
 
-    public float getPercentSpoiled() {
+    public double getPercentSpoiled() {
         return percentSpoiled;
     }
 
-    public ItemProduct(ComponentType type, String name, float amount, float probability, int ignoredByProductivity, float extraCountFraction, float percentSpoiled) {
+    public ItemProduct(ComponentType type, String name, double amount, double probability, int ignoredByProductivity, double extraCountFraction, double percentSpoiled) {
         super(type, name, amount, probability, ignoredByProductivity, extraCountFraction);
         this.percentSpoiled = percentSpoiled;
     }

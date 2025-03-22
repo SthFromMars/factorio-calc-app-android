@@ -40,11 +40,14 @@ public class MachineUtils {
 
                 String machineName = machineJson.getString("name");
                 ArrayList<String> machineCategories = new ArrayList<>();
+                double productivity = machineJson.has("productivity") ?
+                        machineJson.getDouble("productivity") : 0;
                 Machine machine = new Machine(
                         machineName,
-                        (float) machineJson.getDouble("crafting_speed"),
+                        machineJson.getDouble("crafting_speed"),
                         machineCategories,
-                        machineJson.getString("order")
+                        machineJson.getString("order"),
+                        productivity
                 );
                 machines.put(machineName, machine);
 

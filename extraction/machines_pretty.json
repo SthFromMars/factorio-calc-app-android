@@ -27,7 +27,8 @@
             "crafting-with-fluid-or-metallurgy",
             "metallurgy-or-assembling",
             "parameters"
-        ]
+        ],
+        "productivity": 0.5
     },
     {
         "name": "recycler",
@@ -45,7 +46,8 @@
             "organic-or-assembling",
             "organic-or-chemistry",
             "parameters"
-        ]
+        ],
+        "productivity": 0.5
     },
     {
         "name": "captive-biter-spawner",
@@ -141,7 +143,8 @@
             "electronics-with-fluid",
             "electronics-or-assembling",
             "parameters"
-        ]
+        ],
+        "productivity": 0.5
     },
     {
         "name": "cryogenic-plant",

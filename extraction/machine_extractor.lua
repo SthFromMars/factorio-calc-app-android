@@ -14,6 +14,7 @@ for name, machine in pairs(prototypes.get_entity_filtered{{filter="crafting-mach
         machines_table[i].crafting_categories[j] = category;
         j=j+1;
     end
+    machines_table[i].productivity = prototypes.entity[machine.name].effect_receiver.base_effect.productivity
     i=i+1;
 end
 helpers.write_file(

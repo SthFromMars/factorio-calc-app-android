@@ -3,9 +3,9 @@ package com.example.myapplication.recipehelpers;
 public class RecipeComponent implements Comparable<RecipeComponent>{
     private final ComponentType type;
     private final String name;
-    private float amount;
+    private double amount;
 
-    public RecipeComponent(ComponentType type, String name, float amount) {
+    public RecipeComponent(ComponentType type, String name, double amount) {
         this.type = type;
         this.name = name;
         this.amount = amount;
@@ -19,7 +19,7 @@ public class RecipeComponent implements Comparable<RecipeComponent>{
         return name;
     }
 
-    public float getAmount() {
+    public double getAmount() {
         return amount;
     }
 
@@ -27,7 +27,7 @@ public class RecipeComponent implements Comparable<RecipeComponent>{
         return name + ": " + amount;
     }
 
-    public void adjustAmount(float ratio) {
+    public void adjustAmount(double ratio) {
         amount = amount * ratio;
     }
 
