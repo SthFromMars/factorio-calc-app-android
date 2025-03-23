@@ -1,8 +1,6 @@
 package com.example.myapplication.recipehelpers;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
 
 public class Recipe {
     private static final String TAG = "Recipe";
@@ -77,33 +75,6 @@ public class Recipe {
     public String getOrderString() {
         return orderString;
     }
-
-//    public void calculateAmounts(HashMap<String, Double> productionAmounts){
-//        ArrayList<Double> ratios = new ArrayList<>();
-//        for(Product product: products){
-//            String productName = product.getName();
-//            ratios.add(
-//                productionAmounts.containsKey(productName) ?
-//                    productionAmounts.get(productName)/product.getAmount() : 0
-//            );
-//        }
-//        // query for min, because productionAmounts of ingredients are negative
-//        double finalRatio = Collections.min(ratios)*-1;
-//        adjustAmounts(finalRatio);
-//
-//        for(RecipeComponent product: products)
-//            productionAmounts.merge(product.getName(), product.getAmount(), Double::sum);
-//        for(RecipeComponent ingredient: ingredients)
-//            productionAmounts.merge(ingredient.getName(), (ingredient.getAmount()*-1), Double::sum);
-//    }
-//
-//    private void adjustAmounts(double ratio) {
-//        for (RecipeComponent product: products)
-//            product.adjustAmount(ratio);
-//        for (RecipeComponent ingredient: ingredients)
-//            ingredient.adjustAmount(ratio);
-//        energy *= ratio;
-//    }
 }
 
 // TODO: support minimum/maximum temperature in ingredients (no use in vanilla)

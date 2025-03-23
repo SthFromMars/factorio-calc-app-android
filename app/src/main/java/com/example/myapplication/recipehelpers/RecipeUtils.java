@@ -3,6 +3,7 @@ package com.example.myapplication.recipehelpers;
 
 import android.content.res.AssetManager;
 
+import com.example.myapplication.Configuration;
 import com.example.myapplication.machinehelpers.Machine;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -19,15 +20,17 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class RecipeUtils {
     private static final String TAG = "RecipeUtils";
     // TODO: don't use static variables for recipes
     private static final HashMap<String, Recipe> recipes = new HashMap<>();
+    // TODO maybe store recipe objects instead of names
     private static final HashMap<String, ArrayList<String>> craftables = new HashMap<>();
+    private static final HashMap<String, ArrayList<String>> craftablesFiltered = new HashMap<>();
     private static final Gson gson = new Gson();
-
     public static RecipeListItem getRecipeListItem(String recipeName){
         Recipe recipe = recipes.get(recipeName);
         //TODO do deep copy properly
@@ -50,7 +53,6 @@ public class RecipeUtils {
 
     public static void readRecipesFromFile(AssetManager assetManager, String filename) {
         recipes.clear();
-        craftables.clear();
 
         try (InputStream recipeStream = assetManager.open(filename)) {
             String recipesJsonString = new BufferedReader(
@@ -78,13 +80,6 @@ public class RecipeUtils {
                     for (int j = 0; j < productsJsonArray.length(); j++) {
                         Product product = parseProduct(productsJsonArray.getJSONObject(j));
                         products.add(product);
-
-                        if (craftables.containsKey(product.getName()))
-                            craftables.get(product.getName()).add(recipeName);
-                        else {
-                            craftables.put(product.getName(), new ArrayList<>());
-                            craftables.get(product.getName()).add(recipeName);
-                        }
                     }
                 }
 
@@ -108,9 +103,26 @@ public class RecipeUtils {
         } catch (IOException | JSONException e) {
             throw new RuntimeException(e);
         }
+        makeCraftables();
+    }
+
+    private static void makeCraftables(){
+        craftables.clear();
+
+        for (Recipe recipe: recipes.values()){
+            if(
+                    (!recipe.isHidden() || (recipe.isHidden() && Configuration.SHOW_HIDDEN)) &&
+                    (recipe.isEnabled() || (!recipe.isEnabled() && Configuration.SHOW_DISABLED))
+            ) {
+                for (Product product : recipe.getProducts()) {
+                    if (!craftables.containsKey(product.getName()))
+                        craftables.put(product.getName(), new ArrayList<>());
+                    craftables.get(product.getName()).add(recipe.getName());
+                }
+            }
+        }
 
         for(String craftable: craftables.keySet()){
-            // TODO maybe store recipe objects instead of names
             craftables.get(craftable).sort((a, b) ->
                     recipes.get(a).getOrderString().compareToIgnoreCase(recipes.get(b).getOrderString())
             );
