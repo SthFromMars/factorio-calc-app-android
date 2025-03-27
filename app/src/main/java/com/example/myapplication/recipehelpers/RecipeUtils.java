@@ -2,6 +2,7 @@ package com.example.myapplication.recipehelpers;
 
 
 import android.content.res.AssetManager;
+import android.util.Log;
 
 import com.example.myapplication.Configuration;
 import com.example.myapplication.machinehelpers.Machine;

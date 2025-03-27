@@ -7,6 +7,10 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <include
+        android:id="@+id/main_banner"
+        layout="@layout/banner"/>
+
     <SearchView
         android:id="@+id/searchView"
         android:layout_width="0dp"
@@ -14,7 +18,7 @@
         android:iconifiedByDefault="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/main_banner" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/craftablesList"

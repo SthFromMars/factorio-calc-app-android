@@ -1,4 +1,4 @@
-package com.example.myapplication.recipepopuputils;
+package com.example.myapplication.popuputils;
 
 import android.content.Context;
 import android.content.Intent;

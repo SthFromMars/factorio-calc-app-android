@@ -35,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
+        BannerUtils.setUpBanner(this, "Select recipe to start:");
+
         RecipeUtils.readRecipesFromFile(this.getAssets(), "recipes.json");
         MachineUtils.readMachinesFromFile(this.getAssets(), "machines.json");
 

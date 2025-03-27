@@ -10,7 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.recipepopuputils.RecipeClickFunctions;
+import com.example.myapplication.popuputils.RecipeClickFunctions;
 
 import java.util.List;
 

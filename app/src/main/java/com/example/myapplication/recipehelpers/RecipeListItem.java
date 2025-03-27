@@ -1,5 +1,7 @@
 package com.example.myapplication.recipehelpers;
 
+import android.util.Log;
+
 import com.example.myapplication.machinehelpers.Machine;
 import com.example.myapplication.machinehelpers.MachineUtils;
 
@@ -10,6 +12,7 @@ import java.util.HashMap;
 public class RecipeListItem extends Recipe{
     private Machine machine;
     private double machineAmount;
+    private static final String TAG = "RecipeListItem";
 
     public RecipeListItem(
             String name,
@@ -71,6 +74,6 @@ public class RecipeListItem extends Recipe{
             product.adjustAmount(ratio);
         for (RecipeComponent ingredient: getIngredients())
             ingredient.adjustAmount(productivityRatio);
-        setEnergy(productivityRatio);
+        setEnergy(getEnergy()*productivityRatio);
     }
 }

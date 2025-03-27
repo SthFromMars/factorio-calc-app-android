@@ -15,11 +15,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myapplication.popuputils.PopupUtils;
 import com.example.myapplication.recipehelpers.Product;
 import com.example.myapplication.recipehelpers.RecipeComponent;
 import com.example.myapplication.recipehelpers.RecipeListItem;
 import com.example.myapplication.recipehelpers.RecipeUtils;
-import com.example.myapplication.recipepopuputils.RecipeClickFactoryList;
+import com.example.myapplication.popuputils.RecipeClickFactoryList;
 
 import java.util.ArrayList;
 
@@ -53,10 +54,7 @@ public class FactoryListAdapter  extends RecyclerView.Adapter<FactoryListAdapter
             machineStringView = view.findViewById(R.id.machineString);
             machineStringView.setOnClickListener(v -> {
                 View popupView = LayoutInflater.from(activity).inflate(R.layout.popup, null);
-                int width = ViewGroup.LayoutParams.WRAP_CONTENT;
-                int height = ViewGroup.LayoutParams.WRAP_CONTENT;
-                boolean focusable = true; // lets taps outside the popup also dismiss it
-                final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
+                final PopupWindow popupWindow = PopupUtils.getDefaultPopupWindow(popupView);
 
                 RecyclerView recyclerView = popupView.findViewById(R.id.popupList);
                 recyclerView.setLayoutManager(new LinearLayoutManager(activity.getApplicationContext()));
