@@ -107,13 +107,13 @@ public class RecipeUtils {
         makeCraftables();
     }
 
-    private static void makeCraftables(){
+    public static void makeCraftables(){
         craftables.clear();
 
         for (Recipe recipe: recipes.values()){
             if(
-                    (!recipe.isHidden() || (recipe.isHidden() && Configuration.SHOW_HIDDEN)) &&
-                    (recipe.isEnabled() || (!recipe.isEnabled() && Configuration.SHOW_DISABLED))
+                    (!recipe.isHidden() || (recipe.isHidden() && Configuration.isShowHidden())) &&
+                    (recipe.isEnabled() || (!recipe.isEnabled() && Configuration.isShowDisabled()))
             ) {
                 for (Product product : recipe.getProducts()) {
                     if (!craftables.containsKey(product.getName()))

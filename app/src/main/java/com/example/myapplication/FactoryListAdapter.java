@@ -53,7 +53,7 @@ public class FactoryListAdapter  extends RecyclerView.Adapter<FactoryListAdapter
             this.activity = activity;
             machineStringView = view.findViewById(R.id.machineString);
             machineStringView.setOnClickListener(v -> {
-                View popupView = LayoutInflater.from(activity).inflate(R.layout.popup, null);
+                View popupView = LayoutInflater.from(activity).inflate(R.layout.popup_list, null);
                 final PopupWindow popupWindow = PopupUtils.getDefaultPopupWindow(popupView);
 
                 RecyclerView recyclerView = popupView.findViewById(R.id.popupList);

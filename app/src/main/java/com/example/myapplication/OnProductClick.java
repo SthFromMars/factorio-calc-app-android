@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.PopupWindow;
 import android.widget.Toast;
 
@@ -47,7 +46,7 @@ public class OnProductClick implements View.OnClickListener {
             recipeName = recipeNamesToCraft.get(0);
             recipeClickFunctions.onRecipeSelection(activity, recipeName, itemToCraft);
         } else {
-            View popupView = LayoutInflater.from(activity).inflate(R.layout.popup, null);
+            View popupView = LayoutInflater.from(activity).inflate(R.layout.popup_list, null);
 
             final PopupWindow popupWindow = PopupUtils.getDefaultPopupWindow(popupView);
 
