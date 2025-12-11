@@ -6,11 +6,17 @@ public class Product extends RecipeComponent{
 
     private final double extraCountFraction; // Probability that a craft will yield one additional product. Also applies to bonus crafts caused by productivity.
 
+    private final double raw_amount;
+
     public Product(ComponentType type, String name, double amount, double probability, int ignoredByProductivity, double extraCountFraction) {
-        super(type, name, amount);
+
+        super(type, name,
+                (amount * probability) + (1 * extraCountFraction)
+        );
         this.probability = probability;
         this.ignoredByProductivity = ignoredByProductivity;
         this.extraCountFraction = extraCountFraction;
+        this.raw_amount = amount;
     }
 
     public double getProbability() {
@@ -24,6 +30,9 @@ public class Product extends RecipeComponent{
     public double getExtraCountFraction() {
         return extraCountFraction;
     }
+
+    public double getRaw_amount() {
+        return raw_amount;
+    }
 }
-// TODO: implement method to get real amount (respecting probability and extraCountFraction)
 // TODO: support amount_min/max  (no use in vanilla)
