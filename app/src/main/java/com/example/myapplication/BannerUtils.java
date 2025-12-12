@@ -33,10 +33,12 @@ public class BannerUtils {
             AtomicBoolean stateChanged = new AtomicBoolean(false);
             hiddenSwitch.setOnCheckedChangeListener((switchView, isChecked) -> {
                 Configuration.setShowHidden(isChecked);
+                switchView.setChecked(Configuration.isShowHidden());
                 stateChanged.set(true);
             });
             disabledSwitch.setOnCheckedChangeListener((switchView, isChecked) -> {
                 Configuration.setShowDisabled(isChecked);
+                switchView.setChecked(Configuration.isShowDisabled());
                 stateChanged.set(true);
             });
 
