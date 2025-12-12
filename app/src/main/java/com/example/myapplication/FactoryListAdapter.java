@@ -1,15 +1,20 @@
 package com.example.myapplication;
 
+import static android.widget.Toast.LENGTH_LONG;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -17,10 +22,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.popuputils.PopupUtils;
 import com.example.myapplication.recipehelpers.Product;
+import com.example.myapplication.recipehelpers.Recipe;
 import com.example.myapplication.recipehelpers.RecipeComponent;
 import com.example.myapplication.recipehelpers.RecipeListItem;
 import com.example.myapplication.recipehelpers.RecipeUtils;
 import com.example.myapplication.popuputils.RecipeClickFactoryList;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 
@@ -45,6 +52,9 @@ public class FactoryListAdapter  extends RecyclerView.Adapter<FactoryListAdapter
         private final Activity activity;
         private final TextView machineStringView;
         private RecipeListItem recipe;
+        private int position;
+        private final ImageButton removeButton;
+
 
         public ViewHolder(View view, LayoutInflater layoutInflater, Activity activity, FactoryListAdapter factoryListAdapter) {
             super(view);
@@ -69,10 +79,18 @@ public class FactoryListAdapter  extends RecyclerView.Adapter<FactoryListAdapter
 
                 popupWindow.showAtLocation(activity.findViewById(R.id.main), Gravity.CENTER, 0, 0);
             });
+            ImageButton removeButton = view.findViewById(R.id.recipe_remove_button);
+            this.removeButton = removeButton;
+            removeButton.setOnClickListener(v -> {
+                factoryListAdapter.removeRecipe(position);
+            });
         }
 
-        public void setRecipe(RecipeListItem recipe){
+        public void setRecipe(RecipeListItem recipe, int position){
             this.recipe = recipe;
+            this.position = position;
+            if(position == 0)
+                removeButton.setVisibility(View.GONE);
             for(Product product: recipe.getProducts())
                 addProduct(product);
             for(RecipeComponent ingredient: recipe.getIngredients())
@@ -126,7 +144,7 @@ public class FactoryListAdapter  extends RecyclerView.Adapter<FactoryListAdapter
         // contents of the view with that element
         //TODO don't recreate unnecessarily
         viewHolder.empty();
-        viewHolder.setRecipe(recipes.get(position));
+        viewHolder.setRecipe(recipes.get(position), position);
     }
 
     // Return the size of your dataset (invoked by the layout manager)
@@ -141,7 +159,10 @@ public class FactoryListAdapter  extends RecyclerView.Adapter<FactoryListAdapter
         RecipeUtils.calculateRecipes(recipes, mainProductName, Double.parseDouble(amountView.getText().toString()));
         notifyItemInserted(getItemCount()-1);
     }
-
+    public void removeRecipe(int position){
+        recipes.remove(position);
+        recalculate();
+    }
     @SuppressLint("NotifyDataSetChanged")
     public void amountChanged(double amount)
     {
@@ -150,6 +171,7 @@ public class FactoryListAdapter  extends RecyclerView.Adapter<FactoryListAdapter
         notifyDataSetChanged();
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     public void recalculate(){
         RecipeUtils.calculateRecipes(recipes, mainProductName, amount);
         notifyDataSetChanged();
