@@ -16,7 +16,7 @@
             android:name=".FactoryActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ChooseMainProductActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
