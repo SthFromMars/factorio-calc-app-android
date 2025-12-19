@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.factoryutils.FactoryUtils;
+import com.example.myapplication.machinehelpers.MachineUtils;
+import com.example.myapplication.recipehelpers.RecipeUtils;
 
 public class ChooseFactoryActivity extends AppCompatActivity {
 
@@ -29,13 +31,18 @@ public class ChooseFactoryActivity extends AppCompatActivity {
             return insets;
         });
 
+        // set up config
+        Configuration.setUp(this);
+        RecipeUtils.readRecipesFromFile(this.getAssets(), "recipes.json");
+        MachineUtils.readMachinesFromFile(this.getAssets(), "machines.json");
+
         findViewById(R.id.newFactoryButton).setOnClickListener(v -> {
             startActivity(new Intent(ChooseFactoryActivity.this, ChooseMainProductActivity.class));
         });
         FactoryUtils.readFactoryList(this);
         RecyclerView factoryListView = findViewById(R.id.factoryList);
         factoryListView.setLayoutManager(new LinearLayoutManager(this));
-        factoryAdapter = new ChooseFactoryAdapter(FactoryUtils.getFactoryList());
+        factoryAdapter = new ChooseFactoryAdapter(FactoryUtils.getFactoryList(), this);
         factoryListView.setAdapter(factoryAdapter);
     }
 

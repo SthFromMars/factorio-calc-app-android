@@ -1,6 +1,8 @@
 package com.example.myapplication;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,9 +18,11 @@ import java.util.List;
 public class ChooseFactoryAdapter extends RecyclerView.Adapter<ChooseFactoryAdapter.ViewHolder> {
 
     private List<String> factories;
+    private final Activity activity;
 
-    public ChooseFactoryAdapter(List<String> factories) {
+    public ChooseFactoryAdapter(List<String> factories, Activity activity) {
         this.factories = factories;
+        this.activity = activity;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -40,7 +44,13 @@ public class ChooseFactoryAdapter extends RecyclerView.Adapter<ChooseFactoryAdap
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.factoryNameView.setText(factories.get(position));
+        String factoryName = factories.get(position);
+        holder.factoryNameView.setText(factoryName);
+        holder.factoryNameView.setOnClickListener((view) -> {
+            Intent intent = new Intent(activity, FactoryActivity.class);
+            intent.putExtra(activity.getResources().getString(R.string.factory_name_extra), factoryName);
+            activity.startActivity(intent);
+        });
     }
 
     @Override

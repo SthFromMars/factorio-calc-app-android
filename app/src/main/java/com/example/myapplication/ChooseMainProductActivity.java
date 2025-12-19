@@ -27,8 +27,6 @@ public class ChooseMainProductActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // set up config
-        Configuration.setUp(this);
 
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_choose_main_product);
@@ -39,9 +37,6 @@ public class ChooseMainProductActivity extends AppCompatActivity {
         });
 
         BannerUtils.setUpBanner(this, "Select product to start:");
-
-        RecipeUtils.readRecipesFromFile(this.getAssets(), "recipes.json");
-        MachineUtils.readMachinesFromFile(this.getAssets(), "machines.json");
 
         HashMap<String, ArrayList<String>> craftables = RecipeUtils.getCraftables();
         List<String> craftableNames = Arrays.asList(craftables.keySet().toArray(new String[0]));
