@@ -1,7 +1,7 @@
 package com.example.myapplication.popuputils;
 
-import android.content.Context;
+import android.app.Activity;
 
 public interface RecipeClickFunctions {
-    void onRecipeSelection(Context context, String recipeName, String itemToCraft);
+    void onRecipeSelection(Activity context, String recipeName, String itemToCraft);
 }

@@ -11,9 +11,12 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class ChooseFactory extends AppCompatActivity {
+import com.example.myapplication.factoryutils.FactoryUtils;
+
+public class ChooseFactoryActivity extends AppCompatActivity {
 
     private static final String TAG = "ChooseFactory";
+    private ChooseFactoryAdapter factoryAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,11 +30,19 @@ public class ChooseFactory extends AppCompatActivity {
         });
 
         findViewById(R.id.newFactoryButton).setOnClickListener(v -> {
-            startActivity(new Intent(ChooseFactory.this, ChooseMainProductActivity.class));
+            startActivity(new Intent(ChooseFactoryActivity.this, ChooseMainProductActivity.class));
         });
         FactoryUtils.readFactoryList(this);
         RecyclerView factoryListView = findViewById(R.id.factoryList);
         factoryListView.setLayoutManager(new LinearLayoutManager(this));
-        factoryListView.setAdapter(new ChooseFactoryAdapter(FactoryUtils.getFactoryList()));
+        factoryAdapter = new ChooseFactoryAdapter(FactoryUtils.getFactoryList());
+        factoryListView.setAdapter(factoryAdapter);
     }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        factoryAdapter.updateFactories();
+    }
+
 }

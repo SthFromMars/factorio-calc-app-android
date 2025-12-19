@@ -1,6 +1,6 @@
 package com.example.myapplication;
 
-import android.util.Pair;
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,12 +9,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
+import com.example.myapplication.factoryutils.FactoryUtils;
+
 import java.util.List;
 
 public class ChooseFactoryAdapter extends RecyclerView.Adapter<ChooseFactoryAdapter.ViewHolder> {
 
-    private final List<String> factories;
+    private List<String> factories;
 
     public ChooseFactoryAdapter(List<String> factories) {
         this.factories = factories;
@@ -45,5 +46,11 @@ public class ChooseFactoryAdapter extends RecyclerView.Adapter<ChooseFactoryAdap
     @Override
     public int getItemCount() {
         return factories.size();
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    public void updateFactories(){
+        factories = FactoryUtils.getFactoryList();
+        notifyDataSetChanged();
     }
 }

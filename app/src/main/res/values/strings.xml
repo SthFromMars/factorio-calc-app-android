@@ -4,4 +4,5 @@
     <string name="show_hidden_key">show_hidden</string>
     <string name="show_disabled_key">show_disabled</string>
     <string name="factory_list_filename">factory_list.json</string>
+    <string name="factory_name_extra">factory_name_extra</string>
 </resources>
