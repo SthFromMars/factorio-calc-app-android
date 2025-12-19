@@ -63,7 +63,7 @@ public class FactoryActivity extends AppCompatActivity {
 
         RecyclerView recyclerView = findViewById(R.id.factoryList);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        factoryListAdapter = new FactoryListAdapter(this, factoryList, itemToCraft, amountView);
+        factoryListAdapter = new FactoryListAdapter(this, factoryList, itemToCraft, amountView, factoryName);
         recyclerView.setAdapter(factoryListAdapter);
 
         amountView.addTextChangedListener(new TextWatcher() {

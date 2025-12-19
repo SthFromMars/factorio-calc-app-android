@@ -20,6 +20,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myapplication.factoryutils.FactoryUtils;
 import com.example.myapplication.popuputils.PopupUtils;
 import com.example.myapplication.recipehelpers.Product;
 import com.example.myapplication.recipehelpers.Recipe;
@@ -39,12 +40,14 @@ public class FactoryListAdapter  extends RecyclerView.Adapter<FactoryListAdapter
     private final String mainProductName;
     private final EditText amountView;
     private double amount;
-    public FactoryListAdapter(Activity activity, ArrayList<RecipeListItem> recipes, String mainProductName, EditText amountView) {
+    private final String factoryName;
+    public FactoryListAdapter(Activity activity, ArrayList<RecipeListItem> recipes, String mainProductName, EditText amountView, String factoryName) {
         this.activity = activity;
         this.recipes = recipes;
         this.mainProductName = mainProductName;
         this.amountView = amountView;
         amount = Double.parseDouble(amountView.getText().toString());
+        this.factoryName = factoryName;
     }
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final LayoutInflater layoutInflater;
@@ -158,6 +161,7 @@ public class FactoryListAdapter  extends RecyclerView.Adapter<FactoryListAdapter
         //TODO: don't recalculate all recipes
         RecipeUtils.calculateRecipes(recipes, mainProductName, Double.parseDouble(amountView.getText().toString()));
         notifyItemInserted(getItemCount()-1);
+        FactoryUtils.writeFactory(activity, factoryName, recipes);
     }
     public void removeRecipe(int position){
         recipes.remove(position);
@@ -167,14 +171,14 @@ public class FactoryListAdapter  extends RecyclerView.Adapter<FactoryListAdapter
     public void amountChanged(double amount)
     {
         this.amount = amount;
-        RecipeUtils.calculateRecipes(recipes, mainProductName, amount);
-        notifyDataSetChanged();
+        recalculate();
     }
 
     @SuppressLint("NotifyDataSetChanged")
     public void recalculate(){
         RecipeUtils.calculateRecipes(recipes, mainProductName, amount);
         notifyDataSetChanged();
+        FactoryUtils.writeFactory(activity, factoryName, recipes);
     }
 
 }
